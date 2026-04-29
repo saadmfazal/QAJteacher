@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QAJ Teacher Portal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="loginScreen" class="login-screen">
+    <section class="login-card">
+      <p class="eyebrow">QAJ Portal</p>
+      <h1>Teacher Portal</h1>
+      <p class="muted">Login with your QAJ teacher account to view classes, schedules, entries, messages, and policies.</p>
+
+      <form id="loginForm" class="form-stack">
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="teacher@email.com" required />
+
+        <label>Password</label>
+        <input id="loginPassword" type="password" placeholder="Password" required />
+
+        <button type="submit" class="primary-btn">Login</button>
+        <p id="loginMessage" class="message"></p>
+      </form>
+    </section>
+  </div>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">QAJ Teacher Portal</p>
+        <h1 id="headerTitle">Dashboard</h1>
+        <p id="teacherMiniText" class="muted">Loading teacher...</p>
+      </div>
+      <button class="icon-btn" onclick="logoutTeacher()" aria-label="Logout">⎋</button>
+    </header>
+
+    <main class="app-main">
+      <section id="viewHome" class="view active-view">
+        <div class="hero-card">
+          <div>
+            <span class="pill dark">Next Class</span>
+            <h2 id="nextClassTitle">No upcoming class</h2>
+            <p id="nextClassMeta" class="muted">Your next scheduled class will appear here.</p>
+          </div>
+          <button class="secondary-btn" onclick="openView('schedule')">Open Schedule</button>
+        </div>
+
+        <div class="stats-grid">
+          <article class="stat-card"><span>Today</span><strong id="todayCount">0</strong><small>classes</small></article>
+          <article class="stat-card warning"><span>Missed</span><strong id="missedCount">0</strong><small>entries</small></article>
+          <article class="stat-card"><span>Students</span><strong id="studentCount">0</strong><small>assigned</small></article>
+          <article class="stat-card"><span>Batches</span><strong id="batchCount">0</strong><small>assigned</small></article>
+        </div>
+
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Today's Classes</h2>
+              <p class="muted">Tap a class to submit or view the entry.</p>
+            </div>
+          </div>
+          <div id="todayClassesList" class="list-stack"><p class="empty">Loading...</p></div>
+        </section>
+
+        <section class="card qaj-message-card">
+          <div class="card-head">
+            <div>
+              <h2>Message from QAJ</h2>
+              <p class="muted">Latest announcement for teachers.</p>
+            </div>
+          </div>
+          <div id="qajAnnouncement"><p class="empty">No announcement loaded.</p></div>
+        </section>
+      </section>
+
+      <section id="viewStudents" class="view">
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Assigned Students</h2>
+              <p class="muted">Individual students and group batch students assigned to you.</p>
+            </div>
+          </div>
+          <input id="studentSearch" class="search-input" placeholder="Search student, SID, course, batch..." oninput="renderStudentsView()" />
+          <div id="studentsList" class="list-stack"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewSchedule" class="view">
+        <section class="card">
+          <div class="card-head split">
+            <div>
+              <h2>Schedules & Entries</h2>
+              <p class="muted">Submit class entries for completed classes.</p>
+            </div>
+            <div class="month-controls">
+              <button class="mini-btn" onclick="changeScheduleMonth(-1)">←</button>
+              <strong id="scheduleMonthLabel">Month</strong>
+              <button class="mini-btn" onclick="changeScheduleMonth(1)">→</button>
+            </div>
+          </div>
+
+          <div class="filter-row">
+            <button id="scheduleFilterAll" class="chip active" onclick="setScheduleFilter('all')">All</button>
+            <button id="scheduleFilterPending" class="chip" onclick="setScheduleFilter('pending')">Pending Entries</button>
+            <button id="scheduleFilterDone" class="chip" onclick="setScheduleFilter('done')">Done</button>
+            <button id="scheduleFilterIndividual" class="chip" onclick="setScheduleFilter('individual')">Individual</button>
+            <button id="scheduleFilterGroup" class="chip" onclick="setScheduleFilter('group')">Group</button>
+          </div>
+
+          <div id="scheduleList" class="schedule-list"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewEntries" class="view">
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>Past Entries</h2>
+              <p class="muted">View previously submitted class entries.</p>
+            </div>
+          </div>
+          <input id="entrySearch" class="search-input" placeholder="Search notes, student, batch, course..." oninput="renderPastEntries()" />
+          <div id="pastEntriesList" class="list-stack"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewTimes" class="view">
+        <section class="card">
+          <div class="card-head split">
+            <div>
+              <h2>My Available Time Slots</h2>
+              <p class="muted">Add availability in 30-minute blocks.</p>
+            </div>
+            <button class="secondary-btn" onclick="openTimeModal()">+ Add Times</button>
+          </div>
+          <div class="filter-row">
+            <button id="timeFilterAvailable" class="chip active" onclick="setTimeFilter('available')">Available</button>
+            <button id="timeFilterUtilized" class="chip" onclick="setTimeFilter('utilized')">Utilized</button>
+            <button id="timeFilterInactive" class="chip" onclick="setTimeFilter('inactive')">Inactive</button>
+            <button id="timeFilterAll" class="chip" onclick="setTimeFilter('all')">All</button>
+          </div>
+          <div id="timeBlocksList" class="time-grid"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewMessages" class="view">
+        <section class="card">
+          <div class="card-head split">
+            <div>
+              <h2>Messages</h2>
+              <p class="muted">Message QAJ admin or head teacher.</p>
+            </div>
+            <button class="secondary-btn" onclick="openMessageModal()">+ New Message</button>
+          </div>
+          <div id="messagesList" class="list-stack"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewPolicy" class="view">
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>QAJ Policy & SOP</h2>
+              <p class="muted">Read institute policies, SOPs, and teacher guidelines.</p>
+            </div>
+          </div>
+          <div id="policyContent" class="policy-content"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+
+      <section id="viewProfile" class="view">
+        <section class="card">
+          <div class="card-head">
+            <div>
+              <h2>My Profile</h2>
+              <p class="muted">Your teacher/staff information registered with QAJ.</p>
+            </div>
+          </div>
+          <div id="profileContent" class="profile-grid"><p class="empty">Loading...</p></div>
+        </section>
+      </section>
+    </main>
+
+    <nav class="bottom-nav">
+      <button id="navHome" class="nav-item active" onclick="openView('home')"><span>⌂</span><small>Home</small></button>
+      <button id="navStudents" class="nav-item" onclick="openView('students')"><span>👥</span><small>Students</small></button>
+      <button id="navSchedule" class="nav-item" onclick="openView('schedule')"><span>📅</span><small>Schedule</small></button>
+      <button id="navEntries" class="nav-item" onclick="openView('entries')"><span>✓</span><small>Entries</small></button>
+      <button id="navMore" class="nav-item" onclick="openMoreMenu()"><span>☰</span><small>More</small></button>
+    </nav>
+  </div>
+
+  <div id="moreMenu" class="modal bottom-sheet">
+    <div class="sheet-box">
+      <div class="sheet-handle"></div>
+      <button onclick="openView('times'); closeMoreMenu();">My Times</button>
+      <button onclick="openView('messages'); closeMoreMenu();">Messages</button>
+      <button onclick="openView('policy'); closeMoreMenu();">Policy & SOP</button>
+      <button onclick="openView('profile'); closeMoreMenu();">Profile</button>
+      <button class="danger-text" onclick="logoutTeacher()">Logout</button>
+    </div>
+  </div>
+
+  <div id="entryModal" class="modal">
+    <div class="modal-box large-modal">
+      <div class="modal-header">
+        <div>
+          <h2 id="entryModalTitle">Class Entry</h2>
+          <p id="entryModalSub" class="muted">Submit details for this class.</p>
+        </div>
+        <button class="close-btn" onclick="closeEntryModal()">×</button>
+      </div>
+      <div id="entryModalContent"></div>
+    </div>
+  </div>
+
+  <div id="studentModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Student Details</h2>
+        <button class="close-btn" onclick="closeStudentModal()">×</button>
+      </div>
+      <div id="studentModalContent"></div>
+    </div>
+  </div>
+
+  <div id="timeModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>Add Available Times</h2>
+        <button class="close-btn" onclick="closeTimeModal()">×</button>
+      </div>
+      <form id="timeForm" class="form-grid">
+        <label>Day</label>
+        <select id="timeDay" required>
+          <option value="0">Sunday</option>
+          <option value="1">Monday</option>
+          <option value="2">Tuesday</option>
+          <option value="3">Wednesday</option>
+          <option value="4">Thursday</option>
+          <option value="5">Friday</option>
+          <option value="6">Saturday</option>
+        </select>
+        <label>Start Time</label>
+        <input id="timeStart" type="time" required />
+        <label>Total Duration</label>
+        <input id="timeDuration" type="number" min="30" step="30" value="60" required />
+        <label>Notes</label>
+        <textarea id="timeNotes"></textarea>
+        <button class="primary-btn full" type="submit">Create 30-min Slots</button>
+        <p id="timeMessage" class="message"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="messageModal" class="modal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h2>New Message</h2>
+        <button class="close-btn" onclick="closeMessageModal()">×</button>
+      </div>
+      <form id="messageForm" class="form-grid">
+        <label>Send To</label>
+        <select id="messageToType" required>
+          <option value="admin">Admin</option>
+          <option value="head_teacher">Head Teacher</option>
+        </select>
+        <label>Subject</label>
+        <input id="messageSubject" required />
+        <label>Message</label>
+        <textarea id="messageBody" required></textarea>
+        <button class="primary-btn full" type="submit">Send Message</button>
+        <p id="messageFormMessage" class="message"></p>
+      </form>
+    </div>
+  </div>
+
+  <div id="successModal" class="modal success-modal">
+    <div class="modal-box success-box">
+      <div class="success-icon">✓</div>
+      <h2 id="successTitle">Success</h2>
+      <p id="successText">Done.</p>
+      <button class="primary-btn full" onclick="closeSuccessModal()">Done</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

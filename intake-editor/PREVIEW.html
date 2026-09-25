@@ -117,6 +117,7 @@ img { display: block; max-width: 100%; }
 .recommend-badge { position: absolute; z-index: 2; right: .8rem; top: .65rem; display: none; padding: .28rem .5rem; color: white; background: var(--accent); border-radius: 999px; font-size: .58rem; font-weight: 700; }
 .programme-door.recommended .recommend-badge { display: block; }
 .door-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.programme-door.recommended .door-top { padding-top: 1.45rem; }
 .door-no { width: 34px; height: 34px; display: grid; place-items: center; color: white; background: var(--accent); border-radius: 50%; font: 700 .7rem var(--sans); }
 .door-audience { max-width: 72%; color: var(--accent); font-size: .61rem; font-weight: 700; letter-spacing: .07em; text-align: right; text-transform: uppercase; }
 .door-copy { position: relative; z-index: 1; align-self: center; padding: 1.25rem 0; }
@@ -204,12 +205,6 @@ img { display: block; max-width: 100%; }
 .form-progress li.complete { color: var(--teal); }
 .form-progress li.complete span { color: white; background: var(--teal); font-size: 0; }
 .form-progress li.complete span::before { content: "✓"; font-size: .76rem; }
-.selection-bar { margin: .85rem clamp(.85rem,4vw,2.2rem) 0; display: grid; grid-template-columns: auto minmax(0,1fr) auto; align-items: center; gap: .65rem; padding: .72rem .82rem; background: white; border: 1px solid var(--line); border-left: 5px solid var(--course-accent,var(--teal)); border-radius: 6px; }
-.selection-bar > span { width: 10px; height: 10px; background: var(--course-accent,var(--teal)); border-radius: 50%; }
-.selection-bar div { min-width: 0; display: grid; }
-.selection-bar small { color: var(--muted); font-size: .56rem; letter-spacing: .07em; text-transform: uppercase; }
-.selection-bar strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 600 .96rem var(--serif); }
-.selection-bar button { padding: .3rem .4rem; color: var(--berry); background: transparent; border: 0; border-bottom: 1px solid currentColor; font-size: .63rem; cursor: pointer; }
 .form-status { margin: .85rem clamp(.85rem,4vw,2.2rem) 0; padding: .75rem .85rem; color: #802b20; background: #fff0ec; border-left: 5px solid var(--coral); font-size: .76rem; }
 .form-step { max-width: 840px; margin: 0 auto; padding: clamp(1.15rem,3vw,2rem) clamp(.85rem,4vw,2.2rem) 0; }
 .step-head { margin-bottom: 1.1rem; }
@@ -294,15 +289,19 @@ img { display: block; max-width: 100%; }
 .summary-card strong { display: block; margin: .2rem 0 .08rem; font: 600 1.35rem var(--serif); }
 .summary-card p { margin: 0; color: rgba(255,255,255,.68); font-size: .65rem; }
 .summary-card button { color: var(--saffron); background: transparent; border: 0; border-bottom: 1px solid currentColor; font-size: .62rem; cursor: pointer; }
-.payment-card { display: grid; grid-template-columns: .8fr 1.2fr; gap: .8rem; align-items: center; margin-bottom: .75rem; padding: 1rem; background: #fff0b3; border: 1px solid #dbb33a; border-radius: 7px; }
+.payment-card { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-bottom: .75rem; padding: 1rem; background: #fff0b3; border: 1px solid #dbb33a; border-radius: 7px; }
 .payment-card small, .payment-card strong, .payment-card span { display: block; }
 .payment-card small { color: #765812; font-size: .57rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 .payment-card strong { margin: .12rem 0; font: 600 1.4rem var(--serif); }
 .payment-card span { color: #6b511d; font-size: .66rem; }
-.payment-card dl { margin: 0; }
-.payment-card dl div { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; padding: .42rem 0; border-bottom: 1px solid rgba(69,21,47,.15); }
+.payment-account { padding: .8rem; color: white; background: var(--teal); border-radius: 6px; }
+.payment-account small, .payment-account span { color: rgba(255,255,255,.75); }
+.payment-account strong { color: white; font: 700 1.3rem var(--sans); letter-spacing: .04em; }
+.payment-card dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem; margin: 0; }
+.payment-card dl div { min-width: 0; padding: .62rem .68rem; background: rgba(255,255,255,.72); border: 1px solid rgba(69,21,47,.12); border-radius: 5px; }
+.payment-card dl div.wide { grid-column: 1/-1; }
 .payment-card dt { color: #755b24; font-size: .57rem; text-transform: uppercase; }
-.payment-card dd { margin: 0; font-size: .75rem; font-weight: 700; }
+.payment-card dd { margin: .1rem 0 0; overflow-wrap: anywhere; font-size: .75rem; font-weight: 700; }
 .upload-card { min-height: 112px; display: grid; grid-template-columns: auto 1fr; align-content: center; gap: .7rem; margin-bottom: .75rem; padding: 1rem; background: white; border: 2px dashed var(--coral); border-radius: 7px; cursor: pointer; }
 .upload-card input { position: absolute; opacity: 0; }
 .upload-icon { width: 44px; height: 44px; display: grid; place-items: center; color: white; background: var(--coral); border-radius: 50%; font-size: 1.1rem; }
@@ -338,6 +337,7 @@ img { display: block; max-width: 100%; }
 }
 
 @media (max-width: 680px) {
+  html { font-size: 18px; }
   .site-header { min-height: 66px; padding: .68rem .85rem; }
   .brand-logo { width: 42px; height: 37px; }
   .brand-name strong { font-size: .66rem; }
@@ -386,8 +386,7 @@ img { display: block; max-width: 100%; }
   .form-progress li span { width: 25px; height: 25px; }
   .form-progress li:not(:last-child)::after { left: 25px; top: 12px; }
   .form-progress li b { font-size: .58rem; }
-  .selection-bar, .form-status { margin-left: .7rem; margin-right: .7rem; }
-  .selection-bar strong { font-size: .86rem; }
+  .form-status { margin-left: .7rem; margin-right: .7rem; }
   .form-step { padding: 1rem .7rem 0; }
   .step-head h2 { font-size: 2.3rem; }
   .course-options, .field-grid.two, .choice-row, .option-stack, .check-grid, .payment-card { grid-template-columns: 1fr; }
@@ -396,7 +395,7 @@ img { display: block; max-width: 100%; }
   .days { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .summary-card { grid-template-columns: 1fr; }
   .summary-card button { justify-self: start; }
-  .payment-card dl div { grid-template-columns: 1fr; gap: .1rem; }
+  .payment-card dl { grid-template-columns: 1fr 1fr; }
   .form-step .step-actions { margin-left: -.7rem; margin-right: -.7rem; }
   .step-actions { padding: .65rem .7rem calc(.65rem + env(safe-area-inset-bottom)); }
   .step-actions .button { flex: 1; padding-inline: .4rem; }
@@ -417,33 +416,30 @@ img { display: block; max-width: 100%; }
 }
 
 </style>
-  <script defer>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
 "use strict";
 
 const COURSE_GROUPS = [
   {
     name: "Young Hearts", theme: "coral", courses: [
-      {id: "quranic-words-young-hearts", title: "Qur’anic Words for Young Hearts", audience: "Early Qur’an learners", level: "Beginner", format: "Once weekly · group", fee: "Online LKR 2,500 · physical from LKR 3,000", location: "Online or physical", description: "One Qur’anic word each class, opened through stories, crafts and the QAJ Young Hearts book.", learn: ["One Qur’anic word in every class", "Stories and guided discussion", "Crafts and hands-on learning", "A warm first relationship with Qur’anic meaning"]},
-      {id: "quranic-arabic-young-hearts-1", title: "Qur’anic Arabic for Young Hearts — Level 1", audience: "Girls and young children; boys under 10", level: "Level 1 · Beginner", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Online or physical batch", description: "Children meet the Arabic alphabet through Qur’anic words, sounds and meaning-rich examples.", learn: ["Recognise Arabic letters clearly", "Pronounce letter sounds with care", "Connect letters to simple Qur’anic words", "See Arabic as the language of the Qur’an"]},
-      {id: "quranic-arabic-young-hearts-2", title: "Qur’anic Arabic for Young Hearts — Level 2", audience: "Young learners continuing after Level 1", level: "Level 2 · Beginner Plus", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Online or physical batch", description: "Children build a Qur’anic word bank through nouns, stories, activities and meaning-based repetition.", learn: ["Recognise common Qur’anic nouns", "Understand their basic meanings", "Build memory through stories and activities", "Prepare for sentence foundations"]},
-      {id: "quranic-arabic-young-hearts-3", title: "Qur’anic Arabic for Young Hearts — Level 3", audience: "Young learners continuing after Level 2", level: "Level 3 · Foundation Plus", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Online or physical batch", description: "A deeper level connecting vocabulary, simple sentence patterns and short ayah meanings.", learn: ["Grow Qur’anic vocabulary", "Notice simple sentence patterns", "Connect words to short ayah meanings", "Prepare for mature Arabic pathways"]}
+      {id: "quranic-words-young-hearts", title: "Qur’anic Words for Young Hearts", audience: "Early Qur’an learners", level: "Beginner", format: "Once weekly · group", fee: "Online: Local LKR 2,500 · International LKR 4,000 · Physical: Family LKR 5,000 · Non-family LKR 3,000", location: "Online or physical", description: "One Qur’anic word each class, opened through stories, crafts and the QAJ Young Hearts book.", learn: ["One Qur’anic word in every class", "Stories and guided discussion", "Crafts and hands-on learning", "A warm first relationship with Qur’anic meaning"]}
     ]
   },
   {
     name: "Recitation", theme: "saffron", courses: [
-      {id: "thajweedh", title: "Thajweedh", audience: "Kids 4+, teens and ladies", level: "Assessment-led", format: "Twice weekly · 30 mins · 1-to-1", fee: "Kids/teens from LKR 2,500 · ladies from LKR 3,000", location: "Online", description: "A personalised one-to-one recitation path, beginning at the learner’s actual level and progressing without pressure.", learn: ["Thibyan Books 1 and 2 for letters and fluency", "Progress into Al-Baqarah recitation", "Thajweedh rules introduced gradually", "A personal syllabus after a short assessment"]}
+      {id: "thajweedh", title: "Thajweedh", audience: "Kids, teens and adults", level: "Assessment-led", format: "Twice weekly · 30 mins · 1-to-1", fee: "Kids/teens: Local LKR 2,500 · International LKR 4,000 · Adults: Local LKR 3,000 · International LKR 5,000", location: "Online", description: "A personalised one-to-one recitation path, beginning at the learner’s actual level and progressing without pressure.", learn: ["Thibyan Books 1 and 2 for letters and fluency", "Progress into Al-Baqarah recitation", "Thajweedh rules introduced gradually", "A personal syllabus after a short assessment"]}
     ]
   },
   {
     name: "Qur’anic Arabic", theme: "teal", courses: [
-      {id: "quranic-arabic-ladies", title: "Qur’anic Arabic — Ladies Only", audience: "Busy sisters and working women", level: "Basic → Intermediate → Advanced", format: "Once weekly · 1 hour · group", fee: "Online LKR 2,500 · physical LKR 3,500", location: "Online or physical", description: "A relaxed route from Arabic grammar into translation, tafseer and reflection—with no homework or exams.", learn: ["Grammar applied to real Qur’anic ayahs", "Al-Fatihah and 40 Rabbana duas", "Selected ayahs with grammar and tafseer", "Al-Baqarah journaling at advanced level"]},
-      {id: "quranic-arabic-teenagers", title: "Qur’anic Arabic for Teenagers", audience: "Teen girls", level: "Teen pathway", format: "Once weekly · 1 hour · group", fee: "Online LKR 2,500 · physical LKR 3,500", location: "Online or physical", description: "The full QAJ Arabic pathway shaped for teen girls, with real Qur’anic examples and room for reflection.", learn: ["Arabic grammar from the foundations", "Al-Fatihah and 40 Rabbana duas", "Selected ayahs with grammar and tafseer", "A mature, safe learning rhythm"]},
-      {id: "quranic-arabic-adults", title: "Qur’anic Arabic for Adults", audience: "Adult sisters", level: "Adult pathway", format: "Once weekly · 1 hour · group", fee: "Online LKR 2,500 · physical LKR 3,500", location: "Online or physical", description: "A calm adult pathway into Qur’anic Arabic through grammar, translation, tafseer and reflection.", learn: ["Arabic grammar from the foundations", "Word-by-word Qur’anic understanding", "Selected ayahs and tafseer", "Al-Baqarah journaling at advanced level"]}
+      {id: "quranic-arabic-teenagers", title: "Qur’anic Arabic for Teenagers", audience: "Teen girls", level: "Teen pathway", format: "Once weekly · 1 hour · group", fee: "", location: "Online or physical", description: "The full QAJ Arabic pathway shaped for teen girls, with real Qur’anic examples and room for reflection.", learn: ["Arabic grammar from the foundations", "Al-Fatihah and 40 Rabbana duas", "Selected ayahs with grammar and tafseer", "A mature, safe learning rhythm"]},
+      {id: "quranic-arabic-adults", title: "Qur’anic Arabic for Adults", audience: "Adult sisters", level: "Adult pathway", format: "Once weekly · 1 hour · group", fee: "Online: Local LKR 2,500 · International LKR 4,000 · Physical LKR 3,500", location: "Online or physical", description: "A calm adult pathway into Qur’anic Arabic through grammar, translation, tafseer and reflection.", learn: ["Arabic grammar from the foundations", "Word-by-word Qur’anic understanding", "Selected ayahs and tafseer", "Al-Baqarah journaling at advanced level"]}
     ]
   },
   {
     name: "Islamic Studies & Halqa", theme: "berry", courses: [
-      {id: "basic-islamic-studies", title: "Basic Islamic Studies", audience: "Kids and teens after Thajweedh", level: "One-year foundation", format: "Twice weekly · 1 hour · group", fee: "Sri Lanka LKR 3,000 · abroad LKR 5,000", location: "Online or physical", description: "A practical one-year journey into Islamic character, worship and daily life after Thajweedh.", learn: ["Daily duas, hadeeth and good manners", "Stories of the Prophets and Seerah", "Basic fiqh and the 99 Names of Allah", "An end-of-year appreciation gathering"]},
+      {id: "basic-islamic-studies", title: "Basic Islamic Studies", audience: "Kids and teens after Thajweedh", level: "One-year foundation", format: "Once weekly · 1 hour · group", fee: "Sri Lanka LKR 3,000 · abroad LKR 5,000", location: "Online or physical", description: "A practical one-year journey into Islamic character, worship and daily life after Thajweedh.", learn: ["Daily duas, hadeeth and good manners", "Stories of the Prophets and Seerah", "Basic fiqh and the 99 Names of Allah", "An end-of-year appreciation gathering"]},
       {id: "intermediary-islamic-studies", title: "Intermediary Islamic Studies", audience: "Teen girls and ladies after foundations", level: "Intermediate", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current mode confirmed by QAJ", description: "A discussion-led continuation into belief, worship, adab, identity and reflective Islamic learning.", learn: ["Strengthen core beliefs and worship", "Connect Islamic manners to daily choices", "Explore selected Seerah and hadeeth themes", "Build confidence in living Islam clearly"]},
       {id: "quran-halqa", title: "Qur’an Halqa", audience: "Girls, teen girls and ladies", level: "Ongoing", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current mode confirmed by QAJ", description: "A guided Qur’an circle for recitation rhythm, reflection and companionship around the Book.", learn: ["Keep a consistent recitation routine", "Reflect on selected meanings gently", "Grow through Qur’an-centred companionship", "Connect learning with everyday life"]},
       {id: "quran-revert-sisters", title: "Qur’an for Revert Sisters", audience: "Revert sisters and beginners", level: "Beginner", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current online options confirmed by QAJ", description: "A soft, respectful beginning for recitation, essential meanings, worship foundations and belonging.", learn: ["Begin recitation gently", "Understand essential Qur’anic meanings", "Learn worship foundations without overwhelm", "Ask questions in a safe, respectful space"]}
@@ -459,11 +455,11 @@ const PROGRAMMES = [
     name: "Thajweedh",
     theme: "saffron",
     glyph: "ت",
-    audience: "Kids 4+, teens & ladies",
+    audience: "Kids, teens & adults",
     number: "01",
     description: "Personal, assessment-led Qur’an recitation—one learner and one Muallimah at a time.",
     facts: ["Twice weekly", "30 minutes", "1-to-1 online"],
-    points: ["Begin from letters, joined reading or an existing Thajweedh foundation", "Follow Thibyan Books 1 and 2 before progressing into Al-Baqarah", "Receive a personalised syllabus after QAJ reviews the learner’s level", "Upload a short recitation only when you choose ‘Test me’"],
+    points: ["Begin from letters or joined reading", "Follow Thibyan Books 1 and 2 before progressing into Al-Baqarah", "Receive a personalised syllabus after QAJ reviews the learner’s level", "Upload a short recitation when you choose ‘I know to join and read’"],
     courseIds: ["thajweedh"]
   },
   {
@@ -471,19 +467,19 @@ const PROGRAMMES = [
     name: "Qur’anic Arabic",
     theme: "teal",
     glyph: "ع",
-    audience: "Ladies, teenagers & adults",
+    audience: "Teenagers & adults",
     number: "02",
     description: "From grammar to verses, tafseer and reflection—at a pace made for real life.",
     facts: ["Once weekly", "1 hour", "Online or physical"],
-    points: ["Begin with Arabic grammar applied to real Qur’anic ayahs", "Move through Al-Fatihah, 40 Rabbana duas and selected ayahs", "Continue into advanced grammar and Al-Baqarah journaling", "Choose a ladies, teen-girl or adult pathway"],
-    courseIds: ["quranic-arabic-ladies", "quranic-arabic-teenagers", "quranic-arabic-adults"]
+    points: ["Begin with Arabic grammar applied to real Qur’anic ayahs", "Move through Al-Fatihah, 40 Rabbana duas and selected ayahs", "Continue into advanced grammar and Al-Baqarah journaling", "Choose a teenager or adult pathway"],
+    courseIds: ["quranic-arabic-teenagers", "quranic-arabic-adults"]
   },
   {
     id: "islamic-studies",
     name: "Islamic Studies & Halqa",
     theme: "berry",
     glyph: "ه",
-    audience: "Children, teens & sisters",
+    audience: "Teenagers",
     number: "03",
     description: "Practical Islamic foundations, deeper study and Qur’an companionship for the next season of learning.",
     facts: ["Four distinct paths", "Foundation → ongoing", "Guided placement"],
@@ -499,8 +495,8 @@ const PROGRAMMES = [
     number: "04",
     description: "One word, one story, one activity—so Qur’anic Arabic begins with wonder.",
     facts: ["Ages 4+", "Group or family", "Online or physical"],
-    points: ["Begin with one Qur’anic word per class through stories and crafts", "Continue through three progressive Arabic levels", "Choose a kids’ group or a family learning session", "Boys are welcome under the age of 10"],
-    courseIds: ["quranic-words-young-hearts", "quranic-arabic-young-hearts-1", "quranic-arabic-young-hearts-2", "quranic-arabic-young-hearts-3"]
+    points: ["Begin with one Qur’anic word per class through stories and crafts", "Choose a kids’ group or a family learning session", "Boys are welcome under the age of 10"],
+    courseIds: ["quranic-words-young-hearts"]
   }
 ];
 
@@ -512,16 +508,11 @@ const AUDIENCE_GUIDES = {
   teen: {programmes: ["thajweedh", "quranic-arabic", "islamic-studies"], copy: "Suggested for a teen: Thajweedh, Qur’anic Arabic for Teenagers, or Islamic Studies and Halqa."},
   self: {programmes: ["quranic-arabic", "thajweedh", "islamic-studies"], copy: "Suggested for yourself: Qur’anic Arabic, ladies’ Thajweedh, Halqa, or continued Islamic study."},
   revert: {programmes: ["islamic-studies", "thajweedh"], copy: "Suggested for a new Muslim: Qur’an for Revert Sisters or an assessment-led Thajweedh path."},
-  family: {programmes: ["young-hearts", "quranic-arabic", "thajweedh"], copy: "Suggested for a family: Young Hearts for shared learning, with Arabic or Thajweedh for individual levels."}
+  family: {programmes: ["young-hearts", "quranic-arabic", "thajweedh", "islamic-studies"], copy: "Suggested for a family: Recitation (Thajweedh), Basic Islamic Studies, Qur’anic Arabic for Adults, and Qur’anic Arabic for Young Hearts."}
 };
 
-const YOUNG_HEARTS = new Set([
-  "quranic-words-young-hearts",
-  "quranic-arabic-young-hearts-1",
-  "quranic-arabic-young-hearts-2",
-  "quranic-arabic-young-hearts-3"
-]);
-const QA_ARABIC = new Set(["quranic-arabic-ladies", "quranic-arabic-teenagers", "quranic-arabic-adults"]);
+const YOUNG_HEARTS = new Set(["quranic-words-young-hearts"]);
+const QA_ARABIC = new Set(["quranic-arabic-teenagers", "quranic-arabic-adults"]);
 
 const COUNTRIES = "Sri Lanka|Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brazil|Brunei|Bulgaria|Burkina Faso|Burundi|Cabo Verde|Cambodia|Cameroon|Canada|Central African Republic|Chad|Chile|China|Colombia|Comoros|Congo, Democratic Republic of the|Congo, Republic of the|Costa Rica|Côte d’Ivoire|Croatia|Cuba|Cyprus|Czechia|Denmark|Djibouti|Dominica|Dominican Republic|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar|Namibia|Nauru|Nepal|Netherlands|New Zealand|Nicaragua|Niger|Nigeria|North Korea|North Macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|Sao Tome and Principe|Saudi Arabia|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea|South Sudan|Spain|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Tunisia|Türkiye|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Vanuatu|Vatican City|Venezuela|Vietnam|Yemen|Zambia|Zimbabwe|Other".split("|");
 
@@ -534,8 +525,6 @@ const dialog = document.querySelector("[data-intake-dialog]");
 const infoPanel = document.querySelector("[data-course-info]");
 const successPanel = document.querySelector("[data-success]");
 const courseOptionsHost = document.querySelector("[data-course-options]");
-const selectionBar = document.querySelector("[data-selection-bar]");
-const selectedCourse = document.querySelector("[data-selected-course]");
 const formMain = document.querySelector(".form-main");
 const railCourse = document.querySelector("[data-rail-course]");
 const railGlyph = document.querySelector("[data-rail-glyph]");
@@ -612,7 +601,7 @@ function showProgrammeInfo(programmeId) {
   infoPanel.querySelector("[data-info-points]").innerHTML = programme.points.map(point => `<p><span aria-hidden="true">✓</span>${escapeMarkup(point)}</p>`).join("");
   infoPanel.querySelector("[data-info-options]").innerHTML = programme.courseIds.map(id => {
     const course = COURSE_LOOKUP.get(id);
-    return `<article class="info-option" style="--option-accent:${THEME_COLORS[course.theme]}"><div><small>${escapeMarkup(course.level)} · ${escapeMarkup(course.audience)}</small><strong>${escapeMarkup(course.title)}</strong><p>${escapeMarkup(course.description)}</p><em>${escapeMarkup(course.format)} · ${escapeMarkup(course.location)} · ${escapeMarkup(course.fee)}</em></div><button type="button" data-register-course="${course.id}">Choose this path →</button></article>`;
+    return `<article class="info-option" style="--option-accent:${THEME_COLORS[course.theme]}"><div><small>${escapeMarkup(course.level)} · ${escapeMarkup(course.audience)}</small><strong>${escapeMarkup(course.title)}</strong><p>${escapeMarkup(course.description)}</p><em>${escapeMarkup(course.format)} · ${escapeMarkup(course.location)}${course.fee ? ` · ${escapeMarkup(course.fee)}` : ""}</em></div><button type="button" data-register-course="${course.id}">Choose this path →</button></article>`;
   }).join("");
   const broadRegister = infoPanel.querySelector("[data-register-from-info]");
   broadRegister.hidden = programme.courseIds.length > 1;
@@ -668,7 +657,7 @@ function populateCountries() {
 
 function radio(name, label, options, hint = "") {
   return `<fieldset class="question-block">
-    <legend>${label} *</legend>${hint ? `<p class="hint">${hint}</p>` : ""}
+    <legend class="sr-only">${label} *</legend><div class="question-label" aria-hidden="true">${label} *</div>${hint ? `<p class="hint">${hint}</p>` : ""}
     <div class="option-stack">${options.map(([value, text, disabled = false]) => `<label><input type="radio" name="${name}" value="${value}" ${disabled ? "disabled" : ""} required><span>${text}</span></label>`).join("")}</div>
   </fieldset>`;
 }
@@ -693,14 +682,14 @@ function checkGroup(name, label, options, {required = false, className = "check-
   const conditionalClass = showName ? " conditional" : "";
   const conditionalAttrs = showName ? ` data-when-name="${showName}" data-when-value="${showValue}" hidden` : "";
   return `<fieldset class="question-block${conditionalClass}${required ? "" : " optional"}"${conditionalAttrs}${required ? ` data-min-checks="1" data-check-name="${name}"` : ""}>
-    <legend>${label}${required ? " *" : ""}</legend><div class="${className}">${options.map(([value, text]) => `<label><input type="checkbox" name="${name}" value="${value}"><span>${text}</span></label>`).join("")}</div>
+    <legend class="sr-only">${label}${required ? " *" : ""}</legend><div class="question-label" aria-hidden="true">${label}${required ? " *" : ""}</div><div class="${className}">${options.map(([value, text]) => `<label><input type="checkbox" name="${name}" value="${value}"><span>${text}</span></label>`).join("")}</div>
   </fieldset>`;
 }
 
 function dayTime(label = "Which days and times are suitable?") {
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   return `<fieldset class="question-block" data-min-checks="1" data-check-name="available_days">
-    <legend>${label} *</legend><p class="hint">Select every suitable day, then give QAJ a time window.</p>
+    <legend class="sr-only">${label} *</legend><div class="question-label" aria-hidden="true">${label} *</div><p class="hint">Select every suitable day, then give QAJ a time window.</p>
     <div class="day-time"><div class="days">${days.map(day => `<label><input type="checkbox" name="available_days" value="${day}"><span>${day.slice(0,3)}</span></label>`).join("")}</div>
     <div class="time-grid"><label class="time-cell"><span>From *</span><input name="time_from_12h" type="time" data-required="true"></label><label class="time-cell"><span>Until *</span><input name="time_to_12h" type="time" data-required="true"></label></div></div>
   </fieldset>`;
@@ -722,8 +711,8 @@ function youngHeartsQuestions() {
 
 function thajweedhQuestions() {
   return [
-    radio("quran_reading_level", "Which best describes the learner’s current level?", [["letters_new", "I do not know the letters"], ["join_and_read", "I know to join and read"], ["tajweed_basics", "I know the basics of Thajweedh"], ["test_me", "Test me"]], "This helps QAJ prepare the right starting syllabus."),
-    `<div class="assessment-upload conditional" data-when-name="quran_reading_level" data-when-value="test_me" hidden>${field("test_me_audio", "Recitation recording", {type: "file", accept: "audio/*", hint: "Read aloud the first 5 Ayahs of Surah Al-Baqarah and upload one clear audio file (maximum 12 MB)."})}<a class="audio-help" href="https://drive.google.com/file/d/1ZNSsrH3SIHxV4YLDbnVidWevwMa7RVJ9/view?usp=sharing" target="_blank" rel="noreferrer">Open the reading reference before recording ↗</a></div>`,
+    radio("quran_reading_level", "Which best describes the learner’s current level?", [["letters_new", "I do not know the letters"], ["join_and_read", "I know to join and read"]], "This helps QAJ prepare the right starting syllabus."),
+    `<div class="assessment-upload conditional" data-when-name="quran_reading_level" data-when-value="join_and_read" hidden>${field("test_me_audio", "Recitation recording", {type: "file", accept: "audio/*", hint: "Read aloud the first 5 Ayahs of Surah Al-Baqarah and upload one clear audio file (maximum 12 MB)."})}<a class="audio-help" href="https://drive.google.com/file/d/1ZNSsrH3SIHxV4YLDbnVidWevwMa7RVJ9/view?usp=sharing" target="_blank" rel="noreferrer">Open the reading reference before recording ↗</a></div>`,
     dayTime("Which days and times are suitable for Thajweedh?"),
     checkGroup("child_notes", "If registering a small child, what may help the Muallimah?", [["shy", "My child is shy"], ["stern_teacher", "My child needs a firm teacher"], ["friendly_teacher", "My child needs a friendly teacher"]])
   ].join("");
@@ -820,16 +809,12 @@ function chosenCourse() {
 
 function updateSelectedCourse() {
   const course = COURSE_LOOKUP.get(chosenCourse());
-  selectionBar.hidden = !course || currentStep === 0;
   if (course) {
     form.dataset.courseTheme = course.theme;
-    selectionBar.style.setProperty("--course-accent", THEME_COLORS[course.theme]);
-    selectedCourse.textContent = course.title;
     railCourse.textContent = course.title;
     railGlyph.textContent = activeProgramme?.glyph || "ابدأ";
   } else {
     delete form.dataset.courseTheme;
-    selectedCourse.textContent = "";
     railCourse.textContent = activeProgramme?.name || "Choose a course";
     railGlyph.textContent = activeProgramme?.glyph || "ابدأ";
   }
@@ -1013,7 +998,6 @@ document.addEventListener("click", event => {
   if (audience) guideAudience(audience.dataset.audience);
   if (event.target.closest("[data-register-from-info]") && activeProgramme) startRegistrationForCourse(activeProgramme.courseIds[0], {step: 1});
   if (event.target.closest("[data-close-dialog]")) closeDialog();
-  if (event.target.closest("[data-edit-course]")) showStep(0);
   if (next && validateCurrentStep()) showStep(currentStep + 1);
   if (back) showStep(currentStep - 1);
   if (event.target.closest("[data-copy-phone]")) {
@@ -1081,10 +1065,12 @@ dialog.addEventListener("click", event => {
 });
 
 renderProgrammeCards();
+guideAudience("family");
 populateCountries();
 selectCourseFromUrl();
 updateConditions();
 registerWebMcpTools();
+});
 
 </script>
 </head>
@@ -1132,12 +1118,12 @@ registerWebMcpTools();
       </div>
       <p class="audience-result" data-audience-copy="">All four course families are shown below.</p>
       <div class="colour-key" aria-label="Course colour groups">
-        <span><i class="saffron"></i>Recitation</span><span><i class="teal"></i>Qur’anic Arabic</span><span><i class="berry"></i>Islamic Studies</span><span><i class="coral"></i>Young Hearts</span>
+        <span><i class="saffron"></i>Recitation (Thajweedh)</span><span><i class="teal"></i>Qur’anic Arabic for Adults</span><span><i class="berry"></i>Basic Islamic Studies</span><span><i class="coral"></i>Qur’anic Arabic for Young Hearts</span>
       </div>
       <div class="programme-grid" data-programme-grid="">
     <article class="programme-door" data-programme="thajweedh" data-theme="saffron" data-glyph="ت">
       <span class="recommend-badge">Suggested</span>
-      <div class="door-top"><span class="door-no">01</span><span class="door-audience">Kids 4+, teens &amp; ladies</span></div>
+      <div class="door-top"><span class="door-no">01</span><span class="door-audience">Kids, teens &amp; adults</span></div>
       <div class="door-copy"><h3>Thajweedh</h3><p>Personal, assessment-led Qur’an recitation—one learner and one Muallimah at a time.</p><div class="door-facts"><span>Twice weekly</span><span>30 minutes</span><span>1-to-1 online</span></div></div>
       <div class="door-actions">
         <button class="text-button" type="button" data-more-info="thajweedh">More info</button>
@@ -1146,7 +1132,7 @@ registerWebMcpTools();
     </article>
     <article class="programme-door" data-programme="quranic-arabic" data-theme="teal" data-glyph="ع">
       <span class="recommend-badge">Suggested</span>
-      <div class="door-top"><span class="door-no">02</span><span class="door-audience">Ladies, teenagers &amp; adults</span></div>
+      <div class="door-top"><span class="door-no">02</span><span class="door-audience">Teenagers &amp; adults</span></div>
       <div class="door-copy"><h3>Qur’anic Arabic</h3><p>From grammar to verses, tafseer and reflection—at a pace made for real life.</p><div class="door-facts"><span>Once weekly</span><span>1 hour</span><span>Online or physical</span></div></div>
       <div class="door-actions">
         <button class="text-button" type="button" data-more-info="quranic-arabic">More info</button>
@@ -1155,7 +1141,7 @@ registerWebMcpTools();
     </article>
     <article class="programme-door" data-programme="islamic-studies" data-theme="berry" data-glyph="ه">
       <span class="recommend-badge">Suggested</span>
-      <div class="door-top"><span class="door-no">03</span><span class="door-audience">Children, teens &amp; sisters</span></div>
+      <div class="door-top"><span class="door-no">03</span><span class="door-audience">Teenagers</span></div>
       <div class="door-copy"><h3>Islamic Studies &amp; Halqa</h3><p>Practical Islamic foundations, deeper study and Qur’an companionship for the next season of learning.</p><div class="door-facts"><span>Four distinct paths</span><span>Foundation → ongoing</span><span>Guided placement</span></div></div>
       <div class="door-actions">
         <button class="text-button" type="button" data-more-info="islamic-studies">More info</button>
@@ -1232,11 +1218,6 @@ registerWebMcpTools();
               </ol>
             </nav>
 
-            <div class="selection-bar" data-selection-bar="" hidden="">
-              <span data-selection-dot="" aria-hidden="true"></span>
-              <div><small>Your programme</small><strong data-selected-course=""></strong></div>
-              <button type="button" data-edit-course="">Change</button>
-            </div>
             <div class="form-status" data-form-status="" role="alert" hidden=""></div>
 
             <section class="form-step active" data-step="0" aria-labelledby="course-step-title">
@@ -1283,7 +1264,20 @@ registerWebMcpTools();
             <section class="form-step" data-step="3" aria-labelledby="payment-title" hidden="">
               <header class="step-head"><p class="eyebrow"><span>Step 4</span> Payment and confirmation</p><h2 id="payment-title">Keep the receipt ready.</h2><p>The receipt is essential for QAJ to match the payment to this learner’s registration.</p></header>
               <div class="summary-card" data-summary=""></div>
-              <div class="payment-card"><div><small>Bank transfer</small><strong>Amana Bank</strong><span>Dehiwala Branch</span></div><dl><div><dt>Account number</dt><dd>001 0597207 002</dd></div><div><dt>Account name</dt><dd>QA Journal</dd></div></dl></div>
+              <div class="payment-card">
+                <div><small>Pay by bank transfer</small><strong>QA Journal Pvt Ltd</strong><span>Transfer first, then upload the payment slip.</span></div>
+                <div class="payment-account"><small>Account number</small><strong>001 0597207 002</strong><span>Amana Bank · Dehiwala Branch</span></div>
+                <dl>
+                  <div><dt>Bank</dt><dd>Amana Bank</dd></div>
+                  <div><dt>Branch</dt><dd>Dehiwala</dd></div>
+                  <div><dt>Account name</dt><dd>QA Journal Pvt Ltd</dd></div>
+                  <div><dt>SWIFT</dt><dd>AMNALKLX</dd></div>
+                  <div><dt>Bank code</dt><dd>7463</dd></div>
+                  <div><dt>Branch code</dt><dd>016</dd></div>
+                  <div class="wide"><dt>Branch address</dt><dd>28, Galle Road, Dehiwala</dd></div>
+                  <div><dt>Bank contact</dt><dd>011-7756756</dd></div>
+                </dl>
+              </div>
               <label class="upload-card"><input name="payment_receipt" type="file" accept="image/*,application/pdf" required=""><span class="upload-icon" aria-hidden="true">↑</span><span><b>Required to complete</b><strong>Payment Upload Slip *</strong><small data-file-name="">Choose a clear image or PDF · maximum 6 MB</small></span></label>
               <div class="confirmations"><label><input type="checkbox" name="data_correct" required=""><span>I confirm that all information provided above is true and correct. *</span></label><label><input type="checkbox" name="first_registration"><span>This is my first QAJ registration <small>(leave unticked for an additional registration).</small></span></label></div>
               <div class="preview-note"><strong>Safe review</strong><span>This review link checks every step, but it does not transmit personal information or files.</span></div>

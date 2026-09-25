@@ -1,0 +1,1327 @@
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3b132b">
+  <meta name="description" content="Find the right Quran Arabic Journal learning path and complete the QAJ student intake.">
+  <title>QAJ Student Registration</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&amp;family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Noto+Naskh+Arabic:wght@500;600&amp;display=swap" rel="stylesheet">
+  <style>
+:root {
+  --ink: #25161f;
+  --plum: #3b132b;
+  --plum-dark: #26091b;
+  --berry: #7b315a;
+  --coral: #ed765e;
+  --saffron: #e2ad2f;
+  --teal: #096a65;
+  --paper: #fff4df;
+  --paper-soft: #fffaf1;
+  --white: #fffaf1;
+  --muted: #74666e;
+  --line: rgba(69, 21, 47, .15);
+  --serif: "Newsreader", Georgia, serif;
+  --sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --arabic: "Noto Naskh Arabic", serif;
+  --shadow: 0 24px 70px rgba(42, 11, 29, .2);
+}
+
+* { box-sizing: border-box; }
+html { width: 100%; overflow-x: clip; scroll-behavior: smooth; }
+body { min-width: 320px; margin: 0; overflow-x: clip; color: var(--ink); background: var(--paper); font: 16px/1.5 var(--sans); }
+body.dialog-open { overflow: hidden; }
+button, input, select, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button { color: inherit; }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+[hidden] { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip-link { position: fixed; z-index: 1000; top: -6rem; left: 1rem; padding: .75rem 1rem; color: white; background: var(--teal); }
+.skip-link:focus { top: 1rem; }
+
+.site-header {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: .75rem clamp(1rem, 5vw, 4rem);
+  color: #fffaf1;
+  background: var(--plum-dark);
+  border-bottom: 1px solid rgba(255,250,241,.16);
+}
+.brand { min-width: 0; display: flex; align-items: center; gap: .7rem; }
+.brand-logo { width: 48px; height: 42px; flex: 0 0 auto; object-fit: contain; filter: brightness(0) invert(1); }
+.brand-mark { position: relative; flex: 0 0 auto; width: 34px; height: 29px; }
+.brand-mark::before, .brand-mark::after { content: ""; position: absolute; top: 2px; width: 17px; height: 24px; border: 1.5px solid var(--saffron); }
+.brand-mark::before { left: 0; border-radius: 10px 1px 1px 10px; transform: skewY(8deg); }
+.brand-mark::after { right: 0; border-radius: 1px 10px 10px 1px; transform: skewY(-8deg); }
+.brand-mark i { position: absolute; z-index: 2; left: 16.5px; top: 4px; width: 1px; height: 23px; background: var(--saffron); }
+.brand-name { min-width: 0; display: grid; line-height: 1; }
+.brand-name strong { color: #fffaf1; font: 700 .75rem/1 var(--sans); letter-spacing: .09em; text-transform: uppercase; white-space: nowrap; }
+.brand-name em { margin-top: .22rem; color: #fffaf1; font: 400 italic .82rem/1 var(--serif); letter-spacing: .12em; }
+.header-actions { display: flex; align-items: center; gap: .75rem; }
+.intake-status { display: inline-flex; align-items: center; gap: .45rem; color: rgba(255,255,255,.7); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; }
+.intake-status i { width: 7px; height: 7px; background: #66c7aa; border-radius: 50%; box-shadow: 0 0 0 4px rgba(102,199,170,.12); }
+.back-link { min-height: 42px; display: inline-flex; align-items: center; gap: .35rem; padding: .55rem .8rem; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; font-size: .74rem; }
+.back-link span { color: var(--saffron); }
+
+.page-main { width: min(1180px, calc(100% - 2rem)); margin: 0 auto; padding: clamp(1.25rem,3vw,2.2rem) 0 clamp(3rem,6vw,5rem); }
+.welcome { position: relative; isolation: isolate; min-height: 350px; display: grid; grid-template-columns: minmax(0,1.5fr) minmax(290px,.7fr); gap: clamp(1.5rem,4vw,4rem); align-items: center; padding: clamp(1.75rem,4vw,3.5rem); overflow: hidden; color: #fffaf1; background: linear-gradient(118deg,var(--plum-dark) 0%,var(--plum) 70%,#531b3d 100%); border-radius: 18px 18px 4px 4px; box-shadow: 0 18px 45px rgba(59,19,43,.16); }
+.welcome::before { content: "ق"; position: absolute; z-index: -1; right: -1rem; top: -5rem; color: rgba(255,250,241,.055); font: 600 clamp(18rem,35vw,31rem)/1 var(--arabic); transform: rotate(-5deg); }
+.welcome::after { content: ""; position: absolute; z-index: -1; left: 0; bottom: 0; width: 42%; height: 7px; background: linear-gradient(90deg,var(--coral),var(--saffron),var(--teal)); }
+.welcome-copy { position: relative; z-index: 1; }
+.eyebrow { margin: 0 0 .55rem; color: var(--berry); font-size: .66rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.welcome .eyebrow { color: var(--saffron); }
+.welcome h1 { max-width: 760px; margin: 0; font: 400 clamp(2.8rem,4.8vw,4.6rem)/.92 var(--serif); letter-spacing: -.035em; }
+.welcome h1 em { color: var(--saffron); font: 500 clamp(3rem,5.2vw,5rem)/.9 "Caveat", cursive; letter-spacing: -.015em; }
+.welcome-copy > p:not(.eyebrow) { max-width: 670px; margin: 1rem 0 0; color: rgba(255,255,255,.76); font-size: .92rem; }
+.welcome-signature { display: inline-block; margin-top: 1.25rem; color: #fffaf1; font: 500 1.45rem/1 "Caveat", cursive; transform: rotate(-2deg); }
+.welcome-note { position: relative; z-index: 1; display: grid; grid-template-columns: auto 1fr; gap: .8rem; align-items: center; padding: 1.15rem; color: var(--ink); background: var(--saffron); border: 1px solid rgba(255,250,241,.35); border-radius: 2px 16px 2px 16px; box-shadow: 10px 10px 0 rgba(237,118,94,.22); transform: rotate(1deg); }
+.note-mark { width: 48px; height: 48px; display: grid; place-items: center; color: white; background: var(--plum); border-radius: 50%; font: 600 1.65rem var(--arabic); }
+.welcome-note strong { display: block; font: 600 1.04rem var(--serif); }
+.welcome-note p { margin: .2rem 0 0; color: #5b4212; font-size: .69rem; line-height: 1.45; }
+
+.programme-section { padding: clamp(1.4rem,4vw,3rem); background: var(--paper-soft); border: 1px solid var(--line); border-top: 0; border-radius: 0 0 18px 18px; }
+.course-heading { display: grid; grid-template-columns: minmax(0,1fr) minmax(310px,.9fr); gap: 1.5rem; align-items: end; }
+.step-chip { display: inline-flex; margin-bottom: .55rem; padding: .25rem .5rem; color: white; background: var(--teal); border-radius: 999px; font-size: .6rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.course-heading h2 { margin: 0; font: 500 clamp(2.1rem,4vw,3.6rem)/1 var(--serif); letter-spacing: -.02em; }
+.course-heading > div:first-child > p { max-width: 600px; margin: .55rem 0 0; color: var(--muted); font-size: .82rem; }
+.audience-guide { padding: .9rem; background: white; border: 1px solid var(--line); border-radius: 10px; }
+.audience-guide > strong { display: block; margin-bottom: .55rem; font: 600 .98rem var(--serif); }
+.audience-choices { display: flex; flex-wrap: wrap; gap: .4rem; }
+.audience-choices button { min-height: 40px; padding: .48rem .66rem; color: var(--plum); background: var(--paper-soft); border: 1px solid var(--line); border-radius: 999px; font-size: .7rem; font-weight: 700; cursor: pointer; }
+.audience-choices button:hover, .audience-choices button[aria-pressed="true"] { color: white; background: var(--teal); border-color: var(--teal); }
+.audience-result { margin: .9rem 0 0; padding: .72rem .85rem; color: #295d58; background: #e8f5f2; border-left: 4px solid var(--teal); font-size: .74rem; }
+.colour-key { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: 1.2rem 0 .75rem; color: var(--muted); font-size: .65rem; font-weight: 700; }
+.colour-key span { display: inline-flex; align-items: center; gap: .35rem; }
+.colour-key i { width: 9px; height: 9px; border-radius: 50%; }
+.colour-key .saffron { background: var(--saffron); }
+.colour-key .teal { background: var(--teal); }
+.colour-key .berry { background: var(--berry); }
+.colour-key .coral { background: var(--coral); }
+
+.programme-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .8rem; }
+.programme-door { --accent: var(--berry); position: relative; min-width: 0; min-height: 292px; display: grid; grid-template-rows: auto 1fr auto; padding: 1.15rem; overflow: hidden; background: linear-gradient(180deg,#fff 0%,#fff 78%,color-mix(in srgb,var(--accent) 5%,#fff) 100%); border: 1px solid var(--line); border-top: 7px solid var(--accent); border-radius: 3px 16px 3px 16px; box-shadow: 0 9px 24px rgba(59,19,43,.07); transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
+.programme-door[data-theme="saffron"] { --accent: var(--saffron); }
+.programme-door[data-theme="teal"] { --accent: var(--teal); }
+.programme-door[data-theme="berry"] { --accent: var(--berry); }
+.programme-door[data-theme="coral"] { --accent: var(--coral); }
+.programme-door::after { content: attr(data-glyph); position: absolute; right: .4rem; top: .2rem; color: color-mix(in srgb, var(--accent) 9%, transparent); font: 600 8rem/1 var(--arabic); pointer-events: none; }
+.programme-door:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(69,21,47,.11); }
+.programme-door.recommended { outline: 3px solid color-mix(in srgb,var(--accent) 45%,transparent); outline-offset: 2px; }
+.programme-door.not-recommended { opacity: .48; }
+.recommend-badge { position: absolute; z-index: 2; right: .8rem; top: .65rem; display: none; padding: .28rem .5rem; color: white; background: var(--accent); border-radius: 999px; font-size: .58rem; font-weight: 700; }
+.programme-door.recommended .recommend-badge { display: block; }
+.door-top { position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.programme-door.recommended .door-top { padding-top: 1.45rem; }
+.door-no { width: 34px; height: 34px; display: grid; place-items: center; color: white; background: var(--accent); border-radius: 50%; font: 700 .7rem var(--sans); }
+.door-audience { max-width: 72%; color: var(--accent); font-size: .61rem; font-weight: 700; letter-spacing: .07em; text-align: right; text-transform: uppercase; }
+.door-copy { position: relative; z-index: 1; align-self: center; padding: 1.25rem 0; }
+.door-copy h3 { max-width: 82%; margin: 0; font: 500 clamp(1.85rem,3.5vw,3rem)/.95 var(--serif); letter-spacing: -.025em; }
+.door-copy p { max-width: 500px; margin: .65rem 0 0; color: var(--muted); font-size: .78rem; line-height: 1.5; }
+.door-facts { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .75rem; }
+.door-facts span { padding: .3rem .42rem; color: #59434f; background: var(--paper-soft); border: 1px solid var(--line); border-radius: 4px; font-size: .59rem; font-weight: 700; }
+.door-actions { position: relative; z-index: 1; display: grid; grid-template-columns: .75fr 1.25fr; gap: .5rem; }
+.door-actions button { min-height: 48px; padding: .65rem .75rem; border-radius: 5px; font-size: .72rem; font-weight: 700; cursor: pointer; }
+.door-actions .text-button { color: var(--plum); background: white; border: 1px solid var(--accent); }
+.door-actions .card-register { color: white; background: var(--accent); border: 1px solid var(--accent); }
+.programme-door[data-theme="saffron"] .card-register { color: var(--plum-dark); }
+
+.reassurance { display: grid; grid-template-columns: auto minmax(0,1fr) auto; gap: 1rem; align-items: center; margin: 1rem 0 0; padding: 1rem 1.15rem; color: white; background: var(--plum); border-radius: 10px; }
+.help-mark { width: 42px; height: 42px; display: grid; place-items: center; color: var(--plum); background: var(--saffron); border-radius: 50%; font: 600 1.35rem var(--serif); }
+.reassurance strong, .reassurance span { display: block; }
+.reassurance strong { font: 600 1.12rem var(--serif); }
+.reassurance span { margin-top: .12rem; color: rgba(255,255,255,.7); font-size: .72rem; }
+.reassurance a { min-height: 46px; display: inline-flex; align-items: center; justify-content: center; gap: .35rem; padding: .65rem .85rem; color: var(--plum-dark); background: var(--saffron); border-radius: 5px; font-size: .7rem; font-weight: 700; }
+.reassurance a span { margin: 0; color: inherit; }
+.site-footer { display: grid; grid-template-columns: .8fr 1.4fr .8fr; gap: 1rem; align-items: center; padding: 2rem clamp(1rem,5vw,4rem); color: #fffaf1; background: var(--plum-dark); border-top: 7px solid var(--coral); }
+.site-footer > span { color: var(--saffron); font: 600 .9rem var(--serif); }
+.site-footer p { margin: 0; color: rgba(255,255,255,.72); font-size: .72rem; text-align: center; }
+.site-footer > div { display: flex; justify-content: flex-end; gap: .8rem; color: rgba(255,255,255,.65); font-size: .68rem; }
+
+.intake-dialog { inset: 0; width: min(980px,calc(100% - 2rem)); height: min(860px,calc(100dvh - 2rem)); max-width: none; max-height: none; margin: auto; padding: 0; overflow: hidden; color: var(--ink); background: var(--paper); border: 0; border-radius: 14px; box-shadow: var(--shadow); }
+.intake-dialog::backdrop { background: rgba(27,6,19,.76); backdrop-filter: blur(5px); }
+.dialog-frame { height: 100%; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.dialog-topbar { position: relative; z-index: 10; flex: 0 0 auto; min-height: 68px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding: .7rem 1rem; color: white; background: var(--plum-dark); border-bottom: 3px solid var(--saffron); }
+.mini-brand { justify-self: start; display: grid; gap: .06rem; }
+.mini-brand span { color: #fffaf1; font: 700 .8rem/1 var(--sans); letter-spacing: .12em; }
+.mini-brand i { color: rgba(255,255,255,.55); font-size: .63rem; font-style: normal; }
+.dialog-topbar > div { min-width: 0; display: grid; justify-items: center; }
+.dialog-kicker { color: var(--saffron); font-size: .56rem; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
+.dialog-topbar strong { max-width: 420px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font: 500 1.05rem var(--serif); }
+.dialog-close { justify-self: end; width: 40px; height: 40px; display: grid; place-items: center; padding: 0; color: white; background: transparent; border: 1px solid rgba(255,255,255,.3); border-radius: 50%; font-size: 1.55rem; line-height: 1; cursor: pointer; }
+
+.course-info { min-height: 0; flex: 1; overflow-y: auto; background: var(--paper); }
+.info-hero { --info-accent: var(--saffron); position: relative; min-height: 230px; display: grid; align-content: end; padding: clamp(1.5rem,4vw,2.7rem); overflow: hidden; color: white; background: var(--plum); }
+.info-hero[data-info-theme="teal"] { --info-accent: #75d2ca; }
+.info-hero[data-info-theme="berry"] { --info-accent: #e19abc; }
+.info-hero[data-info-theme="coral"] { --info-accent: #ffae9f; }
+.info-glyph { position: absolute; right: 2%; top: -30%; color: rgba(255,255,255,.08); font: 600 clamp(10rem,26vw,18rem)/1 var(--arabic); }
+.info-hero .eyebrow { position: relative; margin-bottom: .35rem; color: var(--info-accent); }
+.info-hero h2 { position: relative; max-width: 760px; margin: 0; font: 500 clamp(2.5rem,5vw,4.3rem)/.92 var(--serif); letter-spacing: -.03em; }
+.info-hero > p:not(.eyebrow) { position: relative; max-width: 700px; margin: .65rem 0 0; color: rgba(255,255,255,.74); font-size: .82rem; }
+.info-facts { position: relative; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .8rem; }
+.info-facts span { padding: .34rem .48rem; border: 1px solid rgba(255,255,255,.3); border-radius: 4px; font-size: .62rem; }
+.info-body { display: grid; grid-template-columns: .8fr 1.2fr; gap: .8rem; padding: .8rem; }
+.info-learn, .info-options { padding: 1.15rem; background: white; border: 1px solid var(--line); border-radius: 8px; }
+.info-body .eyebrow { margin-bottom: .32rem; }
+.info-body h3 { margin: 0 0 .85rem; font: 500 clamp(1.55rem,3vw,2.15rem)/1 var(--serif); }
+.info-learn [data-info-points] { display: grid; gap: .6rem; }
+.info-learn [data-info-points] p { display: grid; grid-template-columns: 22px 1fr; gap: .55rem; align-items: start; margin: 0; color: var(--muted); font-size: .73rem; }
+.info-learn [data-info-points] span { width: 20px; height: 20px; display: grid; place-items: center; color: white; background: var(--teal); border-radius: 50%; font-size: .59rem; }
+.info-option-list { display: grid; gap: .55rem; }
+.info-option { min-width: 0; display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .7rem; align-items: center; padding: .85rem; background: var(--paper-soft); border-left: 5px solid var(--option-accent,var(--berry)); border-radius: 4px; }
+.info-option > div { min-width: 0; }
+.info-option small, .info-option strong, .info-option em { display: block; }
+.info-option small { color: var(--option-accent,var(--berry)); font-size: .58rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.info-option strong { margin: .15rem 0 .25rem; font: 600 1.05rem/1.08 var(--serif); }
+.info-option p { margin: 0; color: var(--muted); font-size: .66rem; line-height: 1.4; }
+.info-option em { margin-top: .35rem; font-size: .59rem; font-style: normal; font-weight: 700; }
+.info-option button { min-height: 42px; padding: .55rem .68rem; color: white; background: var(--plum); border: 0; border-radius: 4px; font-size: .66rem; font-weight: 700; cursor: pointer; }
+
+.dialog-actions, .step-actions { position: sticky; z-index: 8; bottom: 0; display: flex; justify-content: space-between; gap: .6rem; padding: .75rem 1rem calc(.75rem + env(safe-area-inset-bottom)); background: rgba(246,240,231,.96); border-top: 1px solid var(--line); backdrop-filter: blur(10px); }
+.button { min-height: 48px; display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .68rem 1rem; border-radius: 5px; font-size: .75rem; font-weight: 700; cursor: pointer; }
+.button.primary { color: white; background: var(--plum); border: 1px solid var(--plum); }
+.button.secondary { color: var(--plum); background: white; border: 1px solid var(--line); }
+.button:hover { transform: translateY(-1px); }
+.button:focus-visible, .dialog-close:focus-visible, .door-actions button:focus-visible, .back-link:focus-visible, .audience-choices button:focus-visible, .info-option button:focus-visible { outline: 3px solid rgba(22,133,126,.35); outline-offset: 3px; }
+
+.registration-form { flex: 1; min-height: 0; overflow: hidden; }
+.form-shell { height: 100%; min-height: 0; display: block; }
+.form-rail { display: none; }
+.form-main { min-width: 0; height: 100%; overflow-y: auto; background: var(--paper); }
+.form-progress { position: sticky; z-index: 7; top: 0; padding: .72rem clamp(.85rem,3vw,1.5rem); background: rgba(255,253,249,.97); border-bottom: 1px solid var(--line); backdrop-filter: blur(10px); }
+.form-progress ol { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); margin: 0; padding: 0; list-style: none; }
+.form-progress li { position: relative; min-width: 0; display: grid; grid-template-columns: 28px minmax(0,1fr); align-items: center; gap: .38rem; color: #998b92; font-size: .68rem; }
+.form-progress li:not(:last-child)::after { content: ""; position: absolute; z-index: 0; left: 28px; right: 0; top: 13px; height: 1px; background: var(--line); }
+.form-progress li span { position: relative; z-index: 1; width: 28px; height: 28px; display: grid; place-items: center; background: #eee6de; border-radius: 50%; font-weight: 700; }
+.form-progress li b { position: relative; z-index: 1; width: fit-content; padding-right: .35rem; background: var(--white); font-weight: 600; }
+.form-progress li.active { color: var(--plum); }
+.form-progress li.active span { color: white; background: var(--plum); }
+.form-progress li.complete { color: var(--teal); }
+.form-progress li.complete span { color: white; background: var(--teal); font-size: 0; }
+.form-progress li.complete span::before { content: "✓"; font-size: .76rem; }
+.form-status { margin: .85rem clamp(.85rem,4vw,2.2rem) 0; padding: .75rem .85rem; color: #802b20; background: #fff0ec; border-left: 5px solid var(--coral); font-size: .76rem; }
+.form-step { max-width: 840px; margin: 0 auto; padding: clamp(1.15rem,3vw,2rem) clamp(.85rem,4vw,2.2rem) 0; }
+.step-head { margin-bottom: 1.1rem; }
+.step-head .eyebrow span { color: var(--teal); }
+.step-head h2 { max-width: 720px; margin: 0 0 .4rem; font: 500 clamp(2rem,4vw,3.2rem)/.98 var(--serif); letter-spacing: -.025em; }
+.step-head > p:last-child { max-width: 660px; margin: 0; color: var(--muted); font-size: .78rem; }
+.step-head b { color: var(--coral); }
+.course-fieldset { min-width: 0; margin: 0; padding: 0; border: 0; }
+.course-options { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .6rem; }
+.course-choice { --accent: var(--berry); position: relative; min-width: 0; display: grid; grid-template-columns: auto minmax(0,1fr); gap: .7rem; padding: .85rem; background: white; border: 1px solid var(--line); border-left: 5px solid var(--accent); border-radius: 6px; cursor: pointer; }
+.course-choice input { position: absolute; opacity: 0; }
+.choice-check { width: 20px; height: 20px; margin-top: .05rem; border: 1.5px solid var(--accent); border-radius: 50%; }
+.course-choice > span:last-child { min-width: 0; }
+.course-choice small, .course-choice strong, .course-choice em { display: block; }
+.course-choice small { color: var(--accent); font-size: .57rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.course-choice strong { margin: .17rem 0 .26rem; font: 600 1.08rem/1.08 var(--serif); }
+.course-choice p { margin: 0; color: var(--muted); font-size: .65rem; line-height: 1.4; }
+.course-choice em { margin-top: .35rem; font-size: .59rem; font-style: normal; font-weight: 700; }
+.course-choice:has(input:checked) { color: white; background: var(--accent); border-color: var(--accent); box-shadow: 0 8px 22px color-mix(in srgb,var(--accent) 18%,transparent); }
+.course-choice:has(input:checked) small, .course-choice:has(input:checked) p, .course-choice:has(input:checked) em { color: rgba(255,255,255,.78); }
+.course-choice:has(input:checked) .choice-check { background: var(--saffron); border-color: var(--saffron); box-shadow: inset 0 0 0 4px var(--accent); }
+.course-choice:has(input:focus-visible) { outline: 3px solid rgba(22,133,126,.3); outline-offset: 3px; }
+
+.form-section, .question-block { position: relative; margin-bottom: .75rem; padding: 1rem; background: white; border: 1px solid var(--line); border-radius: 7px; }
+.form-section::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; background: var(--edge); border-radius: 7px 0 0 7px; }
+.coral-edge { --edge: var(--coral); }
+.teal-edge { --edge: var(--teal); }
+.saffron-edge { --edge: var(--saffron); }
+.section-number { position: absolute; right: .9rem; top: .7rem; color: var(--edge); font: 600 1rem var(--serif); }
+.form-section h3 { margin: 0; font: 600 1.35rem var(--serif); }
+.section-intro { margin: .15rem 0 .8rem; color: var(--muted); font-size: .66rem; }
+.field-grid { display: grid; gap: .75rem; }
+.field-grid.two { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.field.wide { grid-column: 1/-1; }
+.field { position: relative; display: grid; gap: .32rem; min-width: 0; }
+.field > span, .question-label { color: #553f4a; font-size: .73rem; font-weight: 700; }
+.field > span i { color: var(--muted); font-size: .63rem; font-weight: 400; }
+.field input, .field select, .field textarea, .time-cell input { width: 100%; min-width: 0; min-height: 48px; padding: .68rem .72rem; color: var(--ink); background: #fff; border: 1px solid rgba(69,21,47,.25); border-radius: 5px; outline: none; }
+.field textarea { min-height: 88px; resize: vertical; }
+.field input:focus, .field select:focus, .field textarea:focus, .time-cell input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(22,133,126,.12); }
+.field input[aria-invalid="true"], .field select[aria-invalid="true"], .field textarea[aria-invalid="true"] { border-color: #b42318; background: #fff8f6; }
+.field small { color: var(--muted); font-size: .62rem; }
+.copy-phone { position: absolute; right: .4rem; top: 1.65rem; padding: .3rem .42rem; color: var(--teal); background: #e7f5f2; border: 0; border-radius: 3px; font-size: .56rem; font-weight: 700; cursor: pointer; }
+.conditional { margin-top: .75rem; }
+.inline-fieldset { margin: 0 0 .85rem; padding: 0; border: 0; }
+.inline-fieldset legend { margin-bottom: .45rem; color: #553f4a; font-size: .73rem; font-weight: 700; }
+.choice-row, .option-stack, .check-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .45rem; }
+.choice-row { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.choice-row label, .option-stack label, .check-grid label { position: relative; min-width: 0; cursor: pointer; }
+.choice-row input, .option-stack input, .check-grid input { position: absolute; opacity: 0; }
+.choice-row label > span, .option-stack label > span, .check-grid label > span { min-height: 46px; display: flex; align-items: center; gap: .45rem; padding: .6rem .65rem; background: white; border: 1px solid var(--line); border-radius: 5px; font-size: .71rem; }
+.choice-row label > span::before, .option-stack label > span::before { content: ""; flex: 0 0 auto; width: 15px; height: 15px; border: 1px solid var(--muted); border-radius: 50%; }
+.check-grid label > span::before { content: ""; flex: 0 0 auto; width: 15px; height: 15px; border: 1px solid var(--muted); }
+.choice-row input:checked + span, .option-stack input:checked + span, .check-grid input:checked + span { color: white; background: var(--teal); border-color: var(--teal); }
+.choice-row input:checked + span::before, .option-stack input:checked + span::before, .check-grid input:checked + span::before { background: var(--saffron); border-color: var(--saffron); box-shadow: inset 0 0 0 4px var(--teal); }
+.choice-row input:focus-visible + span, .option-stack input:focus-visible + span, .check-grid input:focus-visible + span { outline: 3px solid rgba(22,133,126,.26); outline-offset: 2px; }
+.choice-row input:disabled + span, .option-stack input:disabled + span { opacity: .42; cursor: not-allowed; }
+.question-block { display: grid; gap: .62rem; }
+.question-block.invalid { border-color: #b42318; background: #fff8f6; }
+.question-block > legend, .question-block > .question-label { padding: 0; font: 600 1.05rem var(--serif); }
+.question-block .hint { margin: -.12rem 0 .08rem; color: var(--muted); font-size: .63rem; }
+.course-question-host[data-theme="coral"] .question-block { border-left: 5px solid var(--coral); }
+.course-question-host[data-theme="saffron"] .question-block { border-left: 5px solid var(--saffron); }
+.course-question-host[data-theme="teal"] .question-block { border-left: 5px solid var(--teal); }
+.course-question-host[data-theme="berry"] .question-block { border-left: 5px solid var(--berry); }
+.notice { margin-bottom: .75rem; padding: .8rem .9rem; color: #315e5a; background: #e5f5f2; border-left: 5px solid var(--teal); font-size: .7rem; }
+.notice.warning { color: #684807; background: #fff2c5; border-color: var(--saffron); }
+.assessment-upload { margin-bottom: .75rem; padding: .7rem; background: #fff4cf; border: 1px solid #e3c05c; border-radius: 7px; }
+.assessment-upload .question-block { margin-bottom: .55rem; border: 0 !important; }
+.audio-help { display: inline-flex; width: fit-content; max-width: 100%; margin: 0 .3rem .3rem; overflow-wrap: anywhere; color: var(--berry); border-bottom: 1px solid currentColor; font-size: .66rem; font-weight: 700; }
+.day-time { display: grid; gap: .6rem; }
+.days { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: .38rem; }
+.days label { position: relative; cursor: pointer; }
+.days input { position: absolute; opacity: 0; }
+.days span { min-height: 40px; display: grid; place-items: center; padding: .38rem; color: var(--muted); background: white; border: 1px solid var(--line); border-radius: 4px; font-size: .62rem; }
+.days input:checked + span { color: white; background: var(--berry); border-color: var(--berry); }
+.time-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+.time-cell { display: grid; gap: .25rem; }
+.time-cell span { color: var(--muted); font-size: .59rem; font-weight: 700; text-transform: uppercase; }
+.summary-card { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: .7rem; align-items: center; margin-bottom: .75rem; padding: 1rem; color: white; background: var(--plum); border-radius: 7px; }
+.summary-card small { color: var(--saffron); font-size: .57rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.summary-card strong { display: block; margin: .2rem 0 .08rem; font: 600 1.35rem var(--serif); }
+.summary-card p { margin: 0; color: rgba(255,255,255,.68); font-size: .65rem; }
+.summary-card button { color: var(--saffron); background: transparent; border: 0; border-bottom: 1px solid currentColor; font-size: .62rem; cursor: pointer; }
+.payment-card { display: grid; grid-template-columns: 1fr; gap: .75rem; margin-bottom: .75rem; padding: 1rem; background: #fff0b3; border: 1px solid #dbb33a; border-radius: 7px; }
+.payment-card small, .payment-card strong, .payment-card span { display: block; }
+.payment-card small { color: #765812; font-size: .57rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.payment-card strong { margin: .12rem 0; font: 600 1.4rem var(--serif); }
+.payment-card span { color: #6b511d; font-size: .66rem; }
+.payment-account { padding: .8rem; color: white; background: var(--teal); border-radius: 6px; }
+.payment-account small, .payment-account span { color: rgba(255,255,255,.75); }
+.payment-account strong { color: white; font: 700 1.3rem var(--sans); letter-spacing: .04em; }
+.payment-card dl { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: .5rem; margin: 0; }
+.payment-card dl div { min-width: 0; padding: .62rem .68rem; background: rgba(255,255,255,.72); border: 1px solid rgba(69,21,47,.12); border-radius: 5px; }
+.payment-card dl div.wide { grid-column: 1/-1; }
+.payment-card dt { color: #755b24; font-size: .57rem; text-transform: uppercase; }
+.payment-card dd { margin: .1rem 0 0; overflow-wrap: anywhere; font-size: .75rem; font-weight: 700; }
+.upload-card { min-height: 112px; display: grid; grid-template-columns: auto 1fr; align-content: center; gap: .7rem; margin-bottom: .75rem; padding: 1rem; background: white; border: 2px dashed var(--coral); border-radius: 7px; cursor: pointer; }
+.upload-card input { position: absolute; opacity: 0; }
+.upload-icon { width: 44px; height: 44px; display: grid; place-items: center; color: white; background: var(--coral); border-radius: 50%; font-size: 1.1rem; }
+.upload-card > span:last-child { min-width: 0; display: grid; }
+.upload-card b { width: fit-content; margin-bottom: .12rem; padding: .17rem .3rem; color: white; background: var(--coral); border-radius: 3px; font-size: .52rem; letter-spacing: .06em; text-transform: uppercase; }
+.upload-card strong { font: 600 1.05rem var(--serif); }
+.upload-card small { overflow-wrap: anywhere; color: var(--muted); font-size: .62rem; }
+.upload-card.has-file { border-color: var(--teal); border-style: solid; }
+.confirmations { display: grid; gap: .45rem; margin: .75rem 0; }
+.confirmations label { display: grid; grid-template-columns: 20px 1fr; gap: .55rem; align-items: start; padding: .72rem; background: white; border: 1px solid var(--line); border-radius: 6px; font-size: .68rem; cursor: pointer; }
+.confirmations input { width: 17px; height: 17px; accent-color: var(--teal); }
+.confirmations small { color: var(--muted); }
+.preview-note { display: grid; grid-template-columns: auto 1fr; gap: .55rem; padding: .72rem; color: #315e5a; background: #e5f5f2; border-radius: 6px; font-size: .66rem; }
+.preview-note strong { color: var(--teal); }
+.form-step .step-actions { margin: 1.2rem clamp(-2.2rem,-4vw,-.85rem) 0; }
+.step-actions.first { margin-top: 1.2rem; }
+.success { flex: 1; overflow-y: auto; padding: clamp(2.3rem,7vw,5rem) 1.2rem; text-align: center; background: var(--paper); }
+.success-mark { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto .8rem; color: white; background: var(--teal); border-radius: 50%; font-size: 1.5rem; }
+.success .eyebrow { color: var(--teal); }
+.success h2 { max-width: 680px; margin: 0 auto .7rem; font: 500 clamp(2.4rem,6vw,4.5rem)/.95 var(--serif); }
+.success .dua { margin: 1.1rem 0 .15rem; color: var(--berry); font: 500 clamp(2.5rem,7vw,4rem)/1 var(--arabic); }
+.success > span:not(.success-mark) { color: var(--muted); font-size: .7rem; }
+.success > p:not(.eyebrow):not(.dua) { max-width: 500px; margin: .85rem auto; color: var(--muted); font-size: .76rem; }
+.success-actions { display: flex; justify-content: center; gap: .55rem; margin-top: 1.1rem; }
+
+@media (max-width: 820px) {
+  .welcome, .course-heading { grid-template-columns: 1fr; }
+  .welcome { gap: 1.2rem; }
+  .welcome-note { max-width: 520px; }
+  .site-footer { grid-template-columns: 1fr; text-align: center; }
+  .site-footer > div { justify-content: center; }
+  .info-body { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 680px) {
+  html { font-size: 18px; }
+  .site-header { min-height: 66px; padding: .68rem .85rem; }
+  .brand-logo { width: 42px; height: 37px; }
+  .brand-name strong { font-size: .66rem; }
+  .brand-name em { font-size: .72rem; }
+  .intake-status { display: none; }
+  .back-link { min-height: 40px; padding: .48rem .62rem; font-size: .65rem; }
+  .page-main { width: min(100% - 1rem,1180px); padding-top: .5rem; }
+  .welcome { min-height: 0; padding: 1.35rem 1.2rem 1.7rem; border-radius: 12px 12px 0 0; }
+  .welcome h1 { font-size: clamp(2.5rem,12vw,3.8rem); }
+  .welcome-copy > p:not(.eyebrow) { font-size: .79rem; }
+  .welcome-note { max-width: calc(100% - .5rem); padding: .9rem; box-shadow: 7px 7px 0 rgba(237,118,94,.22); }
+  .note-mark { width: 42px; height: 42px; }
+  .programme-section { padding: 1rem; border-radius: 0 0 12px 12px; }
+  .course-heading { gap: 1rem; }
+  .course-heading h2 { font-size: 2.25rem; }
+  .audience-guide { padding: .75rem; }
+  .audience-choices { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .audience-choices button:last-child { grid-column: 1/-1; }
+  .colour-key { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .programme-grid { grid-template-columns: 1fr; }
+  .programme-door { min-height: 285px; padding: 1rem; }
+  .door-copy h3 { font-size: 2.2rem; }
+  .door-actions { grid-template-columns: .78fr 1.22fr; }
+  .reassurance { grid-template-columns: auto 1fr; padding: .9rem; }
+  .reassurance a { grid-column: 1/-1; }
+  .site-footer { padding: 1.7rem 1rem; }
+
+  .intake-dialog { inset: 0; width: 100%; height: 100dvh; margin: 0; border-radius: 0; }
+  .dialog-topbar { min-height: 64px; grid-template-columns: auto minmax(0,1fr) auto; padding: .62rem .75rem; }
+  .mini-brand i { display: none; }
+  .dialog-topbar > div { justify-items: start; }
+  .dialog-topbar strong { max-width: 52vw; font-size: .92rem; }
+  .dialog-close { width: 38px; height: 38px; }
+  .info-hero { min-height: 220px; padding: 1.25rem .9rem; }
+  .info-hero h2 { max-width: 90%; font-size: 2.65rem; }
+  .info-hero > p:not(.eyebrow) { font-size: .74rem; }
+  .info-glyph { font-size: 10rem; }
+  .info-body { padding: .55rem; }
+  .info-learn, .info-options { padding: .9rem; }
+  .info-option { grid-template-columns: 1fr; }
+  .info-option button { width: 100%; }
+  .dialog-actions { padding: .65rem .72rem calc(.65rem + env(safe-area-inset-bottom)); }
+  .dialog-actions .button { flex: 1; padding-inline: .4rem; }
+  .form-progress { padding: .58rem .7rem; }
+  .form-progress li { grid-template-columns: 25px minmax(0,1fr); gap: .25rem; }
+  .form-progress li span { width: 25px; height: 25px; }
+  .form-progress li:not(:last-child)::after { left: 25px; top: 12px; }
+  .form-progress li b { font-size: .58rem; }
+  .form-status { margin-left: .7rem; margin-right: .7rem; }
+  .form-step { padding: 1rem .7rem 0; }
+  .step-head h2 { font-size: 2.3rem; }
+  .course-options, .field-grid.two, .choice-row, .option-stack, .check-grid, .payment-card { grid-template-columns: 1fr; }
+  .field.wide { grid-column: auto; }
+  .form-section, .question-block { padding: .85rem; }
+  .days { grid-template-columns: repeat(2,minmax(0,1fr)); }
+  .summary-card { grid-template-columns: 1fr; }
+  .summary-card button { justify-self: start; }
+  .payment-card dl { grid-template-columns: 1fr 1fr; }
+  .form-step .step-actions { margin-left: -.7rem; margin-right: -.7rem; }
+  .step-actions { padding: .65rem .7rem calc(.65rem + env(safe-area-inset-bottom)); }
+  .step-actions .button { flex: 1; padding-inline: .4rem; }
+  .success { padding-bottom: calc(2.3rem + env(safe-area-inset-bottom)); }
+  .success-actions { flex-direction: column; }
+}
+
+@media (max-width: 410px) {
+  .form-progress li { grid-template-columns: 25px; justify-content: center; text-align: center; }
+  .form-progress li b { margin-top: .16rem; padding: 0; font-size: .52rem; }
+  .form-progress li:not(:last-child)::after { left: calc(50% + 12px); right: calc(-50% + 12px); }
+  .time-grid, .upload-card { grid-template-columns: 1fr; }
+  .door-audience { font-size: .54rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+}
+
+</style>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+"use strict";
+
+const COURSE_GROUPS = [
+  {
+    name: "Young Hearts", theme: "coral", courses: [
+      {id: "quranic-words-young-hearts", title: "Qur’anic Words for Young Hearts", audience: "Early Qur’an learners", level: "Beginner", format: "Once weekly · group", fee: "Online: Local LKR 2,500 · International LKR 4,000 · Physical: Family LKR 5,000 · Non-family LKR 3,000", location: "Online or physical", description: "One Qur’anic word each class, opened through stories, crafts and the QAJ Young Hearts book.", learn: ["One Qur’anic word in every class", "Stories and guided discussion", "Crafts and hands-on learning", "A warm first relationship with Qur’anic meaning"]}
+    ]
+  },
+  {
+    name: "Recitation", theme: "saffron", courses: [
+      {id: "thajweedh", title: "Thajweedh", audience: "Kids, teens and adults", level: "Assessment-led", format: "Twice weekly · 30 mins · 1-to-1", fee: "Kids/teens: Local LKR 2,500 · International LKR 4,000 · Adults: Local LKR 3,000 · International LKR 5,000", location: "Online", description: "A personalised one-to-one recitation path, beginning at the learner’s actual level and progressing without pressure.", learn: ["Thibyan Books 1 and 2 for letters and fluency", "Progress into Al-Baqarah recitation", "Thajweedh rules introduced gradually", "A personal syllabus after a short assessment"]}
+    ]
+  },
+  {
+    name: "Qur’anic Arabic", theme: "teal", courses: [
+      {id: "quranic-arabic-teenagers", title: "Qur’anic Arabic for Teenagers", audience: "Teen girls", level: "Teen pathway", format: "Once weekly · 1 hour · group", fee: "", location: "Online or physical", description: "The full QAJ Arabic pathway shaped for teen girls, with real Qur’anic examples and room for reflection.", learn: ["Arabic grammar from the foundations", "Al-Fatihah and 40 Rabbana duas", "Selected ayahs with grammar and tafseer", "A mature, safe learning rhythm"]},
+      {id: "quranic-arabic-adults", title: "Qur’anic Arabic for Adults", audience: "Adult sisters", level: "Adult pathway", format: "Once weekly · 1 hour · group", fee: "Online: Local LKR 2,500 · International LKR 4,000 · Physical LKR 3,500", location: "Online or physical", description: "A calm adult pathway into Qur’anic Arabic through grammar, translation, tafseer and reflection.", learn: ["Arabic grammar from the foundations", "Word-by-word Qur’anic understanding", "Selected ayahs and tafseer", "Al-Baqarah journaling at advanced level"]}
+    ]
+  },
+  {
+    name: "Islamic Studies & Halqa", theme: "berry", courses: [
+      {id: "basic-islamic-studies", title: "Basic Islamic Studies", audience: "Kids and teens after Thajweedh", level: "One-year foundation", format: "Once weekly · 1 hour · group", fee: "Sri Lanka LKR 3,000 · abroad LKR 5,000", location: "Online or physical", description: "A practical one-year journey into Islamic character, worship and daily life after Thajweedh.", learn: ["Daily duas, hadeeth and good manners", "Stories of the Prophets and Seerah", "Basic fiqh and the 99 Names of Allah", "An end-of-year appreciation gathering"]},
+      {id: "intermediary-islamic-studies", title: "Intermediary Islamic Studies", audience: "Teen girls and ladies after foundations", level: "Intermediate", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current mode confirmed by QAJ", description: "A discussion-led continuation into belief, worship, adab, identity and reflective Islamic learning.", learn: ["Strengthen core beliefs and worship", "Connect Islamic manners to daily choices", "Explore selected Seerah and hadeeth themes", "Build confidence in living Islam clearly"]},
+      {id: "quran-halqa", title: "Qur’an Halqa", audience: "Girls, teen girls and ladies", level: "Ongoing", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current mode confirmed by QAJ", description: "A guided Qur’an circle for recitation rhythm, reflection and companionship around the Book.", learn: ["Keep a consistent recitation routine", "Reflect on selected meanings gently", "Grow through Qur’an-centred companionship", "Connect learning with everyday life"]},
+      {id: "quran-revert-sisters", title: "Qur’an for Revert Sisters", audience: "Revert sisters and beginners", level: "Beginner", format: "Current batch confirmed by QAJ", fee: "Current fee confirmed by QAJ", location: "Current online options confirmed by QAJ", description: "A soft, respectful beginning for recitation, essential meanings, worship foundations and belonging.", learn: ["Begin recitation gently", "Understand essential Qur’anic meanings", "Learn worship foundations without overwhelm", "Ask questions in a safe, respectful space"]}
+    ]
+  }
+];
+
+const COURSE_LOOKUP = new Map(COURSE_GROUPS.flatMap(group => group.courses.map(course => [course.id, {...course, group: group.name, theme: group.theme}])));
+
+const PROGRAMMES = [
+  {
+    id: "thajweedh",
+    name: "Thajweedh",
+    theme: "saffron",
+    glyph: "ت",
+    audience: "Kids, teens & adults",
+    number: "01",
+    description: "Personal, assessment-led Qur’an recitation—one learner and one Muallimah at a time.",
+    facts: ["Twice weekly", "30 minutes", "1-to-1 online"],
+    points: ["Begin from letters or joined reading", "Follow Thibyan Books 1 and 2 before progressing into Al-Baqarah", "Receive a personalised syllabus after QAJ reviews the learner’s level", "Upload a short recitation when you choose ‘I know to join and read’"],
+    courseIds: ["thajweedh"]
+  },
+  {
+    id: "quranic-arabic",
+    name: "Qur’anic Arabic",
+    theme: "teal",
+    glyph: "ع",
+    audience: "Teenagers & adults",
+    number: "02",
+    description: "From grammar to verses, tafseer and reflection—at a pace made for real life.",
+    facts: ["Once weekly", "1 hour", "Online or physical"],
+    points: ["Begin with Arabic grammar applied to real Qur’anic ayahs", "Move through Al-Fatihah, 40 Rabbana duas and selected ayahs", "Continue into advanced grammar and Al-Baqarah journaling", "Choose a teenager or adult pathway"],
+    courseIds: ["quranic-arabic-teenagers", "quranic-arabic-adults"]
+  },
+  {
+    id: "islamic-studies",
+    name: "Islamic Studies & Halqa",
+    theme: "berry",
+    glyph: "ه",
+    audience: "Teenagers",
+    number: "03",
+    description: "Practical Islamic foundations, deeper study and Qur’an companionship for the next season of learning.",
+    facts: ["Four distinct paths", "Foundation → ongoing", "Guided placement"],
+    points: ["Basic Islamic Studies is a one-year path after Thajweedh", "Intermediary study continues into belief, worship, adab and identity", "Qur’an Halqa supports consistent recitation and reflection", "Revert sisters receive a gentle, foundation-first beginning"],
+    courseIds: ["basic-islamic-studies", "intermediary-islamic-studies", "quran-halqa", "quran-revert-sisters"]
+  },
+  {
+    id: "young-hearts",
+    name: "Qur’anic Words for Young Hearts",
+    theme: "coral",
+    glyph: "ق",
+    audience: "Children and families",
+    number: "04",
+    description: "One word, one story, one activity—so Qur’anic Arabic begins with wonder.",
+    facts: ["Ages 4+", "Group or family", "Online or physical"],
+    points: ["Begin with one Qur’anic word per class through stories and crafts", "Choose a kids’ group or a family learning session", "Boys are welcome under the age of 10"],
+    courseIds: ["quranic-words-young-hearts"]
+  }
+];
+
+const PROGRAMME_LOOKUP = new Map(PROGRAMMES.map(programme => [programme.id, programme]));
+const THEME_COLORS = {saffron: "#d99b20", teal: "#198d86", berry: "#7b315a", coral: "#cc5d50"};
+
+const AUDIENCE_GUIDES = {
+  child: {programmes: ["young-hearts", "thajweedh", "islamic-studies"], copy: "Suggested for a child: Young Hearts, Thajweedh, or Islamic Studies after completing recitation foundations."},
+  teen: {programmes: ["thajweedh", "quranic-arabic", "islamic-studies"], copy: "Suggested for a teen: Thajweedh, Qur’anic Arabic for Teenagers, or Islamic Studies and Halqa."},
+  self: {programmes: ["quranic-arabic", "thajweedh", "islamic-studies"], copy: "Suggested for yourself: Qur’anic Arabic, ladies’ Thajweedh, Halqa, or continued Islamic study."},
+  revert: {programmes: ["islamic-studies", "thajweedh"], copy: "Suggested for a new Muslim: Qur’an for Revert Sisters or an assessment-led Thajweedh path."},
+  family: {programmes: ["young-hearts", "quranic-arabic", "thajweedh", "islamic-studies"], copy: "Suggested for a family: Recitation (Thajweedh), Basic Islamic Studies, Qur’anic Arabic for Adults, and Qur’anic Arabic for Young Hearts."}
+};
+
+const YOUNG_HEARTS = new Set(["quranic-words-young-hearts"]);
+const QA_ARABIC = new Set(["quranic-arabic-teenagers", "quranic-arabic-adults"]);
+
+const COUNTRIES = "Sri Lanka|Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina|Botswana|Brazil|Brunei|Bulgaria|Burkina Faso|Burundi|Cabo Verde|Cambodia|Cameroon|Canada|Central African Republic|Chad|Chile|China|Colombia|Comoros|Congo, Democratic Republic of the|Congo, Republic of the|Costa Rica|Côte d’Ivoire|Croatia|Cuba|Cyprus|Czechia|Denmark|Djibouti|Dominica|Dominican Republic|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran|Iraq|Ireland|Israel|Italy|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar|Namibia|Nauru|Nepal|Netherlands|New Zealand|Nicaragua|Niger|Nigeria|North Korea|North Macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Romania|Russia|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|Sao Tome and Principe|Saudi Arabia|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea|South Sudan|Spain|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Timor-Leste|Togo|Tonga|Trinidad and Tobago|Tunisia|Türkiye|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates|United Kingdom|United States|Uruguay|Uzbekistan|Vanuatu|Vatican City|Venezuela|Vietnam|Yemen|Zambia|Zimbabwe|Other".split("|");
+
+const form = document.querySelector("#registration-form");
+const steps = [...document.querySelectorAll("[data-step]")];
+const statusBox = document.querySelector("[data-form-status]");
+const questionHost = document.querySelector("[data-course-questions]");
+const programmeGrid = document.querySelector("[data-programme-grid]");
+const dialog = document.querySelector("[data-intake-dialog]");
+const infoPanel = document.querySelector("[data-course-info]");
+const successPanel = document.querySelector("[data-success]");
+const courseOptionsHost = document.querySelector("[data-course-options]");
+const formMain = document.querySelector(".form-main");
+const railCourse = document.querySelector("[data-rail-course]");
+const railGlyph = document.querySelector("[data-rail-glyph]");
+const railStep = document.querySelector("[data-rail-step]");
+const railCopy = document.querySelector("[data-rail-copy]");
+let currentStep = 0;
+let activeProgramme = null;
+
+function escapeMarkup(value) {
+  return String(value).replace(/[&<>'"]/g, char => ({"&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;"})[char]);
+}
+
+function renderProgrammeCards() {
+  programmeGrid.innerHTML = PROGRAMMES.map(programme => `
+    <article class="programme-door" data-programme="${programme.id}" data-theme="${programme.theme}" data-glyph="${programme.glyph}">
+      <span class="recommend-badge">Suggested</span>
+      <div class="door-top"><span class="door-no">${programme.number}</span><span class="door-audience">${escapeMarkup(programme.audience)}</span></div>
+      <div class="door-copy"><h3>${escapeMarkup(programme.name)}</h3><p>${escapeMarkup(programme.description)}</p><div class="door-facts">${programme.facts.map(fact => `<span>${escapeMarkup(fact)}</span>`).join("")}</div></div>
+      <div class="door-actions">
+        <button class="text-button" type="button" data-more-info="${programme.id}">More info</button>
+        <button class="card-register" type="button" data-register="${programme.id}">Register now <span aria-hidden="true">→</span></button>
+      </div>
+    </article>`).join("");
+}
+
+function renderCourseOptions(programme) {
+  courseOptionsHost.innerHTML = programme.courseIds.map(courseId => {
+    const course = COURSE_LOOKUP.get(courseId);
+    return `<label class="course-choice" style="--accent:${THEME_COLORS[course.theme]}">
+      <input type="radio" name="course_code" value="${course.id}" required>
+      <span class="choice-check" aria-hidden="true"></span>
+      <span><small>${escapeMarkup(course.level)}</small><strong>${escapeMarkup(course.title)}</strong><p>${escapeMarkup(course.description)}</p><em>${escapeMarkup(course.format)}</em></span>
+    </label>`;
+  }).join("");
+  const first = courseOptionsHost.querySelector('[name="course_code"]');
+  if (programme.courseIds.length === 1 && first) {
+    first.checked = true;
+    renderCourseQuestions(first.value);
+  }
+}
+
+function openDialog() {
+  if (!dialog.open) {
+    if (typeof dialog.showModal === "function") dialog.showModal();
+    else dialog.setAttribute("open", "");
+  }
+  document.body.classList.add("dialog-open");
+}
+
+function closeDialog() {
+  if (dialog.open && typeof dialog.close === "function") dialog.close();
+  else dialog.removeAttribute("open");
+  document.body.classList.remove("dialog-open");
+}
+
+function setDialogHeading(kicker, title) {
+  document.querySelector("[data-dialog-kicker]").textContent = kicker;
+  document.querySelector("[data-dialog-title]").textContent = title;
+}
+
+function showProgrammeInfo(programmeId) {
+  const programme = PROGRAMME_LOOKUP.get(programmeId);
+  if (!programme) return;
+  activeProgramme = programme;
+  form.hidden = true;
+  successPanel.hidden = true;
+  infoPanel.hidden = false;
+  infoPanel.querySelector("[data-info-theme]").dataset.infoTheme = programme.theme;
+  infoPanel.querySelector("[data-info-glyph]").textContent = programme.glyph;
+  infoPanel.querySelector("[data-info-audience]").textContent = programme.audience;
+  infoPanel.querySelector("[data-info-title]").textContent = programme.name;
+  infoPanel.querySelector("[data-info-copy]").textContent = programme.description;
+  infoPanel.querySelector("[data-info-facts]").innerHTML = programme.facts.map(fact => `<span>${escapeMarkup(fact)}</span>`).join("");
+  infoPanel.querySelector("[data-info-points]").innerHTML = programme.points.map(point => `<p><span aria-hidden="true">✓</span>${escapeMarkup(point)}</p>`).join("");
+  infoPanel.querySelector("[data-info-options]").innerHTML = programme.courseIds.map(id => {
+    const course = COURSE_LOOKUP.get(id);
+    return `<article class="info-option" style="--option-accent:${THEME_COLORS[course.theme]}"><div><small>${escapeMarkup(course.level)} · ${escapeMarkup(course.audience)}</small><strong>${escapeMarkup(course.title)}</strong><p>${escapeMarkup(course.description)}</p><em>${escapeMarkup(course.format)} · ${escapeMarkup(course.location)}${course.fee ? ` · ${escapeMarkup(course.fee)}` : ""}</em></div><button type="button" data-register-course="${course.id}">Choose this path →</button></article>`;
+  }).join("");
+  const broadRegister = infoPanel.querySelector("[data-register-from-info]");
+  broadRegister.hidden = programme.courseIds.length > 1;
+  broadRegister.innerHTML = `Begin ${escapeMarkup(programme.name)} <span aria-hidden="true">→</span>`;
+  setDialogHeading("Programme information", programme.name);
+  openDialog();
+}
+
+function resetRegistration() {
+  form.reset();
+  questionHost.replaceChildren();
+  document.querySelectorAll("[data-file-name]").forEach(label => label.textContent = "Choose a clear image or PDF · maximum 6 MB");
+  updateConditions();
+  hideStatus();
+}
+
+function startRegistration(programmeId, {reset = true} = {}) {
+  const programme = PROGRAMME_LOOKUP.get(programmeId);
+  if (!programme) return;
+  activeProgramme = programme;
+  if (reset) resetRegistration();
+  renderCourseOptions(programme);
+  document.querySelector("[data-course-step-title]").textContent = programme.courseIds.length === 1 ? programme.name : `Choose your ${programme.name} path`;
+  document.querySelector("[data-course-step-copy]").textContent = programme.courseIds.length === 1 ? "This path is selected. QAJ will use the next answers to confirm the learner’s level and timing." : "Select the closest pathway. The QAJ team can still confirm the final placement after reviewing the intake.";
+  infoPanel.hidden = true;
+  successPanel.hidden = true;
+  form.hidden = false;
+  showStep(0, {focus: false});
+  updateSelectedCourse();
+  setDialogHeading("Student registration", programme.name);
+  openDialog();
+}
+
+function startRegistrationForCourse(courseId, {step = 0} = {}) {
+  const course = COURSE_LOOKUP.get(courseId);
+  const programme = PROGRAMMES.find(item => item.courseIds.includes(courseId));
+  if (!course || !programme) return false;
+  startRegistration(programme.id);
+  const control = form.querySelector(`[name="course_code"][value="${courseId}"]`);
+  if (!control) return false;
+  control.checked = true;
+  renderCourseQuestions(courseId);
+  updateSelectedCourse();
+  showStep(step, {focus: false});
+  return true;
+}
+
+function populateCountries() {
+  document.querySelectorAll("[data-country]").forEach(select => {
+    select.insertAdjacentHTML("beforeend", COUNTRIES.map(country => `<option value="${escapeMarkup(country)}">${escapeMarkup(country)}</option>`).join(""));
+  });
+}
+
+function radio(name, label, options, hint = "") {
+  return `<fieldset class="question-block">
+    <legend class="sr-only">${label} *</legend><div class="question-label" aria-hidden="true">${label} *</div>${hint ? `<p class="hint">${hint}</p>` : ""}
+    <div class="option-stack">${options.map(([value, text, disabled = false]) => `<label><input type="radio" name="${name}" value="${value}" ${disabled ? "disabled" : ""} required><span>${text}</span></label>`).join("")}</div>
+  </fieldset>`;
+}
+
+function field(name, label, {type = "text", placeholder = "", hint = "", required = true, accept = "", showName = "", showValue = ""} = {}) {
+  const conditionalClass = showName ? " conditional" : "";
+  const conditionalAttrs = showName ? ` data-when-name="${showName}" data-when-value="${showValue}" hidden` : "";
+  const attrs = `${required ? " data-required=\"true\"" : ""}${accept ? ` accept="${accept}"` : ""}`;
+  const control = type === "textarea"
+    ? `<textarea name="${name}" placeholder="${placeholder}"${attrs}></textarea>`
+    : `<input name="${name}" type="${type}" placeholder="${placeholder}"${attrs}>`;
+  return `<label class="field question-block${conditionalClass}"${conditionalAttrs}><span class="question-label">${label}${required ? " *" : ""}</span>${hint ? `<small>${hint}</small>` : ""}${control}${type === "file" ? `<small data-dynamic-file>Choose a file</small>` : ""}</label>`;
+}
+
+function selectField(name, label, options, {required = true, showName = "", showValue = ""} = {}) {
+  const conditionalClass = showName ? " conditional" : "";
+  const conditionalAttrs = showName ? ` data-when-name="${showName}" data-when-value="${showValue}" hidden` : "";
+  return `<label class="field question-block${conditionalClass}"${conditionalAttrs}><span class="question-label">${label}${required ? " *" : ""}</span><select name="${name}"${required ? " data-required=\"true\"" : ""}><option value="">Select an answer</option>${options.map(([value, text]) => `<option value="${value}">${text}</option>`).join("")}</select></label>`;
+}
+
+function checkGroup(name, label, options, {required = false, className = "check-grid", showName = "", showValue = ""} = {}) {
+  const conditionalClass = showName ? " conditional" : "";
+  const conditionalAttrs = showName ? ` data-when-name="${showName}" data-when-value="${showValue}" hidden` : "";
+  return `<fieldset class="question-block${conditionalClass}${required ? "" : " optional"}"${conditionalAttrs}${required ? ` data-min-checks="1" data-check-name="${name}"` : ""}>
+    <legend class="sr-only">${label}${required ? " *" : ""}</legend><div class="question-label" aria-hidden="true">${label}${required ? " *" : ""}</div><div class="${className}">${options.map(([value, text]) => `<label><input type="checkbox" name="${name}" value="${value}"><span>${text}</span></label>`).join("")}</div>
+  </fieldset>`;
+}
+
+function dayTime(label = "Which days and times are suitable?") {
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  return `<fieldset class="question-block" data-min-checks="1" data-check-name="available_days">
+    <legend class="sr-only">${label} *</legend><div class="question-label" aria-hidden="true">${label} *</div><p class="hint">Select every suitable day, then give QAJ a time window.</p>
+    <div class="day-time"><div class="days">${days.map(day => `<label><input type="checkbox" name="available_days" value="${day}"><span>${day.slice(0,3)}</span></label>`).join("")}</div>
+    <div class="time-grid"><label class="time-cell"><span>From *</span><input name="time_from_12h" type="time" data-required="true"></label><label class="time-cell"><span>Until *</span><input name="time_to_12h" type="time" data-required="true"></label></div></div>
+  </fieldset>`;
+}
+
+function youngHeartsQuestions() {
+  return [
+    radio("attended_qaj_before", "Has the learner attended QAJ before?", [["yes", "Yes"], ["no", "No"]]),
+    field("student_id", "QAJ Student ID", {placeholder: "Enter the existing student ID", showName: "attended_qaj_before", showValue: "yes"}),
+    selectField("introduced_by", "How were you introduced to QAJ?", [["friend_family", "Friend / Family"], ["social", "Instagram / Facebook"], ["workshop", "Workshop"], ["website", "Google / Website"], ["other", "Other"]], {showName: "attended_qaj_before", showValue: "no"}),
+    field("introduced_by_other", "Please tell us how", {showName: "introduced_by", showValue: "other"}),
+    radio("class_mode", "Preferred class mode", [["online", "Online"], ["physical", "Physical"]]),
+    selectField("class_location", "Preferred physical location", [["atapattu_dehiwala", "Atapattu Road — Dehiwala"], ["safa_kalubowila", "Safa Center — Kalubowila"]], {showName: "class_mode", showValue: "physical"}),
+    radio("session_type", "How would you like to join?", [["kids_group", "Kids’ group"], ["family", "Family session"]]),
+    selectField("family_attendees", "Who will attend the family session?", [["1_child", "1 child"], ["2_children", "2 children"], ["3_children", "3 children"], ["entire_family", "Entire family"]], {showName: "session_type", showValue: "family"}),
+    checkGroup("family_age_groups", "Age group of the children", [["4_7", "4 – 7"], ["8_11", "8 – 11"], ["4_11", "4 – 11"]], {required: true, showName: "session_type", showValue: "family"})
+  ].join("");
+}
+
+function thajweedhQuestions() {
+  return [
+    radio("quran_reading_level", "Which best describes the learner’s current level?", [["letters_new", "I do not know the letters"], ["join_and_read", "I know to join and read"]], "This helps QAJ prepare the right starting syllabus."),
+    `<div class="assessment-upload conditional" data-when-name="quran_reading_level" data-when-value="join_and_read" hidden>${field("test_me_audio", "Recitation recording", {type: "file", accept: "audio/*", hint: "Read aloud the first 5 Ayahs of Surah Al-Baqarah and upload one clear audio file (maximum 12 MB)."})}<a class="audio-help" href="https://drive.google.com/file/d/1ZNSsrH3SIHxV4YLDbnVidWevwMa7RVJ9/view?usp=sharing" target="_blank" rel="noreferrer">Open the reading reference before recording ↗</a></div>`,
+    dayTime("Which days and times are suitable for Thajweedh?"),
+    checkGroup("child_notes", "If registering a small child, what may help the Muallimah?", [["shy", "My child is shy"], ["stern_teacher", "My child needs a firm teacher"], ["friendly_teacher", "My child needs a friendly teacher"]])
+  ].join("");
+}
+
+function arabicQuestions() {
+  return [
+    radio("class_mode", "Preferred class mode", [["online", "Online"], ["physical", "Physical"]]),
+    selectField("class_location", "Preferred physical location", [["dehiwala", "Dehiwala"], ["kolonnawa", "Kolonnawa"], ["rajagiriya", "Rajagiriya"], ["borella", "Borella"]], {showName: "class_mode", showValue: "physical"}),
+    radio("workshop_attended", "Have you attended a QAJ introductory workshop?", [["yes", "Yes"], ["no", "No"]]),
+    field("workshop_date", "Workshop date", {type: "date", showName: "workshop_attended", showValue: "yes"}),
+    `<div class="notice warning conditional" data-when-name="workshop_attended" data-when-value="no" hidden>Your registration will remain on the waitlist until an introductory workshop has been attended.</div>`,
+    radio("preferred_schedule", "Preferred weekly rhythm", [["weekdays", "Weekdays"], ["weekends", "Weekends"]]),
+    radio("time_preference", "Preferred time of day", [["morning", "Morning"], ["afternoon", "Afternoon"], ["evening", "Evening"], ["night", "Night"]]),
+    radio("can_read_quran", "Can the learner read the Qur’an?", [["yes", "Yes"], ["no", "No"]]),
+    `<div class="notice conditional" data-when-name="can_read_quran" data-when-value="no" hidden>QAJ may recommend beginning with Thajweedh so the learner receives the right foundation first.</div>`
+  ].join("");
+}
+
+function basicStudiesQuestions() {
+  return [
+    radio("completed_thajweedh", "Has the learner completed a Thajweedh programme?", [["yes", "Yes"], ["no", "No"]]),
+    selectField("thajweedh_where", "Where was Thajweedh completed?", [["qaj", "QAJ"], ["another_institute", "Another institute"]], {showName: "completed_thajweedh", showValue: "yes"}),
+    field("student_id", "QAJ Student ID", {showName: "thajweedh_where", showValue: "qaj"}),
+    selectField("previous_syllabus", "Which syllabus was completed?", [["thibyan", "Thibyan"], ["qaida", "Qaida"], ["other_mixed", "Other / Mixed"]], {showName: "thajweedh_where", showValue: "another_institute"}),
+    radio("enrollment_type", "Choose an enrolment", [["bis_only", "Basic Islamic Studies only"], ["bis_halqa", "Basic Islamic Studies + Qur’an Halqa"]]),
+    `<div class="notice warning conditional" data-when-name="completed_thajweedh" data-when-value="no" hidden>The combined Qur’an Halqa option requires prior Thajweedh. Please choose Basic Islamic Studies only for now.</div>`
+  ].join("");
+}
+
+function intermediaryQuestions() {
+  return radio("completed_basic_islamic_studies", "Has the learner completed Basic Islamic Studies?", [["yes", "Yes"], ["no", "No"]]) +
+    field("learning_goals", "What would you like the learner to grow in?", {type: "textarea", required: false, placeholder: "Optional notes for the QAJ team"});
+}
+
+function halqaQuestions() {
+  return radio("quran_reading_level", "Which best describes the learner’s reading?", [["needs_support", "I need support reading"], ["slow", "I can read slowly"], ["fluent", "I can read fluently"], ["assess", "I would like to be assessed"]]) + dayTime("Which days and times are suitable for Qur’an Halqa?");
+}
+
+function revertQuestions() {
+  return radio("quran_reading_level", "Where would you like to begin?", [["completely_new", "I am completely new"], ["some_letters", "I know some letters"], ["slow", "I read slowly"], ["confidence", "I can read but need confidence"]]) +
+    field("support_needs", "Is there anything you would like your teacher to know?", {type: "textarea", required: false, placeholder: "Optional — share only what feels helpful"}) +
+    dayTime("Which days and times are suitable?");
+}
+
+function renderCourseQuestions(courseId) {
+  const course = COURSE_LOOKUP.get(courseId);
+  questionHost.dataset.theme = course?.theme || "berry";
+  if (YOUNG_HEARTS.has(courseId)) questionHost.innerHTML = youngHeartsQuestions();
+  else if (courseId === "thajweedh") questionHost.innerHTML = thajweedhQuestions();
+  else if (QA_ARABIC.has(courseId)) questionHost.innerHTML = arabicQuestions();
+  else if (courseId === "basic-islamic-studies") questionHost.innerHTML = basicStudiesQuestions();
+  else if (courseId === "intermediary-islamic-studies") questionHost.innerHTML = intermediaryQuestions();
+  else if (courseId === "quran-halqa") questionHost.innerHTML = halqaQuestions();
+  else if (courseId === "quran-revert-sisters") questionHost.innerHTML = revertQuestions();
+  else questionHost.innerHTML = "";
+  updateConditions();
+}
+
+function fieldValue(name) {
+  const checked = form.querySelector(`[name="${name}"]:checked`);
+  if (checked) return checked.value;
+  return form.elements.namedItem(name)?.value || "";
+}
+
+function setConditionalState(element, visible) {
+  element.hidden = !visible;
+  element.querySelectorAll("input, select, textarea").forEach(control => {
+    control.disabled = !visible;
+    control.required = visible && control.dataset.required === "true";
+    if (!visible) control.removeAttribute("aria-invalid");
+  });
+}
+
+function updateConditions() {
+  form.querySelectorAll("[data-show-field]").forEach(element => setConditionalState(element, fieldValue(element.dataset.showField) === element.dataset.showValue));
+  questionHost.querySelectorAll("[data-when-name]").forEach(element => setConditionalState(element, fieldValue(element.dataset.whenName) === element.dataset.whenValue));
+
+  const completed = fieldValue("completed_thajweedh");
+  const combined = questionHost.querySelector('[name="enrollment_type"][value="bis_halqa"]');
+  if (combined) {
+    combined.disabled = completed === "no";
+    if (combined.disabled && combined.checked) {
+      combined.checked = false;
+      const bisOnly = questionHost.querySelector('[name="enrollment_type"][value="bis_only"]');
+      if (bisOnly) bisOnly.checked = true;
+    }
+  }
+}
+
+function chosenCourse() {
+  return form.querySelector('[name="course_code"]:checked')?.value || "";
+}
+
+function updateSelectedCourse() {
+  const course = COURSE_LOOKUP.get(chosenCourse());
+  if (course) {
+    form.dataset.courseTheme = course.theme;
+    railCourse.textContent = course.title;
+    railGlyph.textContent = activeProgramme?.glyph || "ابدأ";
+  } else {
+    delete form.dataset.courseTheme;
+    railCourse.textContent = activeProgramme?.name || "Choose a course";
+    railGlyph.textContent = activeProgramme?.glyph || "ابدأ";
+  }
+}
+
+function showStep(index, {focus = true} = {}) {
+  const railSteps = ["01 / Choose", "02 / Learner", "03 / Placement", "04 / Confirm"];
+  const railCopies = [
+    "Choose the path that feels closest. QAJ can confirm placement after reviewing the intake.",
+    "Use the learner’s own details so QAJ can keep one clear student record.",
+    "These answers help the Muallimah understand level, support needs and suitable times.",
+    "Check the course and learner, then attach the payment receipt so QAJ can match it correctly."
+  ];
+  currentStep = Math.max(0, Math.min(steps.length - 1, index));
+  steps.forEach((step, i) => {
+    const active = i === currentStep;
+    step.hidden = !active;
+    step.classList.toggle("active", active);
+  });
+  document.querySelectorAll("[data-progress]").forEach((item, i) => {
+    item.classList.toggle("active", i === currentStep);
+    item.classList.toggle("complete", i < currentStep);
+  });
+  railStep.textContent = railSteps[currentStep];
+  railCopy.textContent = railCopies[currentStep];
+  updateSelectedCourse();
+  hideStatus();
+  if (currentStep === 3) renderSummary();
+  if (focus) {
+    formMain.scrollTo?.({top: 0, behavior: "smooth"});
+    window.setTimeout(() => steps[currentStep].querySelector("h2")?.focus?.({preventScroll: true}), 250);
+  }
+}
+
+function showStatus(message) {
+  statusBox.textContent = message;
+  statusBox.hidden = false;
+  statusBox.scrollIntoView({behavior: "smooth", block: "center"});
+}
+
+function hideStatus() {
+  statusBox.hidden = true;
+  statusBox.textContent = "";
+}
+
+function visibleControls(step) {
+  return [...step.querySelectorAll("input, select, textarea")].filter(control => !control.disabled && !control.closest("[hidden]"));
+}
+
+function validateDob(control) {
+  if (!control.value) return true;
+  const birth = new Date(`${control.value}T12:00:00`);
+  if (Number.isNaN(birth.getTime())) return false;
+  const today = new Date();
+  let age = today.getFullYear() - birth.getFullYear();
+  const beforeBirthday = today.getMonth() < birth.getMonth() || (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate());
+  if (beforeBirthday) age -= 1;
+  if (age < 4) {
+    control.setCustomValidity("The student must be at least 4 years old.");
+    return false;
+  }
+  control.setCustomValidity("");
+  return true;
+}
+
+function validateFile(control) {
+  control.setCustomValidity("");
+  if (!control.files?.length) return !control.required;
+  const file = control.files[0];
+  const isPayment = control.name === "payment_receipt";
+  const validType = isPayment ? (file.type.startsWith("image/") || file.type === "application/pdf") : file.type.startsWith("audio/");
+  const maxBytes = isPayment ? 6 * 1024 * 1024 : 12 * 1024 * 1024;
+  if (!validType) control.setCustomValidity(isPayment ? "Upload an image or PDF receipt." : "Upload an audio recording.");
+  else if (file.size > maxBytes) control.setCustomValidity(`File must be smaller than ${isPayment ? 6 : 12} MB.`);
+  return control.checkValidity();
+}
+
+function validateCurrentStep() {
+  hideStatus();
+  const step = steps[currentStep];
+  const controls = visibleControls(step);
+  controls.forEach(control => control.removeAttribute("aria-invalid"));
+
+  const dob = step.querySelector('[name="dob"]');
+  if (dob) validateDob(dob);
+  controls.filter(control => control.type === "file").forEach(validateFile);
+
+  let customGroupInvalid = null;
+  step.querySelectorAll("[data-min-checks]").forEach(group => {
+    if (group.hidden || group.closest("[hidden]")) return;
+    const count = group.querySelectorAll('input[type="checkbox"]:checked').length;
+    group.classList.toggle("invalid", count < Number(group.dataset.minChecks));
+    if (count < Number(group.dataset.minChecks) && !customGroupInvalid) customGroupInvalid = group;
+  });
+
+  const invalid = controls.find(control => !control.checkValidity());
+  if (invalid || customGroupInvalid) {
+    if (invalid) {
+      invalid.setAttribute("aria-invalid", "true");
+      invalid.reportValidity();
+      invalid.focus({preventScroll: true});
+      invalid.closest(".field, .question-block, .upload-card")?.scrollIntoView({behavior: "smooth", block: "center"});
+    } else customGroupInvalid.scrollIntoView({behavior: "smooth", block: "center"});
+    showStatus("Please complete the highlighted answer before continuing.");
+    return false;
+  }
+  return true;
+}
+
+function renderSummary() {
+  const course = COURSE_LOOKUP.get(chosenCourse());
+  const name = form.elements.full_name.value || "Not entered";
+  const email = form.elements.email.value || "Not entered";
+  const summary = document.querySelector("[data-summary]");
+  summary.replaceChildren();
+  const copy = document.createElement("div");
+  const small = document.createElement("small");
+  const strong = document.createElement("strong");
+  const paragraph = document.createElement("p");
+  const edit = document.createElement("button");
+  small.textContent = "Registration summary";
+  strong.textContent = course?.title || "No course selected";
+  paragraph.textContent = `${name} · ${email}`;
+  edit.type = "button";
+  edit.textContent = "Edit course";
+  edit.addEventListener("click", () => showStep(0));
+  copy.append(small, strong, paragraph);
+  summary.append(copy, edit);
+}
+
+function updateFileLabel(control) {
+  const label = control.closest("label, .question-block")?.querySelector("[data-file-name], [data-dynamic-file]");
+  if (label) label.textContent = control.files?.[0]?.name || (control.name === "payment_receipt" ? "Choose a clear image or PDF · maximum 6 MB" : "Choose an audio file");
+  control.closest(".upload-card")?.classList.toggle("has-file", Boolean(control.files?.length));
+}
+
+function guideAudience(key) {
+  const guide = AUDIENCE_GUIDES[key];
+  if (!guide) return;
+  document.querySelectorAll("[data-audience]").forEach(button => button.setAttribute("aria-pressed", String(button.dataset.audience === key)));
+  document.querySelectorAll("[data-programme]").forEach(card => {
+    const recommended = guide.programmes.includes(card.dataset.programme);
+    card.classList.toggle("recommended", recommended);
+    card.classList.toggle("not-recommended", !recommended);
+  });
+  document.querySelector("[data-audience-copy]").textContent = guide.copy;
+  document.querySelector("#programmes")?.scrollIntoView({behavior: "smooth", block: "start"});
+}
+
+form.addEventListener("change", event => {
+  const control = event.target;
+  if (control.name === "course_code") {
+    renderCourseQuestions(control.value);
+    updateSelectedCourse();
+  }
+  if (control.type === "file") updateFileLabel(control);
+  updateConditions();
+  control.removeAttribute("aria-invalid");
+  hideStatus();
+});
+
+form.addEventListener("input", event => {
+  event.target.setCustomValidity?.("");
+  event.target.removeAttribute?.("aria-invalid");
+});
+
+document.addEventListener("click", event => {
+  const moreInfo = event.target.closest("[data-more-info]");
+  const register = event.target.closest("[data-register]");
+  const directCourse = event.target.closest("[data-register-course]");
+  const audience = event.target.closest("[data-audience]");
+  const next = event.target.closest("[data-next]");
+  const back = event.target.closest("[data-back]");
+  if (moreInfo) showProgrammeInfo(moreInfo.dataset.moreInfo);
+  if (register) {
+    const programme = PROGRAMME_LOOKUP.get(register.dataset.register);
+    if (programme?.courseIds.length === 1) startRegistrationForCourse(programme.courseIds[0], {step: 1});
+    else startRegistration(register.dataset.register);
+  }
+  if (directCourse) startRegistrationForCourse(directCourse.dataset.registerCourse, {step: 1});
+  if (audience) guideAudience(audience.dataset.audience);
+  if (event.target.closest("[data-register-from-info]") && activeProgramme) startRegistrationForCourse(activeProgramme.courseIds[0], {step: 1});
+  if (event.target.closest("[data-close-dialog]")) closeDialog();
+  if (next && validateCurrentStep()) showStep(currentStep + 1);
+  if (back) showStep(currentStep - 1);
+  if (event.target.closest("[data-copy-phone]")) {
+    form.elements.whatsapp.value = form.elements.phone.value;
+    form.elements.whatsapp.focus();
+  }
+});
+
+form.addEventListener("submit", async event => {
+  event.preventDefault();
+  if (!validateCurrentStep()) return;
+
+  const submitButton = event.submitter || form.querySelector('button[type="submit"]');
+  const originalText = submitButton?.innerHTML || "";
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending registration…";
+  }
+
+  hideStatus();
+
+  try {
+    const response = await fetch("https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live", {
+      method: "POST",
+      body: new FormData(form)
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Submission failed");
+    }
+
+    form.hidden = true;
+    infoPanel.hidden = true;
+    successPanel.hidden = false;
+    setDialogHeading("Registration received", "Submitted successfully");
+    successPanel.scrollIntoView({behavior: "smooth", block: "start"});
+  } catch (error) {
+    console.error("QAJ intake submission failed", error);
+    showStatus("We could not send the registration. Please check your connection and try again. Your form is still here.");
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+    }
+  }
+});
+
+document.querySelector("[data-start-over]").addEventListener("click", () => {
+  resetRegistration();
+  successPanel.hidden = true;
+  form.hidden = true;
+  closeDialog();
+  document.querySelector(`[data-register="${activeProgramme?.id || "thajweedh"}"]`)?.focus();
+});
+
+function selectCourseFromUrl() {
+  const requested = new URLSearchParams(location.search).get("course");
+  if (!requested || !COURSE_LOOKUP.has(requested)) return;
+  startRegistrationForCourse(requested);
+}
+
+function registerWebMcpTools() {
+  const modelContext = navigator.modelContext;
+  if (!modelContext?.registerTool) return;
+  try {
+    modelContext.registerTool({
+      name: "start_qaj_registration",
+      description: "Choose a QAJ course in the safe registration review and open the learner-details step.",
+      inputSchema: {type: "object", properties: {course: {type: "string", enum: [...COURSE_LOOKUP.keys()]}}, required: ["course"]},
+      execute: async ({course}) => {
+        if (!startRegistrationForCourse(course, {step: 1})) return {content: [{type: "text", text: "Unknown QAJ course."}], isError: true};
+        return {content: [{type: "text", text: `Selected ${COURSE_LOOKUP.get(course).title}. The learner-details step is open.`}]};
+      }
+    });
+    modelContext.registerTool({
+      name: "check_qaj_registration",
+      description: "Check the visible step for missing or invalid required answers without submitting information.",
+      inputSchema: {type: "object", properties: {}},
+      annotations: {readOnlyHint: true},
+      execute: async () => ({content: [{type: "text", text: validateCurrentStep() ? "The visible step is complete." : "The visible step still has a required or invalid answer."}]})
+    });
+  } catch (error) {
+    console.info("WebMCP tools were not registered in this browser.", error);
+  }
+}
+
+dialog.addEventListener("cancel", event => {
+  event.preventDefault();
+  closeDialog();
+});
+
+dialog.addEventListener("click", event => {
+  if (event.target === dialog) closeDialog();
+});
+
+renderProgrammeCards();
+guideAudience("family");
+populateCountries();
+selectCourseFromUrl();
+updateConditions();
+registerWebMcpTools();
+});
+
+</script>
+</head>
+<body>
+  <a class="skip-link" href="#programmes">Skip to course choices</a>
+
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Quran Arabic Journal student registration home">
+      <img class="brand-logo" src="data:image/webp;base64,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" alt="" aria-hidden="true">
+      <span class="brand-name"><strong>Quran Arabic</strong><em>Journal</em></span>
+    </a>
+    <div class="header-actions">
+      <span class="intake-status"><i></i> Registration open</span>
+      <a class="back-link" href="https://quranarabicjournal.com/">Back to QAJ <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="top" class="page-main">
+    <section class="welcome" aria-labelledby="page-title">
+      <div class="welcome-copy">
+        <p class="eyebrow">The next chapter · New student intake</p>
+        <h1 id="page-title">Welcome to the QAJ<br><em>student registration.</em></h1>
+        <p>Choose a course family below. You can read the full details first, or begin the registration straight away.</p>
+        <span class="welcome-signature" aria-hidden="true">Learn · Reflect · Grow</span>
+      </div>
+      <div class="welcome-note" aria-label="Who QAJ currently serves">
+        <span class="note-mark" aria-hidden="true">ق</span>
+        <div><strong>Ladies and children are welcome</strong><p>Boys are accepted under age 12. Learners can begin from age 4.</p></div>
+      </div>
+    </section>
+
+    <section class="programme-section" id="programmes" aria-labelledby="programmes-title">
+      <div class="course-heading">
+        <div><span class="step-chip">Step 1 of 4</span><h2 id="programmes-title">Choose a course</h2><p>Each colour represents one learning family. Select who is learning if you would like a little guidance.</p></div>
+        <div class="audience-guide" aria-labelledby="audience-title">
+          <strong id="audience-title">Who is the learner?</strong>
+          <div class="audience-choices">
+            <button type="button" data-audience="child" aria-pressed="false">My child</button>
+            <button type="button" data-audience="teen" aria-pressed="false">My teen</button>
+            <button type="button" data-audience="self" aria-pressed="false">Myself</button>
+            <button type="button" data-audience="revert" aria-pressed="false">New to Islam</button>
+            <button type="button" data-audience="family" aria-pressed="false">Our family</button>
+          </div>
+        </div>
+      </div>
+      <p class="audience-result" data-audience-copy="">All four course families are shown below.</p>
+      <div class="colour-key" aria-label="Course colour groups">
+        <span><i class="saffron"></i>Recitation (Thajweedh)</span><span><i class="teal"></i>Qur’anic Arabic for Adults</span><span><i class="berry"></i>Basic Islamic Studies</span><span><i class="coral"></i>Qur’anic Arabic for Young Hearts</span>
+      </div>
+      <div class="programme-grid" data-programme-grid="">
+    <article class="programme-door" data-programme="thajweedh" data-theme="saffron" data-glyph="ت">
+      <span class="recommend-badge">Suggested</span>
+      <div class="door-top"><span class="door-no">01</span><span class="door-audience">Kids, teens &amp; adults</span></div>
+      <div class="door-copy"><h3>Thajweedh</h3><p>Personal, assessment-led Qur’an recitation—one learner and one Muallimah at a time.</p><div class="door-facts"><span>Twice weekly</span><span>30 minutes</span><span>1-to-1 online</span></div></div>
+      <div class="door-actions">
+        <button class="text-button" type="button" data-more-info="thajweedh">More info</button>
+        <button class="card-register" type="button" data-register="thajweedh">Register now <span aria-hidden="true">→</span></button>
+      </div>
+    </article>
+    <article class="programme-door" data-programme="quranic-arabic" data-theme="teal" data-glyph="ع">
+      <span class="recommend-badge">Suggested</span>
+      <div class="door-top"><span class="door-no">02</span><span class="door-audience">Teenagers &amp; adults</span></div>
+      <div class="door-copy"><h3>Qur’anic Arabic</h3><p>From grammar to verses, tafseer and reflection—at a pace made for real life.</p><div class="door-facts"><span>Once weekly</span><span>1 hour</span><span>Online or physical</span></div></div>
+      <div class="door-actions">
+        <button class="text-button" type="button" data-more-info="quranic-arabic">More info</button>
+        <button class="card-register" type="button" data-register="quranic-arabic">Register now <span aria-hidden="true">→</span></button>
+      </div>
+    </article>
+    <article class="programme-door" data-programme="islamic-studies" data-theme="berry" data-glyph="ه">
+      <span class="recommend-badge">Suggested</span>
+      <div class="door-top"><span class="door-no">03</span><span class="door-audience">Teenagers</span></div>
+      <div class="door-copy"><h3>Islamic Studies &amp; Halqa</h3><p>Practical Islamic foundations, deeper study and Qur’an companionship for the next season of learning.</p><div class="door-facts"><span>Four distinct paths</span><span>Foundation → ongoing</span><span>Guided placement</span></div></div>
+      <div class="door-actions">
+        <button class="text-button" type="button" data-more-info="islamic-studies">More info</button>
+        <button class="card-register" type="button" data-register="islamic-studies">Register now <span aria-hidden="true">→</span></button>
+      </div>
+    </article>
+    <article class="programme-door" data-programme="young-hearts" data-theme="coral" data-glyph="ق">
+      <span class="recommend-badge">Suggested</span>
+      <div class="door-top"><span class="door-no">04</span><span class="door-audience">Children and families</span></div>
+      <div class="door-copy"><h3>Qur’anic Words for Young Hearts</h3><p>One word, one story, one activity—so Qur’anic Arabic begins with wonder.</p><div class="door-facts"><span>Ages 4+</span><span>Group or family</span><span>Online or physical</span></div></div>
+      <div class="door-actions">
+        <button class="text-button" type="button" data-more-info="young-hearts">More info</button>
+        <button class="card-register" type="button" data-register="young-hearts">Register now <span aria-hidden="true">→</span></button>
+      </div>
+    </article></div>
+    </section>
+
+    <section class="reassurance" aria-label="Registration guidance">
+      <div class="help-mark" aria-hidden="true">?</div>
+      <div><strong>Not sure which course is right?</strong><span>Send QAJ the learner’s age and what they need help with. The team will guide you before you register.</span></div>
+      <a href="https://wa.me/94775501655?text=Assalamu%20Alaikum%2C%20I%20would%20like%20help%20choosing%20the%20right%20QAJ%20course." target="_blank" rel="noreferrer">Ask on WhatsApp <span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Quran Arabic Journal</span>
+    <p>Learn to recite · Begin to understand · Grow closer to the Qur’an</p>
+    <div><a href="https://www.instagram.com/quran_arabic_journal/" target="_blank" rel="noreferrer">Instagram ↗</a><small>Online worldwide</small></div>
+  </footer>
+
+  <dialog class="intake-dialog" data-intake-dialog="" aria-labelledby="dialog-title">
+    <div class="dialog-frame">
+      <header class="dialog-topbar">
+        <a class="mini-brand" href="https://quranarabicjournal.com/" aria-label="Visit QAJ website"><span>QAJ</span><i>Quran Arabic Journal</i></a>
+        <div><span class="dialog-kicker" data-dialog-kicker="">Student registration</span><strong id="dialog-title" data-dialog-title="">Choose a course</strong></div>
+        <button class="dialog-close" type="button" data-close-dialog="" aria-label="Close registration">×</button>
+      </header>
+
+      <section class="course-info" data-course-info="" hidden="">
+        <div class="info-hero" data-info-theme="saffron">
+          <span class="info-glyph" data-info-glyph="" aria-hidden="true">ت</span>
+          <p class="eyebrow" data-info-audience="">For learners</p>
+          <h2 data-info-title="">Programme</h2>
+          <p data-info-copy=""></p>
+          <div class="info-facts" data-info-facts=""></div>
+        </div>
+        <div class="info-body">
+          <section class="info-learn"><p class="eyebrow">What this journey opens</p><h3>Learning with a clear purpose.</h3><div data-info-points=""></div></section>
+          <section class="info-options"><p class="eyebrow">Available pathways</p><h3>Choose the closest fit.</h3><div class="info-option-list" data-info-options=""></div></section>
+        </div>
+        <div class="dialog-actions">
+          <button class="button secondary" type="button" data-close-dialog="">Close</button>
+          <button class="button primary" type="button" data-register-from-info="">Begin registration <span aria-hidden="true">→</span></button>
+        </div>
+      </section>
+
+      <form id="registration-form" class="registration-form" novalidate="" hidden="">
+        <div class="form-shell">
+          <aside class="form-rail" aria-label="Registration chapter">
+            <div class="rail-top"><span class="rail-chapter">Registration journal</span><b data-rail-step="">01 / Choose</b></div>
+            <p class="rail-glyph" data-rail-glyph="" lang="ar" dir="rtl">ابدأ</p>
+            <div class="rail-course"><small>Your chosen path</small><strong data-rail-course="">Choose a course</strong></div>
+            <p class="rail-copy" data-rail-copy="">Choose the path that feels closest. QAJ can confirm placement after reviewing the intake.</p>
+            <div class="rail-note"><span>Private by design</span><p>This review version tests the experience safely and does not send your answers.</p></div>
+          </aside>
+
+          <div class="form-main">
+            <nav class="form-progress" aria-label="Registration progress">
+              <ol>
+                <li class="active" data-progress="0"><span>1</span><b>Course</b></li>
+                <li data-progress="1"><span>2</span><b>Learner</b></li>
+                <li data-progress="2"><span>3</span><b>Placement</b></li>
+                <li data-progress="3"><span>4</span><b>Confirm</b></li>
+              </ol>
+            </nav>
+
+            <div class="form-status" data-form-status="" role="alert" hidden=""></div>
+
+            <section class="form-step active" data-step="0" aria-labelledby="course-step-title">
+              <header class="step-head"><p class="eyebrow"><span>Step 1</span> Find the right level</p><h2 id="course-step-title" data-course-step-title="">Choose your course</h2><p data-course-step-copy="">Select the option that best fits the learner now. It does not need to be perfect—QAJ can confirm placement.</p></header>
+              <fieldset class="course-fieldset"><legend class="sr-only">Choose a QAJ course</legend><div class="course-options" data-course-options=""></div></fieldset>
+              <div class="step-actions first"><button class="button secondary" type="button" data-close-dialog="">Cancel</button><button class="button primary" type="button" data-next="">Continue <span aria-hidden="true">→</span></button></div>
+            </section>
+
+            <section class="form-step" data-step="1" aria-labelledby="details-title" hidden="">
+              <header class="step-head"><p class="eyebrow"><span>Step 2</span> Meet the learner</p><h2 id="details-title">Tell us who is beginning.</h2><p>Fields marked <b>*</b> are required. This helps QAJ identify and contact the learner correctly.</p></header>
+
+              <div class="form-section coral-edge"><span class="section-number">A</span><h3>Personal details</h3><p class="section-intro">The learner’s details—not the payer’s details.</p><div class="field-grid two">
+                <label class="field"><span>Name in Full *</span><input name="full_name" type="text" autocomplete="name" placeholder="As it should appear in QAJ records" required=""></label>
+                <label class="field"><span>Date of Birth *</span><input name="dob" type="date" required=""><small>QAJ currently accepts learners from age 4.</small></label>
+                <label class="field wide"><span>Resident Address *</span><textarea name="address" autocomplete="street-address" placeholder="House number, street, city and country" required=""></textarea></label>
+                <label class="field"><span>Country of Birth *</span><select name="country_birth" required="" data-country=""><option value="">Select country</option><option value="Sri Lanka">Sri Lanka</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Antigua and Barbuda">Antigua and Barbuda</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cabo Verde">Cabo Verde</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option><option value="Congo, Republic of the">Congo, Republic of the</option><option value="Costa Rica">Costa Rica</option><option value="Côte d’Ivoire">Côte d’Ivoire</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czechia">Czechia</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Eswatini">Eswatini</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Micronesia">Micronesia</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="North Macedonia">North Macedonia</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Sao Tome and Principe">Sao Tome and Principe</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="South Sudan">South Sudan</option><option value="Spain">Spain</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor-Leste">Timor-Leste</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Türkiye">Türkiye</option><option value="Turkmenistan">Turkmenistan</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option><option value="Other">Other</option></select></label>
+                <label class="field"><span>Country of Residency *</span><select name="country_residency" required="" data-country=""><option value="">Select country</option><option value="Sri Lanka">Sri Lanka</option><option value="Afghanistan">Afghanistan</option><option value="Albania">Albania</option><option value="Algeria">Algeria</option><option value="Andorra">Andorra</option><option value="Angola">Angola</option><option value="Antigua and Barbuda">Antigua and Barbuda</option><option value="Argentina">Argentina</option><option value="Armenia">Armenia</option><option value="Australia">Australia</option><option value="Austria">Austria</option><option value="Azerbaijan">Azerbaijan</option><option value="Bahamas">Bahamas</option><option value="Bahrain">Bahrain</option><option value="Bangladesh">Bangladesh</option><option value="Barbados">Barbados</option><option value="Belarus">Belarus</option><option value="Belgium">Belgium</option><option value="Belize">Belize</option><option value="Benin">Benin</option><option value="Bhutan">Bhutan</option><option value="Bolivia">Bolivia</option><option value="Bosnia and Herzegovina">Bosnia and Herzegovina</option><option value="Botswana">Botswana</option><option value="Brazil">Brazil</option><option value="Brunei">Brunei</option><option value="Bulgaria">Bulgaria</option><option value="Burkina Faso">Burkina Faso</option><option value="Burundi">Burundi</option><option value="Cabo Verde">Cabo Verde</option><option value="Cambodia">Cambodia</option><option value="Cameroon">Cameroon</option><option value="Canada">Canada</option><option value="Central African Republic">Central African Republic</option><option value="Chad">Chad</option><option value="Chile">Chile</option><option value="China">China</option><option value="Colombia">Colombia</option><option value="Comoros">Comoros</option><option value="Congo, Democratic Republic of the">Congo, Democratic Republic of the</option><option value="Congo, Republic of the">Congo, Republic of the</option><option value="Costa Rica">Costa Rica</option><option value="Côte d’Ivoire">Côte d’Ivoire</option><option value="Croatia">Croatia</option><option value="Cuba">Cuba</option><option value="Cyprus">Cyprus</option><option value="Czechia">Czechia</option><option value="Denmark">Denmark</option><option value="Djibouti">Djibouti</option><option value="Dominica">Dominica</option><option value="Dominican Republic">Dominican Republic</option><option value="Ecuador">Ecuador</option><option value="Egypt">Egypt</option><option value="El Salvador">El Salvador</option><option value="Equatorial Guinea">Equatorial Guinea</option><option value="Eritrea">Eritrea</option><option value="Estonia">Estonia</option><option value="Eswatini">Eswatini</option><option value="Ethiopia">Ethiopia</option><option value="Fiji">Fiji</option><option value="Finland">Finland</option><option value="France">France</option><option value="Gabon">Gabon</option><option value="Gambia">Gambia</option><option value="Georgia">Georgia</option><option value="Germany">Germany</option><option value="Ghana">Ghana</option><option value="Greece">Greece</option><option value="Grenada">Grenada</option><option value="Guatemala">Guatemala</option><option value="Guinea">Guinea</option><option value="Guinea-Bissau">Guinea-Bissau</option><option value="Guyana">Guyana</option><option value="Haiti">Haiti</option><option value="Honduras">Honduras</option><option value="Hungary">Hungary</option><option value="Iceland">Iceland</option><option value="India">India</option><option value="Indonesia">Indonesia</option><option value="Iran">Iran</option><option value="Iraq">Iraq</option><option value="Ireland">Ireland</option><option value="Israel">Israel</option><option value="Italy">Italy</option><option value="Jamaica">Jamaica</option><option value="Japan">Japan</option><option value="Jordan">Jordan</option><option value="Kazakhstan">Kazakhstan</option><option value="Kenya">Kenya</option><option value="Kiribati">Kiribati</option><option value="Kuwait">Kuwait</option><option value="Kyrgyzstan">Kyrgyzstan</option><option value="Laos">Laos</option><option value="Latvia">Latvia</option><option value="Lebanon">Lebanon</option><option value="Lesotho">Lesotho</option><option value="Liberia">Liberia</option><option value="Libya">Libya</option><option value="Liechtenstein">Liechtenstein</option><option value="Lithuania">Lithuania</option><option value="Luxembourg">Luxembourg</option><option value="Madagascar">Madagascar</option><option value="Malawi">Malawi</option><option value="Malaysia">Malaysia</option><option value="Maldives">Maldives</option><option value="Mali">Mali</option><option value="Malta">Malta</option><option value="Marshall Islands">Marshall Islands</option><option value="Mauritania">Mauritania</option><option value="Mauritius">Mauritius</option><option value="Mexico">Mexico</option><option value="Micronesia">Micronesia</option><option value="Moldova">Moldova</option><option value="Monaco">Monaco</option><option value="Mongolia">Mongolia</option><option value="Montenegro">Montenegro</option><option value="Morocco">Morocco</option><option value="Mozambique">Mozambique</option><option value="Myanmar">Myanmar</option><option value="Namibia">Namibia</option><option value="Nauru">Nauru</option><option value="Nepal">Nepal</option><option value="Netherlands">Netherlands</option><option value="New Zealand">New Zealand</option><option value="Nicaragua">Nicaragua</option><option value="Niger">Niger</option><option value="Nigeria">Nigeria</option><option value="North Korea">North Korea</option><option value="North Macedonia">North Macedonia</option><option value="Norway">Norway</option><option value="Oman">Oman</option><option value="Pakistan">Pakistan</option><option value="Palau">Palau</option><option value="Palestine">Palestine</option><option value="Panama">Panama</option><option value="Papua New Guinea">Papua New Guinea</option><option value="Paraguay">Paraguay</option><option value="Peru">Peru</option><option value="Philippines">Philippines</option><option value="Poland">Poland</option><option value="Portugal">Portugal</option><option value="Qatar">Qatar</option><option value="Romania">Romania</option><option value="Russia">Russia</option><option value="Rwanda">Rwanda</option><option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option><option value="Saint Lucia">Saint Lucia</option><option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option><option value="Samoa">Samoa</option><option value="San Marino">San Marino</option><option value="Sao Tome and Principe">Sao Tome and Principe</option><option value="Saudi Arabia">Saudi Arabia</option><option value="Senegal">Senegal</option><option value="Serbia">Serbia</option><option value="Seychelles">Seychelles</option><option value="Sierra Leone">Sierra Leone</option><option value="Singapore">Singapore</option><option value="Slovakia">Slovakia</option><option value="Slovenia">Slovenia</option><option value="Solomon Islands">Solomon Islands</option><option value="Somalia">Somalia</option><option value="South Africa">South Africa</option><option value="South Korea">South Korea</option><option value="South Sudan">South Sudan</option><option value="Spain">Spain</option><option value="Sudan">Sudan</option><option value="Suriname">Suriname</option><option value="Sweden">Sweden</option><option value="Switzerland">Switzerland</option><option value="Syria">Syria</option><option value="Taiwan">Taiwan</option><option value="Tajikistan">Tajikistan</option><option value="Tanzania">Tanzania</option><option value="Thailand">Thailand</option><option value="Timor-Leste">Timor-Leste</option><option value="Togo">Togo</option><option value="Tonga">Tonga</option><option value="Trinidad and Tobago">Trinidad and Tobago</option><option value="Tunisia">Tunisia</option><option value="Türkiye">Türkiye</option><option value="Turkmenistan">Turkmenistan</option><option value="Tuvalu">Tuvalu</option><option value="Uganda">Uganda</option><option value="Ukraine">Ukraine</option><option value="United Arab Emirates">United Arab Emirates</option><option value="United Kingdom">United Kingdom</option><option value="United States">United States</option><option value="Uruguay">Uruguay</option><option value="Uzbekistan">Uzbekistan</option><option value="Vanuatu">Vanuatu</option><option value="Vatican City">Vatican City</option><option value="Venezuela">Venezuela</option><option value="Vietnam">Vietnam</option><option value="Yemen">Yemen</option><option value="Zambia">Zambia</option><option value="Zimbabwe">Zimbabwe</option><option value="Other">Other</option></select></label>
+              </div></div>
+
+              <div class="form-section teal-edge"><span class="section-number">B</span><h3>Contact details</h3><p class="section-intro">Where QAJ can send class and placement updates.</p><div class="field-grid two">
+                <label class="field"><span>Phone Number *</span><input name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Include country code, e.g. +94" required=""></label>
+                <label class="field"><span>WhatsApp Number *</span><input name="whatsapp" type="tel" inputmode="tel" placeholder="Include country code" required=""><button class="copy-phone" type="button" data-copy-phone="">Same as phone</button></label>
+                <label class="field"><span>Email Address *</span><input name="email" type="email" autocomplete="email" placeholder="name@email.com" required=""></label>
+                <label class="field"><span>Emergency Contact Number *</span><input name="emergency_contact" type="tel" inputmode="tel" placeholder="A parent, guardian or trusted contact" required=""></label>
+                <label class="field wide"><span>Instagram ID <i>optional</i></span><input name="instagram" type="text" placeholder="@username"></label>
+              </div></div>
+
+              <div class="form-section saffron-edge"><span class="section-number">C</span><h3>Registration context</h3><p class="section-intro">Two quick details that help QAJ place this registration.</p>
+                <fieldset class="inline-fieldset"><legend>Who are you registering for? *</legend><div class="choice-row"><label><input type="radio" name="registration_type" value="self" required=""><span>Myself</span></label><label><input type="radio" name="registration_type" value="child"><span>My child</span></label><label><input type="radio" name="registration_type" value="other"><span>Someone else</span></label></div></fieldset>
+                <label class="field conditional" data-show-field="registration_type" data-show-value="other" hidden=""><span>Relationship to the learner *</span><input name="relationship" type="text" placeholder="e.g. sister, aunt or guardian" data-required="true" disabled=""></label>
+                <label class="field"><span>How did you hear about QAJ? *</span><select name="referral_source" required=""><option value="">Select one</option><option value="friend_family">Friend or family</option><option value="instagram">Instagram</option><option value="facebook">Facebook</option><option value="workshop">QAJ workshop or event</option><option value="website">Google or website</option><option value="existing_family">Already part of QAJ</option><option value="other">Other</option></select></label>
+                <label class="field conditional" data-show-field="referral_source" data-show-value="other" hidden=""><span>Please tell us how *</span><input name="referral_other" type="text" placeholder="Type here" data-required="true" disabled=""></label>
+              </div>
+
+              <div class="step-actions"><button class="button secondary" type="button" data-back="">← Back</button><button class="button primary" type="button" data-next="">Continue <span aria-hidden="true">→</span></button></div>
+            </section>
+
+            <section class="form-step" data-step="2" aria-labelledby="course-questions-title" hidden="">
+              <header class="step-head"><p class="eyebrow"><span>Step 3</span> Placement and rhythm</p><h2 id="course-questions-title">Help the teacher meet them well.</h2><p>These questions change with the chosen course. They cover only placement, learning support and suitable timings.</p></header>
+              <div class="course-question-host" data-course-questions=""></div>
+              <div class="step-actions"><button class="button secondary" type="button" data-back="">← Back</button><button class="button primary" type="button" data-next="">Continue <span aria-hidden="true">→</span></button></div>
+            </section>
+
+            <section class="form-step" data-step="3" aria-labelledby="payment-title" hidden="">
+              <header class="step-head"><p class="eyebrow"><span>Step 4</span> Payment and confirmation</p><h2 id="payment-title">Keep the receipt ready.</h2><p>The receipt is essential for QAJ to match the payment to this learner’s registration.</p></header>
+              <div class="summary-card" data-summary=""></div>
+              <div class="payment-card">
+                <div><small>Pay by bank transfer</small><strong>QA Journal Pvt Ltd</strong><span>Transfer first, then upload the payment slip.</span></div>
+                <div class="payment-account"><small>Account number</small><strong>001 0597207 002</strong><span>Amana Bank · Dehiwala Branch</span></div>
+                <dl>
+                  <div><dt>Bank</dt><dd>Amana Bank</dd></div>
+                  <div><dt>Branch</dt><dd>Dehiwala</dd></div>
+                  <div><dt>Account name</dt><dd>QA Journal Pvt Ltd</dd></div>
+                  <div><dt>SWIFT</dt><dd>AMNALKLX</dd></div>
+                  <div><dt>Bank code</dt><dd>7463</dd></div>
+                  <div><dt>Branch code</dt><dd>016</dd></div>
+                  <div class="wide"><dt>Branch address</dt><dd>28, Galle Road, Dehiwala</dd></div>
+                  <div><dt>Bank contact</dt><dd>011-7756756</dd></div>
+                </dl>
+              </div>
+              <label class="upload-card"><input name="payment_receipt" type="file" accept="image/*,application/pdf" required=""><span class="upload-icon" aria-hidden="true">↑</span><span><b>Required to complete</b><strong>Payment Upload Slip *</strong><small data-file-name="">Choose a clear image or PDF · maximum 6 MB</small></span></label>
+              <div class="confirmations"><label><input type="checkbox" name="data_correct" required=""><span>I confirm that all information provided above is true and correct. *</span></label><label><input type="checkbox" name="first_registration"><span>This is my first QAJ registration <small>(leave unticked for an additional registration).</small></span></label></div>
+              <div class="preview-note"><strong>Secure submission</strong><span>Your information and files will be sent securely to QAJ when you complete registration.</span></div>
+              <div class="step-actions"><button class="button secondary" type="button" data-back="">← Back</button><button class="button primary" type="submit">Submit registration <span aria-hidden="true">↗</span></button></div>
+            </section>
+          </div>
+        </div>
+      </form>
+
+      <section class="success" data-success="" hidden="" aria-live="polite"><span class="success-mark" aria-hidden="true">✓</span><p class="eyebrow">Registration received</p><h2>Jazakillahu khairan. Your registration has been sent to QAJ.</h2><p class="dua" lang="ar" dir="rtl">رَبِّ زِدْنِي عِلْمًا</p><span>Rabbi zidni ‘ilma</span><p>QAJ has received the registration and will review the details.</p><div class="success-actions"><button class="button secondary" type="button" data-start-over="">Try another course</button><button class="button primary" type="button" data-close-dialog="">Done</button></div></section>
+    </div>
+  </dialog>
+
+
+</body></html>

@@ -1,51 +1,67 @@
-# CRITICAL — LIVE SUBMISSION CONTRACT (25 Sep 2026)
+# CRITICAL — LIVE SUBMISSION CONTRACT
 
-The production intake form is now LIVE-WRITE, not safe-preview-only.
+## Current locked sources — 25 Sep 2026
 
-Production domain:
+Ashrifa approved visual/content source:
+- `intake-editor/PREVIEW.html`
+- restored from `QAJ_FINAL_FOR_SAAD.zip`
+- source note states: FINAL VERSION APPROVED BY ASHRIFA
+- last Ashrifa local edit: `0b3ed0a Prevent suggested badge overlap`
+
+Production derivative:
+- `intake-editor/LIVE.html`
+- same Ashrifa-approved UI/content
+- only submission plumbing and submission-state copy differ from PREVIEW
+
+## Production
+
+Public domain:
 https://intake.quranarabicjournal.com/
 
-Submission endpoint:
-https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live
+Vercel project:
+`qaj-registration-brand-preview`
+
+Current rendering architecture:
+- the Vercel production page is a small shell
+- it fetches the self-contained HTML from the Supabase Edge Function
+- it writes that HTML into the same document
+- do NOT use an iframe
+- do NOT restore the old cross-deployment CSS/JS asset setup
+
+Live Edge Function:
+`qaj-intake-live`
+
+Current Edge Function version:
+`3`
 
 Database target:
-public.qaj_course_registrations
+`public.qaj_course_registrations`
 
-Receipt/audio bucket:
-qaj-registration-files
+Storage bucket:
+`qaj-registration-files`
 
-Production hotfix deployment:
-dpl_9VMEUYf7z7v2w6U4w2kRXpNcua4r
+Production source tag:
+`intake_2026_web`
 
-Protected pre-hotfix rollback:
-dpl_C7imT9uckzPcTqfXFRzQpTTn154y
+New submissions must start with:
+`intake_status = pending`
 
-IMPORTANT:
-- Ashrifa's PREVIEW.html may remain non-writing for safe visual editing.
-- Any future production publish MUST preserve the qaj-intake-live submission integration.
-- Never publish the old "safe preview" submit handler back to production.
-- Do not show a success message unless the server returns ok:true.
-- If submission fails, keep the filled form visible and show an error.
-- Payment receipt is required and must upload before the user sees final success.
-- Production submissions must land in qaj_course_registrations with source=intake_2026_web and intake_status=pending.
+## Non-negotiable publishing rules
 
+1. Never publish the old safe-preview submit handler to production.
+2. Never rebuild production from the pre-Ashrifa Vercel baseline.
+3. Future visual/content edits begin from `intake-editor/PREVIEW.html`.
+4. When publishing, carry those approved edits into `intake-editor/LIVE.html` while preserving the real submission integration.
+5. Show success only after the server returns `ok: true`.
+6. On failure, keep the completed form visible and show an error.
+7. Payment receipt remains required.
+8. Preserve receipt/audio upload to `qaj-registration-files`.
+9. Preserve database writes to `qaj_course_registrations`.
+10. Before every production publish, verify mobile + desktop, all four programme families, registration flow, conditional questions, final payment step, and live submission plumbing.
 
-## Current production rendering architecture
+## Recovery
 
-The live Vercel page is now intentionally a tiny full-screen wrapper that loads the self-contained Supabase Edge Function page:
-https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live
+Pre-Ashrifa baseline deployment:
+`dpl_C7imT9uckzPcTqfXFRzQpTTn154y`
 
-Reason: the prior Vercel asset references broke public CSS/JS loading on mobile. Do not reintroduce cross-deployment CSS/JS asset links.
-
-Any future production publish must either:
-1. keep this wrapper architecture, or
-2. deploy a fully self-contained production bundle whose CSS/JS are guaranteed to load from the same production deployment.
-
-
-## 25 Sep emergency rendering fix
-
-Do NOT iframe the Supabase HTML response. Some mobile browsers displayed it as source text.
-
-Current production Vercel page fetches the HTML response with JavaScript and writes it into the same document. This preserves the intake.quranarabicjournal.com URL while rendering the self-contained form normally.
-
-The GET response of qaj-intake-live must keep CORS enabled for https://intake.quranarabicjournal.com.
+This is rollback/reference only. It is NOT the current approved design source.

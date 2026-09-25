@@ -15,7 +15,7 @@ Receipt/audio bucket:
 qaj-registration-files
 
 Production hotfix deployment:
-dpl_8fFU7t5h1QGMUj2t1MV6e9GCzWtT
+dpl_9VMEUYf7z7v2w6U4w2kRXpNcua4r
 
 Protected pre-hotfix rollback:
 dpl_C7imT9uckzPcTqfXFRzQpTTn154y
@@ -40,3 +40,12 @@ Reason: the prior Vercel asset references broke public CSS/JS loading on mobile.
 Any future production publish must either:
 1. keep this wrapper architecture, or
 2. deploy a fully self-contained production bundle whose CSS/JS are guaranteed to load from the same production deployment.
+
+
+## 25 Sep emergency rendering fix
+
+Do NOT iframe the Supabase HTML response. Some mobile browsers displayed it as source text.
+
+Current production Vercel page fetches the HTML response with JavaScript and writes it into the same document. This preserves the intake.quranarabicjournal.com URL while rendering the self-contained form normally.
+
+The GET response of qaj-intake-live must keep CORS enabled for https://intake.quranarabicjournal.com.

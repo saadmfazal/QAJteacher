@@ -65,3 +65,23 @@ Pre-Ashrifa baseline deployment:
 `dpl_C7imT9uckzPcTqfXFRzQpTTn154y`
 
 This is rollback/reference only. It is NOT the current approved design source.
+
+
+## Submission transport — locked 28 Sep 2026
+
+The browser must NOT use fetch/XHR to submit the registration.
+
+Reason:
+- mobile and in-app browsers intermittently produced "Failed to fetch" before the request reached Supabase
+- a relative Vercel submission path also returned 404
+
+Current required transport:
+- native HTML multipart POST
+- target a hidden iframe named `qaj-intake-submit-frame`
+- POST directly to:
+  `https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live?transport=iframe`
+- Edge Function responds with an HTML postMessage bridge
+- parent page validates the Supabase origin and only shows success after receiving `ok:true`
+- preserve the 180-second upload timeout for slower mobile connections
+
+Do not replace this with fetch without a separately tested same-origin submission architecture.

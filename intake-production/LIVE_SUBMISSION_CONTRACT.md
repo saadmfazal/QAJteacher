@@ -13,6 +13,15 @@ Prepared: 29 September 2026
 - Source tag: `intake_2026_web`
 - Initial intake status: `pending`
 
+## Isolated staging deployment
+
+- Public staging URL: `https://qaj-intake-v9-vercel-drop.vercel.app/`
+- Vercel project: `qaj-intake-v9-vercel-drop`
+- Vercel project ID: `prj_l6eJ7lV8zez7TYwormlb5gWPHqJ1`
+- Vercel deployment ID: `dpl_2tUuSbKFnscrBi3atZFgMFq7Xewg`
+- Supabase Edge Function: `qaj-intake-submit-v9`, version 2
+- The existing public domain remains on v8 until the physical-device release gate passes.
+
 ## Required behavior
 
 1. A payment receipt is required.

@@ -98,3 +98,30 @@ All tested production boundaries passed:
 UI interaction -> client submit -> Edge Function -> database -> Storage -> response -> success state.
 
 This report covers automated production/browser-emulation verification. It is not a substitute for every physical-device/browser combination, but it specifically includes the iPhone Instagram in-app-browser profile that motivated the mobile repair.
+
+
+# Addendum — v8 root transport fix
+
+A real failed Android Chrome session was identified in production logs at about 08:31 UTC:
+- the form GET requests reached qaj-intake-live v7
+- there was no subsequent POST or OPTIONS request from that device
+- therefore the failure happened in the browser before Supabase received the upload
+
+v8 replaced cross-origin fetch submission with native HTML multipart form submission.
+
+Live v8 smoke test results:
+- native valid POST: HTTP 303 to official QAJ domain with qaj_submit=ok
+- retry with the same UUID: HTTP 303 qaj_submit=ok and one row only
+- no-JavaScript/page fallback: HTTP 200 text/html containing "Registration received"
+- missing receipt through native transport: HTTP 303 qaj_submit=error
+- valid rows contained payment_receipt_path
+- invalid missing-receipt ID produced no row
+- all synthetic rows and Storage objects were removed after the test
+- remaining synthetic rows: 0
+- remaining synthetic Storage objects: 0
+- temporary v8 smoke endpoint disabled after verification
+
+Success redirect target was separately checked and returns HTTP 200 from:
+https://intake.quranarabicjournal.com/?qaj_submit=ok&id=...
+
+This v8 transport is based on ordinary browser form submission and HTTP redirect behavior, not CORS-dependent fetch or cross-window postMessage.

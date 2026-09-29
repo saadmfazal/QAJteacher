@@ -57,3 +57,19 @@ For each device, confirm receipt selection, visible optimization/upload progress
 - A production-origin multipart registration created exactly one database row and one receipt object.
 - The cutover verification row and receipt were removed afterward.
 - The 12 requested records named `Trial 1` through `Trial 12` remain available for review.
+
+## Android connection-interruption recovery
+
+- A physical Android submission reached the confirmation step but reported that the connection was interrupted.
+- Supabase logs contained no matching request, while Vercel reported no runtime error. This isolated the failure to the browser-to-Vercel external rewrite leg, before the request reached Supabase.
+- The browser now sends multipart uploads directly to `qaj-intake-submit-v9` over the function's strict allowed-origin CORS path.
+- The XHR timeout was increased from 120 seconds to 300 seconds and the client reports `v9-direct-mobile`.
+- `production.js?v=20260929-v2` provides an explicit cache break for phones that cached the first v9 script.
+- Corrected Vercel project: `qaj-intake-v9-mobile-fix`
+- Corrected deployment: `dpl_7qP8RFziU19h9JhfzQTADSngsFpY`
+- A production-origin Android-style request with both receipt and WAV audio returned HTTP 200 in about 4.1 seconds.
+- A corrected-preview-origin Android-style request with both receipt and WAV audio returned HTTP 200 in about 3.0 seconds.
+- Both recovery-test registrations and all four associated storage objects were removed afterward.
+- The temporary cleanup function was returned to its disabled HTTP 410 state.
+- The public domain was moved to the corrected project and verified to serve the v2 script and direct Supabase endpoint.
+- A final retry on Saad's physical Android device remains required; an iPhone/Safari test also remains outstanding.

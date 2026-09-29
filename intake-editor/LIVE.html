@@ -1101,7 +1101,8 @@ document.addEventListener("click", event => {
   }
 });
 
-const SUBMIT_ENDPOINT = "https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live";
+const SUBMIT_ENDPOINT = "https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live?transport=native";
+const SUBMIT_FRAME_NAME = "qaj-intake-submit-frame";
 
 function createSubmissionId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -1125,7 +1126,18 @@ function ensureSubmissionId() {
   return input.value;
 }
 
-form.addEventListener("submit", async event => {
+function makeSubmitFrame() {
+  document.querySelector('iframe[name="' + SUBMIT_FRAME_NAME + '"]')?.remove();
+  const frame = document.createElement("iframe");
+  frame.name = SUBMIT_FRAME_NAME;
+  frame.hidden = true;
+  frame.setAttribute("aria-hidden", "true");
+  frame.setAttribute("tabindex", "-1");
+  document.body.appendChild(frame);
+  return frame;
+}
+
+form.addEventListener("submit", event => {
   event.preventDefault();
   if (!validateCurrentStep()) return;
 
@@ -1133,62 +1145,109 @@ form.addEventListener("submit", async event => {
   if (submitButton?.disabled) return;
 
   ensureSubmissionId();
-
+  const frame = makeSubmitFrame();
   const originalText = submitButton?.innerHTML || "";
-  if (submitButton) {
-    submitButton.disabled = true;
-    submitButton.textContent = "Uploading receipt…";
+  const original = {
+    action: form.getAttribute("action"),
+    method: form.getAttribute("method"),
+    enctype: form.getAttribute("enctype"),
+    target: form.getAttribute("target")
+  };
+
+  let settled = false;
+  let slowTimer = null;
+  let verySlowTimer = null;
+  let timeoutTimer = null;
+
+  function restoreAttribute(name, value) {
+    if (value === null) form.removeAttribute(name);
+    else form.setAttribute(name, value);
   }
 
-  form.setAttribute("aria-busy", "true");
-  hideStatus();
-
-  const controller = new AbortController();
-  const slowTimer = window.setTimeout(() => {
-    showStatus("Still uploading securely. Please keep this page open — slower mobile connections can take a little longer.");
-  }, 8000);
-  const verySlowTimer = window.setTimeout(() => {
-    showStatus("This is taking longer than usual. Please keep this page open and do not tap Submit again while it is still working.");
-  }, 25000);
-  const timeoutTimer = window.setTimeout(() => controller.abort(), 90000);
-
-  try {
-    const response = await fetch(SUBMIT_ENDPOINT, {
-      method: "POST",
-      body: new FormData(form),
-      signal: controller.signal,
-      cache: "no-store",
-      credentials: "omit"
-    });
-
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok || !result.ok) {
-      throw new Error(result.error || "We could not complete the registration.");
-    }
-
-    form.hidden = true;
-    infoPanel.hidden = true;
-    successPanel.hidden = false;
-    setDialogHeading("Registration received", "Submitted successfully");
-    successPanel.scrollIntoView({behavior: "smooth", block: "start"});
-  } catch (error) {
-    console.error("QAJ intake submission failed", error);
-    const timedOut = error?.name === "AbortError";
-    const message = timedOut
-      ? "We could not confirm the upload within 90 seconds. Your form is still here. Tap Submit again — retrying is safe and will not create a duplicate registration."
-      : (error?.message && error.message !== "Failed to fetch"
-        ? error.message
-        : "We could not confirm the upload. Your form is still here. Check your connection and tap Submit again — retrying is safe.");
-    showStatus(message);
-  } finally {
-    window.clearTimeout(slowTimer);
-    window.clearTimeout(verySlowTimer);
-    window.clearTimeout(timeoutTimer);
+  function cleanup() {
+    if (slowTimer) clearTimeout(slowTimer);
+    if (verySlowTimer) clearTimeout(verySlowTimer);
+    if (timeoutTimer) clearTimeout(timeoutTimer);
+    frame.removeEventListener("load", onFrameLoad);
+    restoreAttribute("action", original.action);
+    restoreAttribute("method", original.method);
+    restoreAttribute("enctype", original.enctype);
+    restoreAttribute("target", original.target);
     form.removeAttribute("aria-busy");
     if (submitButton) {
       submitButton.disabled = false;
       submitButton.innerHTML = originalText;
     }
+    window.setTimeout(() => frame.remove(), 0);
+  }
+
+  function fail(message) {
+    if (settled) return;
+    settled = true;
+    cleanup();
+    showStatus(message || "We could not confirm the upload. Your form is still here. Please try again — retrying is safe.");
+  }
+
+  function succeed() {
+    if (settled) return;
+    settled = true;
+    cleanup();
+    form.hidden = true;
+    infoPanel.hidden = true;
+    successPanel.hidden = false;
+    setDialogHeading("Registration received", "Submitted successfully");
+    successPanel.scrollIntoView({behavior: "smooth", block: "start"});
+  }
+
+  function onFrameLoad() {
+    if (settled) return;
+    try {
+      const resultUrl = new URL(frame.contentWindow.location.href);
+      if (resultUrl.origin !== location.origin) return;
+      const result = resultUrl.searchParams.get("qaj_submit");
+      if (!result) return;
+      if (result === "ok") {
+        succeed();
+      } else {
+        fail(resultUrl.searchParams.get("message") || "We could not complete the registration. Your form is still here. Please try again.");
+      }
+    } catch {
+      // Cross-origin while the browser is uploading to Supabase.
+      // The server redirects the frame back to this origin when finished.
+    }
+  }
+
+  frame.addEventListener("load", onFrameLoad);
+
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Uploading receipt…";
+  }
+  form.setAttribute("aria-busy", "true");
+  hideStatus();
+
+  form.setAttribute("action", SUBMIT_ENDPOINT);
+  form.setAttribute("method", "POST");
+  form.setAttribute("enctype", "multipart/form-data");
+  form.setAttribute("target", SUBMIT_FRAME_NAME);
+
+  slowTimer = window.setTimeout(() => {
+    showStatus("Still uploading securely. Please keep this page open — slower connections can take a little longer.");
+  }, 8000);
+
+  verySlowTimer = window.setTimeout(() => {
+    showStatus("This is taking longer than usual. Please keep this page open and do not tap Submit again while it is still working.");
+  }, 25000);
+
+  timeoutTimer = window.setTimeout(() => {
+    fail("We could not confirm the upload within 90 seconds. Your form is still here. Please try again — retrying is safe and will not create a duplicate registration.");
+  }, 90000);
+
+  try {
+    HTMLFormElement.prototype.submit.call(form);
+  } catch (error) {
+    console.error("QAJ native form submission failed", error);
+    fail("We could not start the upload. Your form is still here. Please try again.");
   }
 });
 
@@ -1374,7 +1433,7 @@ registerWebMcpTools();
         </div>
       </section>
 
-      <form id="registration-form" class="registration-form" novalidate="" hidden="">
+      <form id="registration-form" class="registration-form" novalidate="" hidden="" action="https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live?transport=page" method="POST" enctype="multipart/form-data">
         <div class="form-shell">
           <aside class="form-rail" aria-label="Registration chapter">
             <div class="rail-top"><span class="rail-chapter">Registration journal</span><b data-rail-step="">01 / Choose</b></div>

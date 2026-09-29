@@ -43,17 +43,20 @@ Prepared: 29 September 2026
 | Receipt PDF | 2 MB maximum | 2 MB maximum |
 | Test-me audio | 12 MB maximum | 12 MB maximum |
 
-## Production rollback
+## Production deployment and rollback
 
-Until v9 has passed real iPhone and Android submissions, the public domain must remain on the existing v8 implementation.
+The public domain was moved to v9 on 29 September 2026 after explicit approval.
 
 - Public domain: `https://intake.quranarabicjournal.com/`
-- Existing Vercel project: `qaj-registration-brand-preview`
-- Existing production deployment: `dpl_9VMEUYf7z7v2w6U4w2kRXpNcua4r`
-- Existing live Supabase function: `qaj-intake-live`, version 8
+- Active Vercel project: `qaj-intake-v9-vercel-drop`
+- Active deployment: `dpl_2tUuSbKFnscrBi3atZFgMFq7Xewg`
+- Active Supabase function: `qaj-intake-submit-v9`, version 2
+- Previous Vercel project: `qaj-registration-brand-preview`
+- Previous production deployment: `dpl_9VMEUYf7z7v2w6U4w2kRXpNcua4r`
+- Previous Supabase function: `qaj-intake-live`, version 8
 - Older pre-Ashrifa reference deployment: `dpl_C7imT9uckzPcTqfXFRzQpTTn154y`
 
-Rollback means restoring the existing production deployment/domain mapping and continuing to use `qaj-intake-live` v8. Do not delete v8 during rollout.
+Rollback means moving the production domain back to `qaj-registration-brand-preview` and continuing to use `qaj-intake-live` v8. Do not delete v8 until post-cutover device validation is complete.
 
 ## Security follow-up
 

@@ -32,7 +32,7 @@ Live Edge Function:
 `qaj-intake-live`
 
 Current Edge Function version:
-`3`
+`7`
 
 Database target:
 `public.qaj_course_registrations`
@@ -85,3 +85,23 @@ Current required transport:
 - preserve the 180-second upload timeout for slower mobile connections
 
 Do not replace this with fetch without a separately tested same-origin submission architecture.
+
+
+## 29 Sep 2026 — Mobile + submission reliability lock
+
+The production client now uses direct `fetch(FormData)` submission. Do not restore the hidden iframe / `postMessage` submit handshake; it could save successfully on the server while leaving mobile/in-app browsers stuck on "Sending registration…".
+
+Every new submission gets a client-generated UUID in `submission_id`. The Edge Function uses that UUID as the registration row ID. A retry with the same form therefore resolves to the same record instead of creating a duplicate.
+
+Receipt and optional audio uploads run in parallel. The payment receipt is still required before success is shown.
+
+Mobile interaction rules that must be preserved in LIVE:
+- no sticky action bars on screens <= 680px
+- no backdrop-filter on mobile action/progress bars
+- mobile tap targets remain at least 48px high
+- touch-action: manipulation on interactive controls
+- programme action buttons stack on very narrow screens
+- step buttons stack on <= 410px
+- mobile scrolling remains inside the form/course panel with momentum scrolling
+
+PREVIEW may stay safe/non-writing, but any future publish must merge PREVIEW content changes into LIVE without removing these reliability/mobile rules.

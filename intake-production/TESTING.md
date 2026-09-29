@@ -17,6 +17,19 @@ Test date: 29 September 2026
 - Cleanup verification returned zero remaining synthetic rows and zero remaining synthetic objects.
 - Temporary cleanup function was disabled after verification.
 
+## Isolated Vercel staging verification
+
+- Staging URL: `https://qaj-intake-v9-vercel-drop.vercel.app/`
+- Vercel project: `qaj-intake-v9-vercel-drop`
+- Deployment: `dpl_2tUuSbKFnscrBi3atZFgMFq7Xewg`
+- Same-origin API health request returned HTTP 200 with `qaj-intake-submit-v9`.
+- A browser-origin multipart submission passed through the Vercel rewrite and returned HTTP 200.
+- Repeating staging submission `1b8b3786-5f09-4275-b2ac-dbed0e97e71b` returned `duplicate_safe_retry: true`.
+- Supabase contained exactly one registration row and one receipt object before cleanup.
+- The synthetic staging row and receipt were removed; verification returned zero rows and zero objects.
+- The temporary cleanup function was returned to its disabled HTTP 410 state.
+- Desktop browser inspection found no horizontal overflow and all four `Register now` controls were 48 px tall.
+
 ## Synthetic registration IDs cleaned
 
 - `ae638f74-512e-486d-9d88-4532fd764728`
@@ -24,6 +37,7 @@ Test date: 29 September 2026
 - `84f0fbc5-d902-4d1e-b9eb-15ffac93ab14`
 - `2c5ccd27-165d-4966-9ce4-9e40d47ba64d`
 - `7eb7d6ab-4e1e-4a82-b7e4-abf008140354`
+- `1b8b3786-5f09-4275-b2ac-dbed0e97e71b`
 
 Rejected oversized-PDF ID: `14692cad-bd18-4e9c-a20b-274a3ff47caf`.
 

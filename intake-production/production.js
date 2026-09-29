@@ -2,7 +2,7 @@
   "use strict";
 
   const SESSION_KEY = "qaj_intake_submission_id";
-  const API_URL = "/api/intake/submit";
+  const API_URL = "https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-submit-v9";
   const KB = 1024;
   const MB = 1024 * KB;
   const IMAGE_KEEP_LIMIT = 900 * KB;
@@ -305,7 +305,7 @@
       const xhr = new XMLHttpRequest();
       xhr.open("POST", API_URL, true);
       xhr.responseType = "json";
-      xhr.timeout = 120000;
+      xhr.timeout = 300000;
       xhr.setRequestHeader("Accept", "application/json");
 
       xhr.upload.onprogress = event => {
@@ -366,7 +366,7 @@
       data.set("receipt_upload_bytes", String(receiptState.file.size));
       data.set("receipt_optimised", String(receiptState.optimised));
       data.set("client_browser_family", browserFamily());
-      data.set("client_api_version", "v9-same-origin");
+      data.set("client_api_version", "v9-direct-mobile");
       await submitWithProgress(form, submitButton, data);
       setReceiptUi(form, "Registration received", "QAJ confirmed the registration and receipt.", "ready");
       clearStoredId();

@@ -43,9 +43,17 @@ Rejected oversized-PDF ID: `14692cad-bd18-4e9c-a20b-274a3ff47caf`.
 
 ## Release gate still required
 
-Before the public-domain cutover, complete one real registration on each of:
+The public-domain cutover was completed on 29 September 2026 after explicit approval. Complete post-cutover validation on each of:
 
 1. An iPhone/Safari device.
 2. An Android/Chrome device, preferably Saad's OnePlus 13.
 
 For each device, confirm receipt selection, visible optimization/upload progress, success only after the server response, one database row, one receipt object, and correct narrow-screen scrolling. Use synthetic details and remove the test records afterward.
+
+## Public-domain cutover verification
+
+- `https://intake.quranarabicjournal.com/` serves the same v9 artifact as the isolated staging URL.
+- Public-domain API health returned HTTP 200 and `qaj-intake-submit-v9`.
+- A production-origin multipart registration created exactly one database row and one receipt object.
+- The cutover verification row and receipt were removed afterward.
+- The 12 requested records named `Trial 1` through `Trial 12` remain available for review.

@@ -36,6 +36,7 @@ type FileKind = { ext: string; mime: string };
 function allowedOrigin(origin: string) {
   if (!origin) return true;
   if (origin === "https://intake.quranarabicjournal.com") return true;
+  if (origin === "https://qaj-intake-v9-vercel-drop.vercel.app") return true;
   return /^https:\/\/qaj-registration-brand-preview(?:-[a-z0-9-]+)?\.vercel\.app$/i.test(origin);
 }
 

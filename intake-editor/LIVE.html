@@ -415,6 +415,101 @@ img { display: block; max-width: 100%; }
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
 }
 
+
+/* QAJ mobile interaction hardening — 2026-09-29 */
+button,
+[role="button"],
+.choice-row label,
+.option-stack label,
+.check-grid label,
+.course-choice,
+.upload-card {
+  touch-action: manipulation;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .button:hover,
+  .programme-door:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .intake-dialog {
+    width: 100vw;
+    height: 100dvh;
+    max-height: 100dvh;
+    overflow: hidden;
+  }
+
+  .form-main,
+  .course-info {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
+
+  .form-progress {
+    position: relative;
+    top: auto;
+    z-index: 1;
+    background: var(--paper-soft);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .dialog-actions,
+  .step-actions {
+    position: static;
+    z-index: auto;
+    background: var(--paper-soft);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    isolation: isolate;
+  }
+
+  .button,
+  .door-actions button,
+  .audience-choices button,
+  .info-option button,
+  .dialog-close {
+    min-height: 48px;
+    pointer-events: auto;
+    touch-action: manipulation;
+  }
+
+  .form-step {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .door-actions {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 410px) {
+  .step-actions {
+    flex-direction: column;
+  }
+
+  .step-actions .button {
+    width: 100%;
+  }
+
+  .payment-card dl {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
   <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -1006,116 +1101,94 @@ document.addEventListener("click", event => {
   }
 });
 
-const SUBMIT_ORIGIN = "https://viajmvbwpmkiqxjtgshv.supabase.co";
-const SUBMIT_ENDPOINT = SUBMIT_ORIGIN + "/functions/v1/qaj-intake-live?transport=iframe";
-const SUBMIT_FRAME_NAME = "qaj-intake-submit-frame";
+const SUBMIT_ENDPOINT = "https://viajmvbwpmkiqxjtgshv.supabase.co/functions/v1/qaj-intake-live";
 
-function getSubmitFrame() {
-  let frame = document.querySelector('iframe[name="' + SUBMIT_FRAME_NAME + '"]');
-  if (!frame) {
-    frame = document.createElement("iframe");
-    frame.name = SUBMIT_FRAME_NAME;
-    frame.hidden = true;
-    frame.setAttribute("aria-hidden", "true");
-    frame.setAttribute("tabindex", "-1");
-    document.body.appendChild(frame);
-  }
-  return frame;
+function createSubmissionId() {
+  if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  const bytes = new Uint8Array(16);
+  globalThis.crypto?.getRandomValues?.(bytes);
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = [...bytes].map(value => value.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
 }
 
-form.addEventListener("submit", event => {
+function ensureSubmissionId() {
+  let input = form.querySelector('input[name="submission_id"]');
+  if (!input) {
+    input = document.createElement("input");
+    input.type = "hidden";
+    input.name = "submission_id";
+    form.appendChild(input);
+  }
+  if (!input.value) input.value = createSubmissionId();
+  return input.value;
+}
+
+form.addEventListener("submit", async event => {
   event.preventDefault();
   if (!validateCurrentStep()) return;
 
   const submitButton = event.submitter || form.querySelector('button[type="submit"]');
-  const originalText = submitButton?.innerHTML || "";
-  const frame = getSubmitFrame();
+  if (submitButton?.disabled) return;
 
+  ensureSubmissionId();
+
+  const originalText = submitButton?.innerHTML || "";
   if (submitButton) {
     submitButton.disabled = true;
-    submitButton.textContent = "Sending registration…";
+    submitButton.textContent = "Uploading receipt…";
   }
 
+  form.setAttribute("aria-busy", "true");
   hideStatus();
 
-  const original = {
-    action: form.getAttribute("action"),
-    method: form.getAttribute("method"),
-    enctype: form.getAttribute("enctype"),
-    target: form.getAttribute("target")
-  };
+  const controller = new AbortController();
+  const slowTimer = window.setTimeout(() => {
+    showStatus("Still uploading securely. Please keep this page open — slower mobile connections can take a little longer.");
+  }, 8000);
+  const verySlowTimer = window.setTimeout(() => {
+    showStatus("This is taking longer than usual. Please keep this page open and do not tap Submit again while it is still working.");
+  }, 25000);
+  const timeoutTimer = window.setTimeout(() => controller.abort(), 90000);
 
-  let settled = false;
-  let timer = null;
+  try {
+    const response = await fetch(SUBMIT_ENDPOINT, {
+      method: "POST",
+      body: new FormData(form),
+      signal: controller.signal,
+      cache: "no-store",
+      credentials: "omit"
+    });
 
-  function restoreAttribute(name, value) {
-    if (value === null) form.removeAttribute(name);
-    else form.setAttribute(name, value);
-  }
-
-  function cleanup() {
-    if (timer) window.clearTimeout(timer);
-    window.removeEventListener("message", onMessage);
-    restoreAttribute("action", original.action);
-    restoreAttribute("method", original.method);
-    restoreAttribute("enctype", original.enctype);
-    restoreAttribute("target", original.target);
-    if (submitButton) {
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalText;
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "We could not complete the registration.");
     }
-  }
 
-  function fail(message) {
-    if (settled) return;
-    settled = true;
-    cleanup();
-    showStatus(message || "We could not send the registration. Your form is still here. Please check your connection and try again.");
-  }
-
-  function succeed() {
-    if (settled) return;
-    settled = true;
-    cleanup();
     form.hidden = true;
     infoPanel.hidden = true;
     successPanel.hidden = false;
     setDialogHeading("Registration received", "Submitted successfully");
     successPanel.scrollIntoView({behavior: "smooth", block: "start"});
-  }
-
-  function onMessage(messageEvent) {
-    if (messageEvent.origin !== SUBMIT_ORIGIN) return;
-    if (messageEvent.source !== frame.contentWindow) return;
-
-    const result = messageEvent.data;
-    if (!result || result.source !== "qaj-intake-submit") return;
-
-    if (Number(result.status) >= 200 && Number(result.status) < 300 && result.ok) {
-      succeed();
-    } else {
-      fail(result.error || "Submission failed. Your form is still here.");
-    }
-  }
-
-  window.addEventListener("message", onMessage);
-
-  // Native form upload avoids fetch/CORS failures in mobile and in-app browsers.
-  form.setAttribute("action", SUBMIT_ENDPOINT);
-  form.setAttribute("method", "POST");
-  form.setAttribute("enctype", "multipart/form-data");
-  form.setAttribute("target", SUBMIT_FRAME_NAME);
-
-  // Give slower mobile uploads enough time before declaring transport failure.
-  timer = window.setTimeout(() => {
-    fail("The upload is taking too long. Your form is still here. Please check your connection and try again.");
-  }, 180000);
-
-  try {
-    HTMLFormElement.prototype.submit.call(form);
   } catch (error) {
-    console.error("QAJ intake native submission failed", error);
-    fail("We could not start the upload. Your form is still here. Please check your connection and try again.");
+    console.error("QAJ intake submission failed", error);
+    const timedOut = error?.name === "AbortError";
+    const message = timedOut
+      ? "We could not confirm the upload within 90 seconds. Your form is still here. Tap Submit again — retrying is safe and will not create a duplicate registration."
+      : (error?.message && error.message !== "Failed to fetch"
+        ? error.message
+        : "We could not confirm the upload. Your form is still here. Check your connection and tap Submit again — retrying is safe.");
+    showStatus(message);
+  } finally {
+    window.clearTimeout(slowTimer);
+    window.clearTimeout(verySlowTimer);
+    window.clearTimeout(timeoutTimer);
+    form.removeAttribute("aria-busy");
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+    }
   }
 });
 

@@ -32,7 +32,7 @@ Live Edge Function:
 `qaj-intake-live`
 
 Current Edge Function version:
-`7`
+`8`
 
 Database target:
 `public.qaj_course_registrations`
@@ -105,3 +105,28 @@ Mobile interaction rules that must be preserved in LIVE:
 - mobile scrolling remains inside the form/course panel with momentum scrolling
 
 PREVIEW may stay safe/non-writing, but any future publish must merge PREVIEW content changes into LIVE without removing these reliability/mobile rules.
+
+
+## 29 Sep 2026 — v8 universal browser transport
+
+Root cause of the Android failure:
+- the device loaded the form successfully from production
+- server logs showed no POST and no OPTIONS when Submit was pressed
+- therefore the browser-side cross-origin fetch upload was failing before the request reached Supabase
+
+Production must NOT use cross-origin fetch for the multipart registration upload.
+
+Current production transport:
+1. the visible form has a normal HTML action/method/enctype fallback
+2. JavaScript submits the form using native browser form navigation into a hidden iframe
+3. Supabase processes the registration and files
+4. the server responds with HTTP 303 back to https://intake.quranarabicjournal.com/?qaj_submit=...
+5. because the iframe returns to the same origin, the parent detects success via the iframe load/location — no CORS and no postMessage
+6. if JavaScript submission handling is unavailable, the static form action posts with transport=page and the server returns a standalone mobile-safe success/error page
+
+Do not restore:
+- cross-origin fetch(FormData) submission
+- postMessage-based submission confirmation
+- dependency on CORS for the actual multipart POST
+
+Keep submission_id idempotency. Retrying the same completed form must continue to resolve to the same row.

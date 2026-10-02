@@ -249,6 +249,20 @@
   }
 
   function validateForSubmit(form) {
+    const dobValue = form.elements.namedItem("dob")?.value || "";
+    const gender = form.elements.namedItem("gender")?.value || "";
+    if (gender === "male" && /^\d{4}-\d{2}-\d{2}$/.test(dobValue)) {
+      const birth = new Date(`${dobValue}T12:00:00`);
+      const today = new Date();
+      let age = today.getFullYear() - birth.getFullYear();
+      const beforeBirthday = today.getMonth() < birth.getMonth() || (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate());
+      if (beforeBirthday) age -= 1;
+      if (age > 12) {
+        document.querySelector("[data-eligibility-modal]")?.removeAttribute("hidden");
+        showFormError(form, "Male students above 12 must contact QAJ management to complete registration.", form.elements.namedItem("gender"));
+        return false;
+      }
+    }
     const payment = form.elements.namedItem("payment_receipt");
     const audio = form.elements.namedItem("test_me_audio");
     if (audio?.files?.[0]?.size > AUDIO_LIMIT) {

@@ -1,7 +1,7 @@
 import "jsr:@supabase/functions-js/edge-runtime.d.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.57.4";
 
-const API_VERSION = "qaj-intake-submit-v9";
+const API_VERSION = "qaj-intake-submit-v9-gender-rule-v1";
 const BUCKET = "qaj-registration-files";
 const MAX_IMAGE = 6 * 1024 * 1024;
 const MAX_PDF = 2 * 1024 * 1024;
@@ -23,7 +23,7 @@ const COURSE_MAP: Record<string, string> = {
 };
 
 const EXCLUDED_META = new Set([
-  "course_code", "full_name", "dob", "address", "phone", "whatsapp", "instagram",
+  "course_code", "full_name", "dob", "gender", "address", "phone", "whatsapp", "instagram",
   "emergency_contact", "country_birth", "country_residency", "email", "class_mode",
   "class_location", "available_days", "time_from_12h", "time_to_12h", "registration_type",
   "relationship", "child_notes", "course_meta", "payment_receipt", "test_me_audio",
@@ -101,6 +101,18 @@ function isAtLeastFour(dob: string) {
   const now = new Date();
   const cutoff = new Date(Date.UTC(now.getUTCFullYear() - 4, now.getUTCMonth(), now.getUTCDate(), 23, 59, 59));
   return birth <= cutoff;
+}
+
+function ageOnDate(dob: string, today = new Date()) {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(dob)) return null;
+  const [year, month, day] = dob.split("-").map(Number);
+  if (!year || !month || !day) return null;
+  const birth = new Date(Date.UTC(year, month - 1, day, 12));
+  if (Number.isNaN(birth.getTime()) || birth.getUTCFullYear() !== year || birth.getUTCMonth() !== month - 1 || birth.getUTCDate() !== day) return null;
+  let age = today.getUTCFullYear() - year;
+  const beforeBirthday = today.getUTCMonth() < month - 1 || (today.getUTCMonth() === month - 1 && today.getUTCDate() < day);
+  if (beforeBirthday) age -= 1;
+  return age;
 }
 
 function bytesStart(bytes: Uint8Array, values: number[]) {
@@ -217,6 +229,7 @@ Deno.serve(async (req: Request) => {
     const courseCode = COURSE_MAP[rawCourse];
     const fullName = text(fd, "full_name", 250);
     const dob = text(fd, "dob", 20);
+    const gender = text(fd, "gender", 20).toLowerCase();
     const address = text(fd, "address", 1500);
     const phone = text(fd, "phone", 80);
     const whatsapp = text(fd, "whatsapp", 80);
@@ -229,10 +242,15 @@ Deno.serve(async (req: Request) => {
     const dataCorrect = fd.has("data_correct");
 
     stage = "validate";
-    if (!courseCode || !fullName || !dob || !address || !phone || !whatsapp || !emergencyContact || !countryBirth || !countryResidency || !email || !registrationType || !dataCorrect) {
+    if (!courseCode || !fullName || !dob || !gender || !address || !phone || !whatsapp || !emergencyContact || !countryBirth || !countryResidency || !email || !registrationType || !dataCorrect) {
       return done(400, { ok: false, error: "Please complete all required fields and confirmations." });
     }
     if (!isAtLeastFour(dob)) return done(400, { ok: false, error: "The student must be at least 4 years old." });
+    if (!["female", "male"].includes(gender)) return done(400, { ok: false, error: "Please select a valid gender." });
+    const learnerAge = ageOnDate(dob);
+    if (gender === "male" && learnerAge !== null && learnerAge > 12) {
+      return done(403, { ok: false, error: "Male students above 12 years cannot register through this form. Please contact QAJ management to complete the registration." });
+    }
     if (!/^\S+@\S+\.\S+$/.test(email)) return done(400, { ok: false, error: "Please enter a valid email address." });
     if (!["self", "child", "other"].includes(registrationType)) return done(400, { ok: false, error: "Please choose who is being registered." });
     if (registrationType === "other" && !relationship) return done(400, { ok: false, error: "Relationship to the learner is required." });
@@ -327,6 +345,7 @@ Deno.serve(async (req: Request) => {
       course_code: courseCode,
       full_name: fullName,
       dob,
+      gender,
       address,
       phone,
       whatsapp,

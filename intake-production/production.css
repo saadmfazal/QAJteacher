@@ -39,6 +39,46 @@
 .upload-card.is-preparing { cursor: wait; opacity: .8; }
 .upload-card.is-error { border-color: #b42318; background: #fff8f6; }
 
+.eligibility-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  background: rgba(27, 6, 19, .82);
+  backdrop-filter: blur(7px);
+}
+
+.eligibility-modal[hidden] { display: none; }
+.eligibility-card {
+  width: min(460px, 100%);
+  padding: clamp(1.4rem, 5vw, 2.3rem);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgba(217, 155, 32, .4);
+  border-top: 7px solid var(--saffron);
+  border-radius: 14px;
+  box-shadow: 0 28px 80px rgba(20, 4, 14, .42);
+  text-align: center;
+}
+
+.eligibility-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 1rem;
+  color: white;
+  background: var(--plum);
+  border-radius: 50%;
+  font: 700 1.35rem var(--serif);
+}
+
+.eligibility-card h2 { margin: .4rem 0 .7rem; font: 500 clamp(1.65rem, 6vw, 2.2rem)/1.08 var(--serif); }
+.eligibility-card > p:not(.eyebrow) { margin: 0 auto 1.35rem; color: var(--muted); line-height: 1.6; }
+.eligibility-card .button { width: 100%; min-height: 50px; }
+
 /* One dependable dialog scroll surface on every viewport. */
 .intake-dialog {
   overflow-x: hidden;

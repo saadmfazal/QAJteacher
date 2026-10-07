@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QAJ recorder verification</title>
+<style>body{margin:20px;background:#f4f4f4;color:#222;font:16px/1.5 system-ui}button{padding:12px 20px;font:inherit}pre{white-space:pre-wrap}iframe{border:1px solid #ccc;background:white;display:block;margin:20px 0}</style>
+<h1>Recitation recorder verification</h1><p>Uses generated audio and intercepted submissions. No registration is sent.</p><button id="run">Run recorder checks</button><pre id="results">Ready</pre><div id="surface"></div>
+<script>
+const output=document.querySelector('#results');
+const log=[];let currentFrame,ctx,destination;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+async function until(fn,message){for(let i=0;i<100;i++){if(fn())return;await wait(50)}throw Error(message||'Timed out')}
+function assert(value,message){if(!value)throw Error(message)}
+function change(el,value){if(el.type==='radio'||el.type==='checkbox')el.checked=true;else el.value=value;el.dispatchEvent(new Event('change',{bubbles:true}));el.dispatchEvent(new Event('input',{bubbles:true}))}
+async function frame(mode='normal',width=390,height=844){
+ if(currentFrame)currentFrame.remove();
+ const src=await fetch('/index.html').then(r=>r.text());
+ const shim=`<script>window.testStreams=[];window.testErrors=[];window.addEventListener('error',e=>testErrors.push(e.message));Object.defineProperty(navigator.mediaDevices,'getUserMedia',{value:()=>{if('${mode}'==='denied')return Promise.reject(new DOMException('denied','NotAllowedError'));const s=parent.testAudioStream.clone();testStreams.push(s);return Promise.resolve(s)}});if('${mode}'==='unsupported')window.MediaRecorder=undefined;window.XMLHttpRequest=class{constructor(){this.upload={}}open(){}setRequestHeader(){}send(data){window.testSubmitted=data;this.status=200;this.response={ok:true};queueMicrotask(()=>this.onload())}};<\/script>`;
+ currentFrame=document.createElement('iframe');currentFrame.style.width=width+'px';currentFrame.style.height=height+'px';currentFrame.allow='autoplay; microphone';
+ document.querySelector('#surface').append(currentFrame);
+ currentFrame.srcdoc=src.replace('<head>','<head>'+shim);
+ await until(()=>currentFrame.contentDocument.querySelector('.recorder-dialog'),'page initialisation');
+ const d=currentFrame.contentDocument,w=currentFrame.contentWindow;
+ d.querySelector('[data-register="thajweedh"]').click();
+ const values={full_name:'Synthetic recorder verification',dob:'2018-01-01',gender:'female',address:'Synthetic QA',country_birth:'Sri Lanka',country_residency:'Sri Lanka',phone:'+94000000000',whatsapp:'+94000000000',email:'qa@example.invalid',emergency_contact:'+94000000000',referral_source:'website'};
+ for(const [name,value]of Object.entries(values))change(d.querySelector('[name="'+name+'"]'),value);
+ change(d.querySelector('[name="registration_type"][value="self"]'),true);
+ d.querySelector('[data-step="1"] [data-next]').click();
+ assert(!d.querySelector('[data-step="2"]').hidden,'placement is reachable through real controls');
+ change(d.querySelector('[name="quran_reading_level"][value="join_and_read"]'),true);
+ d.querySelector('[data-open-recorder]').click();
+ await until(()=>d.querySelector('.recorder-dialog')?.open,'recorder opens');
+ await until(()=>d.querySelector('.recorder-reading img').naturalWidth>0,'reference image loads');
+ return {d,w,modal:d.querySelector('.recorder-dialog')};
+}
+function geometry({d,w,modal}){const r=d.querySelector('.recorder-reading').getBoundingClientRect(),b=d.querySelector('[data-recorder-main]').getBoundingClientRect(),m=modal.getBoundingClientRect();assert(r.height>50,'reading space is visible');assert(b.top>=0&&b.bottom<=w.innerHeight+1,'recording controls are visible');assert(m.width<=w.innerWidth+1,'no modal overflow');}
+async function capture(t){t.d.querySelector('[data-recorder-main]').click();await until(()=>t.modal.dataset.state==='recording','recording starts');await wait(1250);t.d.querySelector('[data-recorder-main]').click();await until(()=>t.modal.dataset.state==='review','recording becomes playable');await until(()=>t.d.querySelector('[data-recorder-player]').readyState>=1,'browser decodes recording');}
+async function test(name,fn){await fn();log.push('PASS · '+name);output.textContent=log.join('\n')}
+document.querySelector('#run').onclick=async()=>{
+ document.querySelector('#run').disabled=true;output.textContent='Running…';log.length=0;
+ try{
+  ctx=new AudioContext();destination=ctx.createMediaStreamDestination();const oscillator=ctx.createOscillator();oscillator.frequency.value=440;oscillator.connect(destination);oscillator.start();await ctx.resume();window.testAudioStream=destination.stream;
+  let t=await frame();
+  await test('Actual MediaRecorder captures and browser plays generated audio',()=>capture(t));
+  await test('Recording attaches as a real audio File to multipart FormData',async()=>{t.d.querySelector('[data-recorder-main]').click();const input=t.d.querySelector('[name="test_me_audio"]');const f=input.files[0];assert(f&&f.size>0&&f.size<12*1024*1024,'valid audio file');assert(f.type.startsWith('audio/'),'audio MIME');assert(input.checkValidity(),'required audio is valid');assert(new t.w.FormData(t.d.querySelector('form')).get('test_me_audio').size===f.size,'FormData includes recording');assert(!t.d.querySelector('[data-audio-preview]').hidden,'attached player visible');assert(!t.modal.open,'returns to form');assert(t.w.testStreams.every(s=>s.getTracks().every(x=>x.readyState==='ended')),'microphone released')});
+  await test('Pause freezes timer; Resume continues the same take',async()=>{t.d.querySelector('[data-open-recorder]').click();t.d.querySelector('[data-recorder-secondary]').click();await until(()=>t.modal.dataset.state==='recording');await wait(1250);t.d.querySelector('[data-recorder-secondary]').click();const time=t.d.querySelector('[data-recorder-time]').textContent;assert(t.modal.dataset.state==='paused','paused');await wait(1200);assert(t.d.querySelector('[data-recorder-time]').textContent===time,'timer frozen');t.d.querySelector('[data-recorder-secondary]').click();assert(t.modal.dataset.state==='recording','resumed');await wait(500);t.d.querySelector('[data-recorder-main]').click();await until(()=>t.modal.dataset.state==='review')});
+  await test('Closing an unused take preserves the existing attached file',async()=>{const before=t.d.querySelector('[name="test_me_audio"]').files[0];t.d.querySelector('[data-recorder-close]').click();assert(t.d.querySelector('[name="test_me_audio"]').files[0]===before,'previous file preserved');t.d.querySelector('[data-open-recorder]').click();t.d.querySelector('[data-recorder-main]').click()});
+  await test('Existing submission script sends audio and waits for server response',async()=>{change(t.d.querySelector('[name="available_days"][value="Monday"]'),true);change(t.d.querySelector('[name="time_from_12h"]'),'09:00');change(t.d.querySelector('[name="time_to_12h"]'),'10:00');t.d.querySelector('[data-step="2"] [data-next]').click();assert(!t.d.querySelector('[data-step="3"]').hidden,'confirm step reached');const transfer=new t.w.DataTransfer();transfer.items.add(new t.w.File([new Uint8Array([137,80,78,71,13,10,26,10])],'qa-receipt.png',{type:'image/png'}));t.d.querySelector('[name="payment_receipt"]').files=transfer.files;change(t.d.querySelector('[name="data_correct"]'),true);const f=t.d.querySelector('[name="test_me_audio"]').files[0];t.d.querySelector('form').requestSubmit();await until(()=>t.w.testSubmitted,'intercepted XHR');assert(t.w.testSubmitted.get('test_me_audio').size===f.size,'XHR contains recorded audio');assert(t.w.testSubmitted.get('payment_receipt').size>0,'receipt preserved');assert(t.w.testSubmitted.get('submission_id'),'submission UUID preserved');await until(()=>!t.d.querySelector('[data-success]').hidden,'server-confirmed UI shown')});
+  t=await frame();
+  await test('Missing required audio is blocked and upload field becomes visible',async()=>{t.d.querySelector('[data-recorder-close]').click();change(t.d.querySelector('[name="available_days"][value="Monday"]'),true);change(t.d.querySelector('[name="time_from_12h"]'),'09:00');change(t.d.querySelector('[name="time_to_12h"]'),'10:00');t.d.querySelector('[data-step="2"] [data-next]').click();assert(!t.d.querySelector('[data-step="2"]').hidden,'cannot advance without audio');assert(t.d.querySelector('.recitation-upload').open,'invalid file field is shown')});
+  await test('Form reset stops capture and clears audio',async()=>{t.d.querySelector('[data-open-recorder]').click();t.d.querySelector('[data-recorder-main]').click();await until(()=>t.modal.dataset.state==='recording');t.d.querySelector('form').reset();await wait(100);assert(!t.modal.open&&t.modal.dataset.state==='idle','reset idle');assert(t.w.testStreams.every(s=>s.getTracks().every(x=>x.readyState==='ended')),'all capture tracks stopped')});
+  await test('320px, 390px, tablet, desktop and phone landscape keep controls visible',async()=>{for(const [width,height]of [[320,568],[390,844],[768,1024],[1440,1000],[844,390]]){t=await frame('normal',width,height);geometry(t);assert(!t.w.testErrors.length,'no script errors')}});
+  await test('Permission refusal provides recovery and file upload',async()=>{t=await frame('denied');t.d.querySelector('[data-recorder-main]').click();await until(()=>!t.d.querySelector('[data-recorder-error]').hidden);assert(t.d.querySelector('[data-recorder-error]').textContent.includes('blocked'),'permission explanation');assert(!t.d.querySelector('[data-recorder-main]').disabled,'can retry');t.d.querySelector('[data-recorder-fallback]').click();assert(t.d.querySelector('.recitation-upload').open,'upload alternative opens')});
+  await test('Unsupported browsers retain the reading page and upload alternative',async()=>{t=await frame('unsupported');t.d.querySelector('[data-recorder-main]').click();assert(t.modal.dataset.state==='unsupported','unsupported state');assert(!t.d.querySelector('[data-recorder-fallback]').hidden,'upload available')});
+  t=await frame('normal',390,844);
+  output.textContent='ALL '+log.length+' CHECKS PASSED\n'+log.join('\n');document.body.dataset.result='passed';
+ }catch(e){output.textContent=log.join('\n')+'\nFAIL · '+e.message;document.body.dataset.result='failed'}finally{document.querySelector('#run').disabled=false}
+};
+</script></html>

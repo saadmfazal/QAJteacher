@@ -1,0 +1,65 @@
+.recitation-invite { display: grid; grid-template-columns: 44px minmax(0,1fr); gap: .7rem; padding: .3rem .3rem .8rem; }
+.recitation-icon { display: grid; place-items: center; width: 44px; height: 44px; color: var(--teal); background: #e2f2ee; border-radius: 50%; }
+.recitation-icon svg { width: 23px; height: 23px; }
+.recitation-invite h3 { margin: 0 0 .3rem; font: 600 1.4rem/1.15 var(--serif); }
+.recitation-invite p { margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+.recitation-invite small { grid-column: 1/-1; text-align: center; color: var(--muted); font-size: .875rem; }
+.recitation-open { grid-column: 1/-1; width: 100%; min-height: 52px; padding: .75rem 1rem; border: 0; border-radius: 8px; background: var(--teal); color: white; font-weight: 700; font-size: 1rem; cursor: pointer; }
+.recitation-upload { border-top: 1px solid var(--line); }
+.recitation-upload summary { padding: .85rem .3rem; font-size: .9rem; font-weight: 600; cursor: pointer; color: var(--plum); }
+.recitation-upload .field { margin-bottom: 0; }
+.recitation-attached { margin: .3rem 0 .8rem; padding: 1rem; background: #e8f5f2; border: 1px solid #b3d8d1; border-radius: 8px; }
+.recitation-attached strong { display: block; color: var(--teal); font-size: 1rem; }
+.recitation-attached > span { display: block; margin: .2rem 0 .7rem; overflow-wrap: anywhere; font-size: .875rem; color: var(--muted); }
+.recitation-attached audio { width: 100%; height: 42px; }
+.recitation-attached p { margin: .5rem 0 0; color: var(--muted); font-size: .875rem; }
+
+.recorder-dialog { width: min(800px,calc(100% - 2rem)); height: min(900px,94dvh); max-width: none; max-height: 94dvh; padding: 0; margin: auto; border: 1px solid var(--line); border-radius: 18px; color: var(--ink); background: white; overflow: hidden; box-shadow: 0 28px 90px #26091b55; }
+.recorder-dialog::backdrop { background: #26091bcc; backdrop-filter: blur(5px); }
+.recorder-frame { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+.recorder-header { display: flex; flex: 0 0 auto; align-items: flex-start; gap: .7rem; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line); background: var(--paper-soft); }
+.recorder-heading { flex: 1; min-width: 0; }
+.recorder-heading .eyebrow { margin-bottom: .3rem; font-size: .75rem; }
+.recorder-heading h2 { margin: 0; font: 600 clamp(1.5rem,4vw,1.9rem)/1.1 var(--serif); }
+.recorder-heading p:last-child { margin: .35rem 0 0; color: var(--muted); font-size: .875rem; }
+.recorder-close { display: grid; place-items: center; min-width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: white; font-size: 1.5rem; cursor: pointer; }
+.recorder-reading { flex: 1 1 auto; min-height: 0; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; background: white; }
+.recorder-reading img { display: block; width: var(--reading-width,100%); max-width: none; margin: 0 auto; height: auto; }
+.recorder-tools { display: flex; flex: 0 0 auto; align-items: center; justify-content: space-between; gap: .6rem; padding: .4rem 1.25rem; border-bottom: 1px solid var(--line); color: var(--muted); font-size: .875rem; background: white; }
+.recorder-zoom { display: flex; align-items: center; gap: .4rem; }
+.recorder-zoom button { width: 42px; height: 36px; border: 1px solid var(--line); border-radius: 6px; background: var(--paper-soft); font-weight: 600; cursor: pointer; }
+.recorder-zoom button:disabled { opacity: .4; cursor: default; }
+.recorder-footer { flex: 0 0 auto; padding: .85rem 1.25rem max(.85rem,env(safe-area-inset-bottom)); border-top: 1px solid var(--line); background: var(--paper-soft); }
+.recorder-state-row { display: flex; align-items: center; justify-content: space-between; gap: .6rem; margin-bottom: .65rem; }
+.recorder-state { display: flex; align-items: center; gap: .5rem; font-size: .95rem; font-weight: 600; }
+.recorder-state i { width: 9px; height: 9px; border-radius: 50%; background: #8c888a; }
+.recorder-dialog[data-state="recording"] .recorder-state i { background: #b42318; box-shadow: 0 0 0 4px #b4231818; }
+.recorder-dialog[data-state="review"] .recorder-state i { background: var(--teal); }
+.recorder-time { font-variant-numeric: tabular-nums; font-size: 1.15rem; font-weight: 700; color: var(--plum); }
+.recorder-actions { display: flex; gap: .65rem; }
+.recorder-actions button { display: flex; align-items: center; justify-content: center; gap: .6rem; min-height: 50px; padding: .7rem 1rem; border: 1px solid var(--line); border-radius: 8px; font-weight: 700; font-size: 1rem; cursor: pointer; }
+.recorder-actions button svg { width: 21px; height: 21px; }
+.recorder-actions .recorder-main { flex: 1; border-color: var(--teal); background: var(--teal); color: white; }
+.recorder-dialog[data-state="recording"] .recorder-main { background: #a62b26; border-color: #a62b26; }
+.recorder-actions .recorder-secondary { background: white; color: var(--plum); }
+.recorder-actions button:disabled { opacity: .6; cursor: default; }
+.recorder-note { margin: .5rem 0 0; color: var(--muted); font-size: .875rem; line-height: 1.4; text-align: center; }
+.recorder-error { margin: 0 0 .65rem; padding: .7rem .8rem; border: 1px solid #e9b9b4; border-radius: 7px; color: #8a2820; background: #fff1ef; font-size: .9rem; }
+.recorder-playback { margin-bottom: .65rem; }
+.recorder-playback audio { display: block; width: 100%; height: 42px; }
+.recorder-download { display: inline-block; margin-top: .4rem; font-size: .875rem; color: var(--teal); text-decoration: underline; }
+.recorder-fallback { margin-top: .45rem; padding: .3rem; border: 0; color: var(--plum); background: transparent; font-size: .875rem; text-decoration: underline; cursor: pointer; }
+.recorder-dialog button:focus-visible, .recitation-open:focus-visible, .recitation-upload summary:focus-visible { outline: 3px solid var(--saffron); outline-offset: 3px; }
+@media (max-width: 680px) {
+  .recorder-dialog { width: 100%; height: 100dvh; max-height: 100dvh; margin: 0; border: 0; border-radius: 0; }
+  .recorder-header { padding: max(.8rem,env(safe-area-inset-top)) 1rem .8rem; }
+  .recorder-tools { padding: .35rem 1rem; }
+  .recorder-footer { padding: .75rem 1rem max(.85rem,calc(.6rem + env(safe-area-inset-bottom))); }
+}
+@media (max-height: 450px) {
+  .recorder-header { padding: .45rem .85rem; }
+  .recorder-heading .eyebrow, .recorder-heading p:last-child, .recorder-tools, .recorder-note { display: none; }
+  .recorder-footer { padding: .45rem .85rem; }
+  .recorder-state-row { margin-bottom: .3rem; }
+  .recorder-actions button { min-height: 44px; }
+}

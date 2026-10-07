@@ -804,10 +804,12 @@ function youngHeartsQuestions() {
   ].join("");
 }
 
+const MIC_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg>';
+
 function thajweedhQuestions() {
   return [
     radio("quran_reading_level", "Which best describes the learner’s current level?", [["letters_new", "I do not know the letters"], ["join_and_read", "I know to join and read"]], "This helps QAJ prepare the right starting syllabus."),
-    `<div class="assessment-upload conditional" data-when-name="quran_reading_level" data-when-value="join_and_read" hidden>${field("test_me_audio", "Recitation recording", {type: "file", accept: "audio/*", hint: "Read aloud the first 5 Ayahs of Surah Al-Baqarah and upload one clear audio file (maximum 12 MB)."})}<a class="audio-help" href="https://drive.google.com/file/d/1ZNSsrH3SIHxV4YLDbnVidWevwMa7RVJ9/view?usp=sharing" target="_blank" rel="noreferrer">Open the reading reference before recording ↗</a></div>`,
+    `<div class="assessment-upload conditional" data-when-name="quran_reading_level" data-when-value="join_and_read" hidden><div class="recitation-invite"><span class="recitation-icon" aria-hidden="true">${MIC_ICON}</span><div><h3>Read &amp; record your recitation</h3><p>Read Ayahs 1–5 of Surah Aal-e-Imran with the reading page in front of you.</p></div><button class="recitation-open" type="button" data-open-recorder>Open reading &amp; recorder</button><small>Listen back, retry if needed, then attach your recording.</small></div><div class="recitation-attached" data-audio-preview hidden><strong>Audio attached to registration</strong><span data-audio-detail></span><audio controls preload="metadata" aria-label="Attached recitation recording"></audio><p>Your audio will be sent to QAJ when you submit registration.</p></div><details class="recitation-upload"><summary>Or upload an existing audio file</summary>${field("test_me_audio", "Recitation recording", {type: "file", accept: "audio/*", hint: "One clear audio recording · maximum 12 MB. Record above or choose a file here."})}</details></div>`,
     dayTime("Which days and times are suitable for Thajweedh?"),
     checkGroup("child_notes", "If registering a small child, what may help the Muallimah?", [["shy", "My child is shy"], ["stern_teacher", "My child needs a firm teacher"], ["friendly_teacher", "My child needs a friendly teacher"]])
   ].join("");
@@ -1210,6 +1212,8 @@ registerWebMcpTools();
 </script>
   <link rel="stylesheet" href="/production.css?v=20261002-gender-v1">
   <script src="/production.js?v=20261002-gender-v1" defer></script>
+  <link rel="stylesheet" href="/recorder.css?v=20261007-v1">
+  <script src="/recorder.js?v=20261007-v1" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#programmes">Skip to course choices</a>

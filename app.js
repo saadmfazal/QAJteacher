@@ -650,11 +650,31 @@ function renderIndividualEntryForm() {
 
 async function renderBatchEntryForm() {
   const s = selectedEntrySession;
+  if (!s || !s.batch_id) return;
+  const entryHost = document.getElementById("entryModalContent");
   const canSubmit = canSubmitSession(s);
-  const batchLinks = teacherBatchStudents.filter((row) => row.batch?.id === s.batch_id);
+  entryHost.innerHTML = `<p class="muted">Loading the student roster for this class date...</p>`;
+  const { data: roster, error } = await supabaseClient.rpc("qaj_get_batch_session_roster", {
+    p_session_id: s.id,
+  });
+  if (!selectedEntrySession || selectedEntrySession.id !== s.id) return;
+  if (error) {
+    entryHost.innerHTML = `<p class="message error">Unable to load this class's historical student roster: ${escapeHtml(error.message)}. No attendance changes were made. Ask the admin to check the session.</p>`;
+    return;
+  }
+  const batchLinks = roster || [];
   selectedBatchAttendanceStudents = batchLinks;
-
-  document.getElementById("entryModalContent").innerHTML = `
+  if (!batchLinks.length) {
+    entryHost.innerHTML = `<p class="message error">No students were enrolled in this batch on the original class date. Attendance cannot be submitted until the enrollment history is reviewed by an admin.</p>`;
+    return;
+  }
+  const rosterDate = batchLinks[0].roster_date || s.scheduled_date;
+  const historicalBatch = !teacherBatches.some(b => b.id === s.batch_id);
+  entryHost.innerHTML = `
+    <p class="muted" style="font-size:12px;margin:5px 0 12px;">
+      ${historicalBatch ? "Historical merged batch · " : ""}Attendance roster as of ${escapeHtml(formatDateDMY(rosterDate))}.
+      ${s.rescheduled_from_session_id ? "Rescheduled classes use their original lesson date." : "Past memberships are preserved."}
+    </p>
     <form id="batchEntryForm" class="entry-form-section">
       ${!canSubmit ? `<p class="message error">This class cannot receive entries now.</p>` : ""}
       <div class="form-grid">
@@ -674,16 +694,16 @@ async function renderBatchEntryForm() {
         <label>Notify Reason</label>
         <textarea id="batchNotifyReason" ${!canSubmit ? "disabled" : ""}>${escapeHtml(s.notify_head_teacher_reason || "")}</textarea>
       </div>
-      <h3>Attendance</h3>
-      ${batchLinks.map((student) => `
+      <h3>Attendance (${batchLinks.length} students)</h3>
+      ${batchLinks.map(student => `
         <div class="attendance-row" data-sid="${escapeHtml(student.sid)}">
-          <div class="attendance-row-top"><strong>${escapeHtml(student.sid)} · ${escapeHtml(student.full_name)}</strong></div>
+          <div class="attendance-row-top"><strong>${escapeHtml(student.sid)} · ${escapeHtml(student.full_name || student.sid)}</strong></div>
           <select class="attendance-status" ${!canSubmit ? "disabled" : ""}>
-            <option value="present">Present</option>
-            <option value="absent">Absent</option>
-            <option value="late">Late</option>
+            <option value="present" ${!student.attendance_status || student.attendance_status === "present" ? "selected" : ""}>Present</option>
+            <option value="absent" ${student.attendance_status === "absent" ? "selected" : ""}>Absent</option>
+            <option value="late" ${student.attendance_status === "late" ? "selected" : ""}>Late</option>
           </select>
-          <input class="attendance-notes" placeholder="Notes" ${!canSubmit ? "disabled" : ""} />
+          <input class="attendance-notes" value="${escapeHtml(student.attendance_notes || "")}" placeholder="Notes" ${!canSubmit ? "disabled" : ""} />
         </div>
       `).join("")}
       <button class="primary-btn full" type="submit" ${!canSubmit ? "disabled" : ""}>Submit Batch Entry</button>
